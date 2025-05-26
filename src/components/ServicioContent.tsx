@@ -1,7 +1,13 @@
 'use client'
 
-import { Player } from '@lottiefiles/react-lottie-player'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+
+// Cargar Player de forma dinámica solo en cliente
+const Player = dynamic(
+    () => import('@lottiefiles/react-lottie-player').then(mod => mod.Player),
+    { ssr: false }
+)
 
 interface ServicioProps {
     servicio: {
@@ -46,8 +52,7 @@ export default function ServicioContent({ servicio }: ServicioProps) {
                 <h3 className="text-lg font-semibold text-blue-800 mb-2">¿Por qué elegir TechBox?</h3>
                 <p className="text-gray-700">
                     A diferencia de otras consultoras, en TechBox combinamos experiencia en el sector
-                    tecnológico con un enfoque cercano, ágil y 100% adaptado a las PYMEs. Te acompañamos
-                    en todo el proceso y garantizamos soluciones funcionales, claras y medibles.
+                    tecnológico con un enfoque cercano, ágil y 100% adaptado a las PYMEs.
                 </p>
             </div>
 
