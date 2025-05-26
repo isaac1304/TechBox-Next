@@ -1,9 +1,17 @@
 'use client';
 
 import { useEffect } from 'react';
+
 declare global {
     interface Window {
-        Calendly: any;
+        Calendly: {
+            initBadgeWidget: (options: {
+                url: string;
+                text: string;
+                color: string;
+                textColor: string;
+            }) => void;
+        };
     }
 }
 
