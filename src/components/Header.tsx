@@ -28,7 +28,7 @@ export default function Header() {
                     <Link href="/">Inicio</Link>
                     <Link href="/Servicios">Servicios</Link>
                     <Link href="/Contacto">Contacto</Link>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/Blog">Blog</Link>
                 </nav>
             </div>
         </header>
