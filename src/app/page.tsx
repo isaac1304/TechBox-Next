@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import HeroAnimation from '@/components/HeroAnimation'
 import {
     GlobeIcon,
     LockIcon,
@@ -14,7 +13,9 @@ import {
     HandshakeIcon,
 } from 'lucide-react'
 import dynamic from 'next/dynamic'
+
 const HeroAnimation = dynamic(() => import('@/components/HeroAnimation'), { ssr: false })
+
 export default function HomePage() {
     return (
         <>

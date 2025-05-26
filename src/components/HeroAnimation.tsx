@@ -1,15 +1,14 @@
 'use client'
-
 import { Player } from '@lottiefiles/react-lottie-player'
 
 export default function HeroAnimation() {
     return (
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center py-8">
             <Player
                 autoplay
                 loop
-                src="https://assets7.lottiefiles.com/packages/lf20_kyu7xb1v.json" // Ejemplo
-                style={{ height: '250px', width: '250px' }}
+                src="/lottie/hero-animation.json"
+                style={{ height: '350px', width: '350px' }}
             />
         </div>
     )
