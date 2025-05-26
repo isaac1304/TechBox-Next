@@ -1,26 +1,30 @@
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
 import servicios from '@/data/servicios.json'
-import ServicioContent from '@/components/ServicioContent'
+import ServicioWrapper from '@/components/ServicioWrapper'
 
 export async function generateStaticParams() {
-    return servicios.map((servicio) => ({
-        slug: servicio.slug,
-    }))
+    return servicios.map((s) => ({ slug: s.slug }))
 }
 
-export async function generateMetadata(
-    { params }: { params: { slug: string } }
-): Promise<Metadata> {
-    const servicio = servicios.find((s) => s.slug === params.slug)
+export async function generateMetadata({
+                                           params,
+                                       }: {
+    params: Promise<{ slug: string }>
+}) {
+    const { slug } = await params
+    const servicio = servicios.find((s) => s.slug === slug)
     return {
         title: servicio?.titulo || 'Servicio no encontrado',
     }
 }
 
-export default function ServicioPage({ params }: { params: { slug: string } }) {
-    const servicio = servicios.find((s) => s.slug === params.slug)
+export default async function ServicioPage({
+                                               params,
+                                           }: {
+    params: Promise<{ slug: string }>
+}) {
+    const { slug } = await params
+    const servicio = servicios.find((s) => s.slug === slug)
     if (!servicio) return notFound()
-
-    return <ServicioContent servicio={servicio} />
+    return <ServicioWrapper servicio={servicio} />
 }
