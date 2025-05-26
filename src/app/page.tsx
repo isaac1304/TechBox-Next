@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import {
     GlobeIcon,
     LockIcon,
@@ -11,12 +12,21 @@ import {
     CodeIcon,
     HandshakeIcon,
 } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const HeroAnimation = dynamic(() => import('@/components/HeroAnimation'), { ssr: false })
 
 export default function HomePage() {
     return (
         <>
-            {/* Hero principal */}
-            <section className="text-center py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+            {/* Hero animado con Lottie y framer-motion */}
+            <motion.section
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center py-20 px-6 bg-gradient-to-b from-white to-blue-50"
+            >
+                <HeroAnimation />
                 <h1 className="text-4xl sm:text-5xl font-bold text-blue-900 mb-4">
                     Soluciones tecnológicas para tu PYME
                 </h1>
@@ -29,7 +39,7 @@ export default function HomePage() {
                 >
                     Explorar Servicios
                 </Link>
-            </section>
+            </motion.section>
 
             {/* Sección de beneficios */}
             <section className="max-w-6xl mx-auto px-4 py-16">
