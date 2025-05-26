@@ -2,17 +2,13 @@
 
 import { useEffect } from 'react';
 
-declare global {
-    interface Window {
-        Calendly: {
-            initBadgeWidget: (options: {
-                url: string;
-                text: string;
-                color: string;
-                textColor: string;
-            }) => void;
-        };
-    }
+interface CalendlyApi {
+    initBadgeWidget: (options: {
+        url: string;
+        text: string;
+        color: string;
+        textColor: string;
+    }) => void;
 }
 
 export default function CalendlyBadge() {
@@ -26,8 +22,9 @@ export default function CalendlyBadge() {
         script.src = 'https://assets.calendly.com/assets/external/widget.js';
         script.async = true;
         script.onload = () => {
-            if (window.Calendly) {
-                window.Calendly.initBadgeWidget({
+            const calendly = (window as unknown as { Calendly?: CalendlyApi }).Calendly;
+            if (calendly) {
+                calendly.initBadgeWidget({
                     url: 'https://calendly.com/isaacxdd/30min',
                     text: 'Agendá tu cita',
                     color: '#0069ff',
