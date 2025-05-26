@@ -1,14 +1,14 @@
 import { notFound } from 'next/navigation'
 import servicios from '@/data/servicios.json'
-import ServicioClientWrapper from '@/components/ServicioClientWrapper'
+import ServicioContent from '@/components/ServicioContent'
 
 export async function generateStaticParams() {
-    return servicios.map((s) => ({ slug: s.slug }))
+    return servicios.map((servicio) => ({
+        slug: servicio.slug,
+    }))
 }
 
-export async function generateMetadata(
-    { params }: { params: Promise<{ slug: string }> }
-) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
     const servicio = servicios.find((s) => s.slug === slug)
     return {
@@ -16,12 +16,11 @@ export async function generateMetadata(
     }
 }
 
-export default async function ServicioPage(
-    props: { params: Promise<{ slug: string }> }
-) {
-    const { slug } = await props.params
+export default async function ServicioPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params
     const servicio = servicios.find((s) => s.slug === slug)
+
     if (!servicio) return notFound()
 
-    return <ServicioClientWrapper servicio={servicio} />
+    return <ServicioContent servicio={servicio} />
 }
