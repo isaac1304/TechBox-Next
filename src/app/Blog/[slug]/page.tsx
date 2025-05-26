@@ -1,6 +1,6 @@
 // src/app/Blog/[slug]/page.tsx
 import { notFound } from 'next/navigation'
-import blogs from '@/data/blogs.json'
+import blogs from '@/data/blog.json'
 import BlogContent from '@/components/BlogContent'
 
 export async function generateStaticParams() {
