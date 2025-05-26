@@ -1,11 +1,6 @@
 import { notFound } from 'next/navigation'
 import servicios from '@/data/servicios.json'
-import dynamic from 'next/dynamic'
-
-// Carga el componente cliente de forma dinámica, sin SSR
-const ServicioContent = dynamic(() => import('@/components/ServicioContent'), {
-    ssr: false,
-})
+import ServicioClientWrapper from '@/components/ServicioClientWrapper'
 
 export async function generateStaticParams() {
     return servicios.map((s) => ({ slug: s.slug }))
@@ -28,5 +23,5 @@ export default async function ServicioPage(
     const servicio = servicios.find((s) => s.slug === slug)
     if (!servicio) return notFound()
 
-    return <ServicioContent servicio={servicio} />
+    return <ServicioClientWrapper servicio={servicio} />
 }
