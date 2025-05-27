@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Header() {
     const [open, setOpen] = useState(false)
@@ -9,8 +10,15 @@ export default function Header() {
     return (
         <header className="bg-white shadow-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold text-blue-900">
-                    TechBox
+                <Link href="/" className="flex items-center gap-2">
+                    <Image
+                        src="/img/logo.png"
+                        alt="TechBox Logo"
+                        width={40}
+                        height={40}
+                        priority
+                    />
+                    <span className="sr-only">TechBox</span>
                 </Link>
 
                 <button
