@@ -14,8 +14,8 @@ export default function Header() {
                     <Image
                         src="/img/logo.png"
                         alt="TechBox Logo"
-                        width={70}
-                        height={70}
+                        width={80}
+                        height={80}
                         priority
                     />
                     <span className="sr-only">TechBox</span>
