@@ -4,6 +4,7 @@ import { MoonIcon, SunIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export default function ThemeToggle() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { theme, setTheme, resolvedTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])

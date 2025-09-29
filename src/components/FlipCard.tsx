@@ -29,7 +29,7 @@ export default function FlipCard({
                 <div className={styles.front}>
                     <div className={styles.media}>
                         {lottieSrc ? (
-                            // @ts-ignore
+                            // @ts-expect-error
                             <lottie-player autoplay loop mode="normal" src={lottieSrc} style={{ width: '100%', height: '100%' }} />
                         ) : (
                             iconPng && (

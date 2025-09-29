@@ -1,49 +1,54 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
-type Props = {
-    src: string;              // e.g. /lottie/software.json
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+                src?: string;
+                background?: string;
+                speed?: number;
+                loop?: boolean;
+                autoplay?: boolean;
+                style?: React.CSSProperties;
+            };
+        }
+    }
+}
+
+type LottieProps = {
+    src: string;
     className?: string;
-    loop?: boolean;
-    autoplay?: boolean;
     style?: React.CSSProperties;
 };
 
-export default function Lottie({ src, className, loop = true, autoplay = true, style }: Props) {
-    const ref = useRef<HTMLDivElement | null>(null);
+export default function Lottie({ src, className, style }: LottieProps) {
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        let anim: any;
-        let disposed = false;
+        const existing = document.querySelector('script[data-lottie-player]');
+        if (existing) { setLoaded(true); return; }
+        const s = document.createElement('script');
+        s.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
+        s.async = true;
+        (s as any).dataset = { lottiePlayer: '1' };
+        s.setAttribute('data-lottie-player', '1');
+        s.onload = () => setLoaded(true);
+        document.body.appendChild(s);
+    }, []);
 
-        async function boot() {
-            try {
-                const [lottie, json] = await Promise.all([
-                    import('lottie-web'),
-                    fetch(src).then(r => r.json()),
-                ]);
-                if (disposed || !ref.current) return;
-                anim = lottie.default.loadAnimation({
-                    container: ref.current,
-                    renderer: 'svg',
-                    loop,
-                    autoplay,
-                    animationData: json,
-                    rendererSettings: { preserveAspectRatio: 'xMidYMid meet' },
-                });
-            } catch (e) {
-                // Silenciar: si falla, simplemente no muestra animación
-                // console.warn('Lottie failed', e);
-            }
-        }
-        boot();
+    if (!loaded) return null;
 
-        return () => {
-            disposed = true;
-            try { anim?.destroy(); } catch {}
-        };
-    }, [src, loop, autoplay]);
-
-    return <div ref={ref} className={className} style={style} />;
+    return (
+        <lottie-player
+            src={src}
+            background="transparent"
+            speed={1}
+            loop
+            autoplay
+            className={className}
+            style={style}
+        />
+    );
 }
