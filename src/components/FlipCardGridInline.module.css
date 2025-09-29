@@ -1,0 +1,30 @@
+.wrap{ width:100%; max-width:980px; margin:0 auto; }
+
+.grid{
+    display:grid; gap:14px;
+    grid-template-columns: repeat(2, minmax(0,1fr));  /* móvil */
+}
+@media (min-width:768px){
+    .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } /* 3×3 */
+}
+
+.card{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px rgba(6,14,38,.18);
+    transition:transform .18s ease, box-shadow .18s ease;
+    text-decoration:none;
+}
+.card:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(6,14,38,.24); }
+
+.navy{ background:linear-gradient(180deg,#2A2F73 0%,#0e183a 100%); color:#EAF2FF; }
+.teal{  background:linear-gradient(180deg,#2EC4B6 0%,#1aa79a 100%); color:#0b1b2b; }
+
+.media{ position:relative; width:46%; aspect-ratio:1/1; } /* Lottie/PNG más pequeño */
+.lottie{ position:absolute; inset:0; }
+.image{ object-fit:contain; }
+
+.label{
+    position:absolute; left:0; right:0; bottom:8px;
+    text-align:center; font-weight:800; letter-spacing:.2px; font-size:13px;
+}

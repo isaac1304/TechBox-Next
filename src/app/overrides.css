@@ -1,0 +1,40 @@
+:root{
+    --ink: #0b1b2b;      /* texto principal */
+    --ink-sub: #334b68;  /* texto secundario */
+    --link: #2A2F73;     /* azul marca */
+    --teal: #2EC4B6;     /* acento */
+}
+
+/* Tipografía global */
+html, body {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+}
+body{
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces y CTA */
+a { color: var(--link); }
+a:hover { opacity:.9; }
+
+.btn-outline{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.625rem 1.25rem;
+    border-radius:12px;
+    border:1px solid color-mix(in oklab, var(--link) 36%, #0000);
+    color: var(--ink);
+    background: #fff8;
+    backdrop-filter: blur(4px);
+}
+.btn-outline:hover{ background:#fff; border-color: color-mix(in oklab, var(--link) 52%, #0000); }
+
+/* Header flotante: deja espacio arriba para TODO el sitio */
+.with-float-header main { padding-top: calc(var(--header-h, 88px) + 22px); }
+@media (min-width:1024px){
+    .with-float-header main { padding-top: calc(var(--header-h, 96px) + 28px); }
+}
+
+/* Calendly badge: espacio al final */
+body.calendly-badge-visible { padding-bottom: clamp(90px, 9vh, 140px); }

@@ -1,26 +1,63 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Colores de marca ───────────────────────── */
+:root{
+  --tech-navy:#0b1b2b;
+  --tech-navy-600:#173754;
+  --tech-teal:#0f766e;
+  --tech-aqua:#7eddd3;
+}
+.bg-brand-navy{ background: var(--tech-navy-600); }
+.bg-brand-teal{ background: var(--tech-teal); }
+.bg-brand-aqua{ background: var(--tech-aqua); }
+.text-brand-navy{ color: var(--tech-navy-600); }
+.text-brand-teal{ color: var(--tech-teal); }
+
+/* ─── Fondo “nube” tipo PDF (radial-gradients superpuestos) ─── */
+.hero-cloud{
+  position: relative;
+  isolation: isolate;
+}
+.hero-cloud::before{
+  content:"";
+  position:absolute; inset:-80px -40px -40px -40px;
+  z-index:-1;
+  background:
+          radial-gradient(1100px 420px at 75% 15%, rgba(126,221,211,0.30), transparent 60%),
+          radial-gradient(700px 340px at 90% 60%, rgba(23,55,84,0.20), transparent 60%),
+          radial-gradient(800px 380px at 20% 70%, rgba(15,118,110,0.18), transparent 60%),
+          linear-gradient(180deg, rgba(2,6,23,0.02), rgba(2,6,23,0.00));
+  filter: blur(0.2px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Flip 3D (más smooth) ───────────────────── */
+.tile{ perspective:1400px; height:100%; width:100%; }
+.tile-inner{
+  position:relative; height:100%; width:100%;
+  transform-style:preserve-3d;
+  transition:transform .66s cubic-bezier(.2,.8,.2,1);
+  border-radius:1.5rem;
+  will-change: transform;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.tile-front, .tile-back{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:1.5rem;
 }
+.tile-back{ transform: rotateY(180deg); }
+.tile:hover .tile-inner{ transform: rotateY(180deg) translateZ(0.0001px); }
 
+/* ─── Clamps sin plugin ──────────────────────── */
+.line-clamp-2{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.line-clamp-3{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.line-clamp-4{ display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* Suavidad y enlaces */
+html{ scroll-behavior:smooth }
+a{ color: inherit; text-decoration: none; }
+html, body {
+  min-height: 100%;
+}
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
 }

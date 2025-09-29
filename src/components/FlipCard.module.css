@@ -1,0 +1,77 @@
+/* src/components/FlipCard.module.css */
+.card{
+    --navy: #2A2F73;     /* cubo */
+    --teal: #2EC4B6;     /* píxeles */
+
+    --bg1: var(--navy);
+    --bg2: #1f245d;      /* navy más oscuro */
+    --fg:  #F4F8FF;      /* más claro para legibilidad */
+    --accent: var(--teal);
+    --shadow: 0 8px 30px rgba(0,0,0,.25);
+
+    position:relative;
+    perspective:1200px;
+    width:min(100%, 320px);
+    min-height:260px;
+    border-radius:18px;
+}
+
+.square{ aspect-ratio:1/1; min-height:auto; }
+
+.inner{
+    position:relative; width:100%; height:100%;
+    transform-style:preserve-3d;
+    transition:transform .7s ease;
+    border-radius:inherit;
+    box-shadow:var(--shadow);
+}
+
+.card:hover .inner{ transform:rotateY(180deg); }
+
+.front, .back{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background:linear-gradient(180deg, var(--bg1), var(--bg2));
+    color:var(--fg);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:inherit;
+    padding:18px;
+    backface-visibility:hidden;
+}
+
+.back{ transform:rotateY(180deg); }
+
+.media{
+    position:relative;
+    width:clamp(120px, 40%, 220px);
+    height:clamp(120px, 40%, 220px);
+    margin-bottom:14px;
+    filter:drop-shadow(0 6px 16px rgba(0,0,0,.35));
+}
+
+.imgContain{ object-fit:contain; }
+
+.title{
+    color:var(--fg);
+    font-size:clamp(1rem, 1vw + .8rem, 1.25rem);
+    font-weight:800;
+    letter-spacing:.2px;
+    text-align:center;
+}
+
+.text{
+    color:var(--fg);
+    font-size:.95rem; line-height:1.35; text-align:center; opacity:.95;
+}
+
+.cta{
+    margin-top:10px;
+    color:var(--accent);
+    font-weight:800;
+    text-decoration:none;
+    border-bottom:1px dashed var(--accent);
+}
+
+/* Variantes intercaladas */
+.navy{ --bg1: var(--navy); --bg2:#1f245d; --accent:var(--teal); }
+.teal{ --bg1: #1a6f66;   --bg2:#104a45; --accent:var(--teal); }

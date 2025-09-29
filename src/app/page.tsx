@@ -1,119 +1,53 @@
-'use client'
-
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import {
-    GlobeIcon,
-    LockIcon,
-    WrenchIcon,
-    CloudIcon,
-    EarIcon,
-    LightbulbIcon,
-    CodeIcon,
-    HandshakeIcon,
-} from 'lucide-react'
-import dynamic from 'next/dynamic'
-
-const HeroAnimation = dynamic(() => import('@/components/HeroAnimation'), { ssr: false })
+// app/page.tsx
+import Link from 'next/link';
+import HeroPixels from '@/components/HeroPixels';
+import WhyTechbox from '@/components/WhyTechbox';
 
 export default function HomePage() {
     return (
-        <>
-            {/* Hero animado con Lottie y framer-motion */}
-            <motion.section
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center py-20 px-6 bg-gradient-to-b from-white to-blue-50"
-            >
-                <HeroAnimation />
-                <h1 className="text-4xl sm:text-5xl font-bold text-blue-900 mb-4">
-                    Soluciones tecnológicas para tu PYME
-                </h1>
-                <p className="text-gray-700 text-lg mb-8">
-                    Innovación, automatización y seguridad para tu negocio.
-                </p>
-                <Link
-                    href="/Servicios"
-                    className="inline-block bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800 transition"
-                >
-                    Explorar Servicios
-                </Link>
-            </motion.section>
+        <main>
+            {/* HERO */}
+            <section className="relative mx-auto w-full max-w-6xl px-4 pt-2 pb-10">
+                <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_300px]">
+                    {/* Texto */}
+                    <div>
+            <span className="inline-flex items-center rounded-full border border-[#2EC4B6] bg-[#2EC4B6]/15 px-3 py-1 text-[12px] font-semibold uppercase tracking-[.20em] text-[#106d66] shadow-sm">
+              SOLUCIONES PARA PYMES EN CRECIMIENTO
+            </span>
 
-            {/* Sección de beneficios */}
-            <section className="max-w-6xl mx-auto px-4 py-16">
-                <h2 className="text-3xl font-bold text-center text-blue-900 mb-12">
-                    ¿Por qué elegir TechBox?
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <WrenchIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="text-xl font-semibold mb-2">Soluciones llave en mano</h3>
-                        <p className="text-gray-600">
-                            Implementamos soluciones completas, listas para usar y adaptadas a tu negocio.
+                        <h1 className="mt-3 text-4xl font-extrabold leading-tight text-[#0b1b2b] md:text-6xl">
+                            Menos planillas, más ventas: software, cloud y automatización
+                        </h1>
+
+                        <p className="mt-4 max-w-3xl text-[#334b68]">
+                            Quitamos tareas repetitivas, conectamos tus sistemas y te damos visibilidad en un mismo tablero.
+                            Pasas de “apagar incendios” a operar con datos y procesos claros.
                         </p>
+
+                        <div className="mt-7">
+                            <Link
+                                href="/Servicios"
+                                className="inline-flex items-center gap-2 rounded-full bg-[#2EC4B6] px-5 py-3 font-extrabold text-[#0b1b2b] shadow-[0_12px_24px_rgba(46,196,182,.28)] transition hover:-translate-y-[1px] hover:shadow-[0_16px_28px_rgba(46,196,182,.34)]"
+                            >
+                                Ver servicios
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                                    <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Link>
+                        </div>
                     </div>
-                    <div>
-                        <GlobeIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="text-xl font-semibold mb-2">Transformación digital</h3>
-                        <p className="text-gray-600">
-                            Llevamos tu negocio al siguiente nivel con tecnología moderna y escalable.
-                        </p>
-                    </div>
-                    <div>
-                        <CloudIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="text-xl font-semibold mb-2">Expertos en nube</h3>
-                        <p className="text-gray-600">
-                            Dominamos plataformas como Google Cloud y AWS para optimizar tus procesos.
-                        </p>
-                    </div>
-                    <div>
-                        <LockIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="text-xl font-semibold mb-2">Ciberseguridad integrada</h3>
-                        <p className="text-gray-600">
-                            Tu información y la de tus clientes protegida desde el diseño.
-                        </p>
+
+                    {/* Animación de píxeles (derecha, siempre visible) */}
+                    <div className="flex w-full justify-end">
+                        <HeroPixels />
                     </div>
                 </div>
             </section>
 
-            {/* Sección Cómo trabajamos */}
-            <section className="bg-gray-50 py-20 px-6">
-                <h2 className="text-3xl font-bold text-center text-blue-900 mb-12">
-                    ¿Cómo trabajamos?
-                </h2>
-                <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
-                    <div>
-                        <EarIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="font-semibold text-lg mb-2">1. Escuchamos</h3>
-                        <p className="text-gray-600">
-                            Entendemos tus necesidades y objetivos empresariales.
-                        </p>
-                    </div>
-                    <div>
-                        <LightbulbIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="font-semibold text-lg mb-2">2. Proponemos</h3>
-                        <p className="text-gray-600">
-                            Diseñamos soluciones estratégicas a medida.
-                        </p>
-                    </div>
-                    <div>
-                        <CodeIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="font-semibold text-lg mb-2">3. Ejecutamos</h3>
-                        <p className="text-gray-600">
-                            Desarrollamos e implementamos la tecnología en tu empresa.
-                        </p>
-                    </div>
-                    <div>
-                        <HandshakeIcon className="mx-auto text-blue-700 w-10 h-10 mb-4" />
-                        <h3 className="font-semibold text-lg mb-2">4. Acompañamos</h3>
-                        <p className="text-gray-600">
-                            Brindamos soporte y mejora continua en cada etapa.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </>
-    )
+            {/* Cajotas estilo Notion */}
+            <div className="pb-16">
+                <WhyTechbox />
+            </div>
+        </main>
+    );
 }
