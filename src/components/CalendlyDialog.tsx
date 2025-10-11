@@ -19,7 +19,7 @@ export default function CalendlyDialog({ open, onOpenChange, url, title }: Calen
     if (typeof window === "undefined" || !open) return null;
 
     const domain = window.location.hostname || "localhost";
-    const src = `${url}?embed_type=Inline&embed_domain=${domain}&hide_landing_page_details=1&hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0f766e`;
+    const src = `${url}?embed_type=Inline&embed_domain=${domain}&hide_landing_page_details=1&hide_event_type_details=1&hide_gdpr_banner=1&hide_branding=1&primary_color=0f766e`;
 
     return createPortal(
         <div className="fixed inset-0 z-50 flex items-center justify-center" role="dialog" aria-modal="true" aria-label={title ?? "Calendly"}>
