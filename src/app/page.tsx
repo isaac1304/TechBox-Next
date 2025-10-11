@@ -72,20 +72,21 @@ export default function HomePage() {
                                 <p className="mt-2 text-white/90">Tiempo promedio para entregar el primer módulo con resultados visibles.</p>
                             </div>
                         </div>
+
+                        <div className="mt-6 max-w-sm overflow-hidden rounded-3xl border border-white/12 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_70%)] p-6 shadow-[0_30px_60px_rgba(5,10,28,0.45)]">
+                            <div className="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-[rgba(12,19,48,0.65)] to-[rgba(12,27,64,0.92)] p-6">
+                                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/[0.75]">Visión</p>
+                                <p className="mt-4 text-lg font-medium leading-relaxed text-white/80">
+                                    Tecnología, diseño y datos alineados para hacer crecer tu negocio sin aumentar la planilla.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="relative flex items-center justify-center lg:justify-end">
                         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-3xl" aria-hidden />
-                        <div className="relative flex w-full max-w-[540px] flex-col gap-5 lg:items-end">
+                        <div className="relative flex w-full max-w-[540px] flex-col lg:items-end">
                             <HeroServiceGrid />
-                            <div className="overflow-hidden rounded-3xl border border-white/12 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_70%)] p-6 shadow-[0_30px_60px_rgba(5,10,28,0.45)]">
-                                <div className="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-[rgba(12,19,48,0.65)] to-[rgba(12,27,64,0.92)] p-6">
-                                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/[0.75]">Visión</p>
-                                    <p className="mt-4 text-lg font-medium leading-relaxed text-white/80">
-                                        Tecnología, diseño y datos alineados para hacer crecer tu negocio sin aumentar la planilla.
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
