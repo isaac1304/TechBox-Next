@@ -27,68 +27,41 @@ export default function HomePage() {
             <div className="pointer-events-none absolute -left-[25%] top-[-10%] h-[640px] w-[640px] rounded-full bg-[radial-gradient(circle_at_center,rgba(83,182,255,0.3),transparent_60%)] blur-3xl" />
             <div className="pointer-events-none absolute -right-[20%] top-[10%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(125,123,255,0.32),transparent_60%)] blur-3xl" />
 
-            {/* HERO */}
-            <section className="relative mx-auto w-full max-w-6xl px-4 pt-6 pb-24 lg:px-6">
-                <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_1fr]">
-                    <div className="relative z-10">
-                        <span className="inline-flex items-center rounded-full border border-slate-300/80 bg-white/80 px-4 py-1 text-[12px] font-semibold uppercase tracking-[0.24em] text-slate-600 dark:border-white/[0.15] dark:bg-white/[0.15] dark:text-white/80">
-                            Soluciones para PYMES en crecimiento
+            {/* HERO GRID */}
+            <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 pb-24 pt-28 text-center lg:px-6">
+                <div className="max-w-3xl space-y-4">
+                    <span className="inline-flex items-center justify-center rounded-full border border-slate-200/80 bg-white/70 px-4 py-1 text-[12px] font-semibold uppercase tracking-[0.24em] text-slate-600 dark:border-white/[0.18] dark:bg-white/[0.12] dark:text-white/80">
+                        Explora nuestras soluciones
+                    </span>
+                    <h1 className="text-4xl font-semibold leading-tight text-slate-900 dark:text-white md:text-[3.25rem] md:leading-[1.05]">
+                        Interactúa con nuestras{' '}
+                        <span className="bg-gradient-to-r from-[#67e1ff] via-[#8fd3ff] to-[#9e8aff] bg-clip-text text-transparent">
+                            experiencias digitales
                         </span>
-                        <h1 className="mt-6 text-4xl font-semibold leading-tight text-slate-900 dark:text-white md:text-[3.25rem] md:leading-[1.05]">
-                            Soluciones digitales que llevan tu PYME al{' '}
-                            <span className="text-transparent bg-gradient-to-r from-[#67e1ff] via-[#8fd3ff] to-[#9e8aff] bg-clip-text">
-                                siguiente nivel
-                            </span>
-                        </h1>
-                        <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-white/85">
-                            Automatizamos tus procesos, conectamos tus sistemas y construimos tableros accionables. Dejas de apagar incendios y empiezas a decidir con datos.
-                        </p>
+                    </h1>
+                    <p className="text-lg leading-relaxed text-slate-600 dark:text-white/85">
+                        Cada tarjeta revela cómo la automatización, los datos y la nube pueden impulsar tu empresa. Haz hover o toca para descubrir el impacto de cada servicio.
+                    </p>
+                </div>
 
-                        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <Link
-                                href="/Contacto"
-                                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--accent-ice)] via-[#6ff3ff] to-[var(--accent-teal)] px-6 py-3 text-base font-semibold text-slate-900 shadow-[0_20px_48px_rgba(64,194,255,0.35)] transition hover:translate-y-[-2px] hover:shadow-[0_24px_56px_rgba(64,194,255,0.45)]"
-                            >
-                                Agendar una cita
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                    <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </Link>
-                            <Link
-                                href="/Servicios"
-                                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-900/20 px-6 py-3 text-base font-semibold text-slate-900 transition hover:border-slate-900/40 hover:text-slate-900 dark:border-white/25 dark:text-white/90 dark:hover:border-white/45 dark:hover:text-white"
-                            >
-                                Ver servicios
-                            </Link>
-                        </div>
+                <HeroServiceGrid />
 
-                        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-                            <div className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-[0_14px_32px_rgba(15,23,42,0.12)] transition-transform duration-200 hover:-translate-y-1 hover:border-slate-300 dark:border-white/20 dark:bg-[linear-gradient(160deg,rgba(8,14,36,0.92),rgba(9,18,48,0.62))] dark:shadow-[0_18px_42px_rgba(4,10,28,0.42)] dark:hover:border-white/35">
-                                <p className="text-sm font-semibold uppercase tracking-[0.26em] text-slate-600 dark:text-white/80">+300h</p>
-                                <p className="mt-2 text-slate-700 dark:text-white/90">Horas automatizadas al año en operaciones para nuestros clientes.</p>
-                            </div>
-                            <div className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-[0_14px_32px_rgba(15,23,42,0.12)] transition-transform duration-200 hover:-translate-y-1 hover:border-slate-300 dark:border-white/20 dark:bg-[linear-gradient(160deg,rgba(8,14,36,0.92),rgba(9,18,48,0.62))] dark:shadow-[0_18px_42px_rgba(4,10,28,0.42)] dark:hover:border-white/35">
-                                <p className="text-sm font-semibold uppercase tracking-[0.26em] text-slate-600 dark:text-white/80">2-4 sem</p>
-                                <p className="mt-2 text-slate-700 dark:text-white/90">Tiempo promedio para entregar el primer módulo con resultados visibles.</p>
-                            </div>
-                        </div>
-
-                        <div className="mt-6 max-w-sm overflow-hidden rounded-3xl border border-slate-200 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.18),transparent_70%)] p-6 shadow-[0_26px_52px_rgba(15,23,42,0.12)] dark:border-white/12 dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_70%)] dark:shadow-[0_30px_60px_rgba(5,10,28,0.45)]">
-                            <div className="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-white/90 to-indigo-50/70 p-6 dark:from-[rgba(12,19,48,0.65)] dark:to-[rgba(12,27,64,0.92)]">
-                                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-600 dark:text-white/75">Visión</p>
-                                <p className="mt-4 text-lg font-medium leading-relaxed text-slate-700 dark:text-white/80">
-                                    Tecnología, diseño y datos alineados para hacer crecer tu negocio sin aumentar la planilla.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="relative flex items-center justify-center lg:justify-end">
-                        <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-3xl" aria-hidden />
-                        <div className="relative flex w-full max-w-[540px] flex-col lg:items-end">
-                            <HeroServiceGrid />
-                        </div>
-                    </div>
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                    <Link
+                        href="/Contacto"
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--accent-ice)] via-[#6ff3ff] to-[var(--accent-teal)] px-6 py-3 text-base font-semibold text-slate-900 shadow-[0_20px_48px_rgba(64,194,255,0.35)] transition hover:translate-y-[-2px] hover:shadow-[0_24px_56px_rgba(64,194,255,0.45)]"
+                    >
+                        Agendar una cita
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                            <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Link>
+                    <Link
+                        href="/Servicios"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-900/20 px-6 py-3 text-base font-semibold text-slate-900 transition hover:border-slate-900/40 hover:text-slate-900 dark:border-white/25 dark:text-white/90 dark:hover:border-white/45 dark:hover:text-white"
+                    >
+                        Ver servicios
+                    </Link>
                 </div>
             </section>
 
