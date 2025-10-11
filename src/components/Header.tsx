@@ -66,7 +66,9 @@ export default function Header() {
                     <ThemeToggle />
                     {isSmall && (
                         <button
+                            type="button"
                             aria-label="Abrir menú"
+                            aria-expanded={open}
                             onClick={() => setOpen(true)}
                             className={styles.mobileMenuButton}
                         >
@@ -83,9 +85,7 @@ export default function Header() {
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
                     <div className={styles.mobilePanel}>
                         <div className={styles.mobileHeader}>
-                            <span className={styles.logoGlowSmall}>
-                                <Image src="/brand/techbox-logo.png" alt="TechBox" width={180} height={40} className={styles.logoImageMobile} />
-                            </span>
+                            <span className={styles.mobileTitle}>Navegación</span>
                             <button
                                 aria-label="Cerrar menú"
                                 onClick={() => setOpen(false)}
