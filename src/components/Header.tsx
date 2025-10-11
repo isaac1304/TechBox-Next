@@ -38,14 +38,24 @@ export default function Header() {
 
     return (
         <header className={isSmall ? styles.mobileTop : styles.wrapper}>
-            <div ref={barRef} className={`${styles.bar} ${scrolled ? styles.scrolled : ''}`}>
-                <Link href="/" className={styles.logoWrap}>
-                    <span className={styles.logoGlow}>
-                        <Image src="/brand/techbox-logo.png" alt="TechBox" width={500} height={272} priority className={styles.logoImage} />
+            <div
+                ref={barRef}
+                className={`${styles.bar} ${scrolled ? styles.scrolled : ''} ${isSmall ? styles.barCompact : ''}`.trim()}
+            >
+                <Link href="/" className={`${styles.logoWrap} ${isSmall ? styles.logoWrapCompact : ''}`.trim()}>
+                    <span className={`${styles.logoGlow} ${isSmall ? styles.logoGlowCompact : ''}`.trim()}>
+                        <Image
+                            src="/brand/techbox-logo.png"
+                            alt="TechBox"
+                            width={500}
+                            height={272}
+                            priority
+                            className={`${styles.logoImage} ${isSmall ? styles.logoImageCompact : ''}`.trim()}
+                        />
                     </span>
                 </Link>
 
-                <div className={styles.actions}>
+                <div className={`${styles.actions} ${isSmall ? styles.actionsCompact : ''}`.trim()}>
                     {!isSmall && (
                         <nav className={styles.nav}>
                             <Link href="/Servicios" className={styles.link}>Servicios</Link>
@@ -87,11 +97,21 @@ export default function Header() {
                             </button>
                         </div>
                         <nav className={styles.mobileNav}>
-                            <Link href="/Servicios" className={styles.mobileLink} onClick={() => setOpen(false)}>Servicios</Link>
-                            <Link href="/Blog" className={styles.mobileLink} onClick={() => setOpen(false)}>Blog</Link>
-                            <Link href="/Contacto" className={styles.mobileLink} onClick={() => setOpen(false)}>Contacto</Link>
+                            <Link href="/Servicios" className={styles.mobileLink} onClick={() => setOpen(false)}>
+                                <span className={styles.mobileLinkLabel}>Servicios</span>
+                                <span aria-hidden="true" className={styles.mobileLinkHint}>Explora nuestras soluciones</span>
+                            </Link>
+                            <Link href="/Blog" className={styles.mobileLink} onClick={() => setOpen(false)}>
+                                <span className={styles.mobileLinkLabel}>Blog</span>
+                                <span aria-hidden="true" className={styles.mobileLinkHint}>Noticias y artículos</span>
+                            </Link>
+                            <Link href="/Contacto" className={styles.mobileLink} onClick={() => setOpen(false)}>
+                                <span className={styles.mobileLinkLabel}>Contacto</span>
+                                <span aria-hidden="true" className={styles.mobileLinkHint}>Agenda una reunión</span>
+                            </Link>
                         </nav>
                         <div className={styles.mobileToggleRow}>
+                            <span className={styles.mobileToggleLabel}>Tema</span>
                             <ThemeToggle />
                         </div>
                     </div>

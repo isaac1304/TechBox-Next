@@ -5,8 +5,8 @@
 
 .bar{
     display:flex; align-items:center; justify-content:space-between;
-    padding:12px 18px;
-    border-radius:18px;
+    padding:10px 16px;
+    border-radius:16px;
     border:1px solid rgba(58,178,214,.42);
     background:linear-gradient(135deg, rgba(12,32,72,.92), rgba(12,84,116,.88));
     backdrop-filter:saturate(150%) blur(18px);
@@ -15,14 +15,26 @@
 }
 .scrolled{ background:linear-gradient(135deg, rgba(14,38,82,.96), rgba(15,102,136,.92)); border-color:rgba(88,208,236,.46); box-shadow:0 24px 52px rgba(4,16,32,.62); }
 
+.barCompact{
+    padding:8px 14px;
+    border-radius:14px;
+    gap:10px;
+}
+
 .logoWrap{ display:inline-flex; align-items:center; gap:12px; text-decoration:none; }
+.logoWrapCompact{ gap:8px; }
 
 .logoGlow{
     position:relative; display:inline-flex; align-items:center; justify-content:center;
-    padding:10px 16px; border-radius:16px; border:1px solid rgba(72,198,220,0.5);
+    padding:8px 14px; border-radius:15px; border:1px solid rgba(72,198,220,0.5);
     background:linear-gradient(135deg, rgba(18,46,98,0.95), rgba(20,118,146,0.82));
     box-shadow:0 20px 42px rgba(7,24,52,0.58);
     overflow:hidden;
+}
+
+.logoGlowCompact{
+    padding:6px 10px;
+    border-radius:13px;
 }
 
 .logoGlow::before{
@@ -33,8 +45,13 @@
 
 .logoImage{
     position:relative; z-index:1;
-    height:68px; width:auto;
+    height:60px; width:auto;
     filter:drop-shadow(0 0 26px rgba(115,240,255,0.9));
+}
+
+.logoImageCompact{
+    height:46px;
+    filter:drop-shadow(0 0 18px rgba(115,240,255,0.72));
 }
 
 .logoGlowSmall{
@@ -65,49 +82,88 @@
 .link:hover{ color:#bbecff; box-shadow: inset 0 -2px 0 0 var(--accent-ice); }
 
 
-.actions{ display:flex; align-items:center; gap:1rem; }
+.actions{ display:flex; align-items:center; gap:0.9rem; }
+.actionsCompact{ gap:0.65rem; }
 
 .mobileMenuButton{
     display:inline-flex; align-items:center; justify-content:center;
-    width:42px; height:42px; border-radius:14px;
+    width:40px; height:40px; border-radius:14px;
     border:1px solid rgba(72,198,220,0.48);
     color:var(--text-soft); background:rgba(12,52,84,0.58);
     transition:border .2s ease, background .2s ease;
 }
 .mobileMenuButton:hover{ border-color:rgba(104,232,250,0.68); background:rgba(16,74,112,0.66); }
 
+
 .mobilePanel{
-    position:absolute; right:0; top:0; height:100%; width:82%; max-width:320px;
+    position:absolute; right:0; top:0; height:100%; width:min(86%, 360px);
     border-left:1px solid rgba(72,198,220,0.44);
-    background:linear-gradient(160deg, rgba(8,22,52,0.96), rgba(16,70,96,0.92));
-    padding:20px; border-top-left-radius:32px; border-bottom-left-radius:32px;
-    box-shadow:0 32px 64px rgba(3,12,32,0.68);
-    display:flex; flex-direction:column; gap:18px;
+    background:linear-gradient(165deg, rgba(6,18,46,0.97), rgba(20,86,114,0.92));
+    padding:28px 26px 32px; border-top-left-radius:34px; border-bottom-left-radius:34px;
+    box-shadow:0 32px 64px rgba(3,12,32,0.7);
+    display:flex; flex-direction:column; gap:22px;
+    overflow-y:auto;
+}
+
+.mobilePanel::before{
+    content:""; position:absolute; inset:12px 18px 18px 12px; border-radius:28px; pointer-events:none;
+    background:radial-gradient(circle at top left, rgba(96,224,248,0.16), transparent 72%);
+    filter:blur(24px);
 }
 
 .mobileHeader{
+    position:sticky; top:0; z-index:1;
     display:flex; align-items:center; justify-content:space-between;
-    padding-bottom:12px; border-bottom:1px solid rgba(72,198,220,0.36);
+    padding-bottom:18px; margin-bottom:6px;
+    border-bottom:1px solid rgba(72,198,220,0.32);
+    backdrop-filter:blur(6px);
 }
 
 .mobileClose{
     display:inline-flex; align-items:center; justify-content:center;
     width:38px; height:38px; border-radius:12px;
     border:1px solid rgba(72,198,220,0.42);
-    color:var(--text-soft);
-    transition:border .2s ease, background .2s ease;
+    color:rgba(228,244,255,0.85);
+    transition:border .2s ease, background .2s ease, color .2s ease;
 }
-.mobileClose:hover{ border-color:rgba(104,232,250,0.68); background:rgba(16,74,112,0.5); }
+.mobileClose:hover{ border-color:rgba(104,232,250,0.68); background:rgba(16,74,112,0.5); color:#fff; }
 
-.mobileNav{ display:grid; gap:12px; font-size:17px; line-height:1.35; color:var(--text-soft); }
+.mobileNav{ display:flex; flex-direction:column; gap:16px; font-size:17px; line-height:1.35; color:#f0f8ff; position:relative; z-index:0; }
 
 .mobileLink{
-    display:block; border-radius:14px; padding:10px 12px;
-    transition:background .2s ease, color .2s ease;
+    display:flex; flex-direction:column; align-items:flex-start;
+    gap:6px; border-radius:16px; padding:14px 16px 16px;
+    background:rgba(12,48,82,0.66);
+    border:1px solid rgba(74,198,222,0.42);
+    box-shadow:0 18px 36px rgba(4,18,40,0.48);
+    transition:background .22s ease, border-color .22s ease, transform .22s ease;
 }
-.mobileLink:hover{ background:rgba(255,255,255,0.08); color:#fff; }
+.mobileLink:hover{
+    background:rgba(16,72,110,0.78);
+    border-color:rgba(108,232,250,0.62);
+    transform:translateY(-2px);
+}
 
-.mobileToggleRow{ margin-top:auto; padding-top:16px; border-top:1px solid rgba(72,198,220,0.32); display:flex; justify-content:flex-end; }
+.mobileLinkLabel{
+    font-size:1.1rem; font-weight:650; letter-spacing:0.01em; color:#f4fbff;
+}
+
+.mobileLinkHint{
+    font-size:0.82rem; font-weight:500; letter-spacing:0.04em; text-transform:uppercase;
+    color:rgba(196,236,255,0.72);
+}
+
+.mobileToggleRow{
+    margin-top:auto; padding-top:20px;
+    border-top:1px solid rgba(72,198,220,0.32);
+    display:flex; align-items:center; justify-content:space-between;
+    gap:14px;
+}
+
+.mobileToggleLabel{
+    font-size:0.9rem; font-weight:600; letter-spacing:0.05em;
+    color:rgba(204,236,255,0.76);
+}
 
 /* Mobile */
 .mobileTop{
@@ -118,7 +174,26 @@
 
 @media (max-width:1024px){
     .wrapper{ left:0; transform:none; width:100%; top:0; }
-    .bar{ border-radius:0; }
-    .logoWrap{ padding:6px 0; }
-    .logoImage{ height:58px; }
+    .bar{ border-radius:0; padding:8px 16px; }
+    .logoWrap{ padding:4px 0; }
+    .logoImage{ height:52px; }
+}
+
+@media (max-width:768px){
+    .barCompact{ padding:6px 12px; border-radius:12px; }
+    .logoGlowCompact{ padding:4px 8px; border-radius:11px; }
+    .logoImageCompact{ height:40px; }
+    .actionsCompact{ gap:0.5rem; }
+    .mobileMenuButton{ width:36px; height:36px; border-radius:12px; }
+}
+
+@media (max-width:640px){
+    .mobilePanel{
+        width:100%; max-width:none; border-radius:0;
+        border-left:none; padding:24px 22px 32px;
+    }
+
+    .mobilePanel::before{ inset:14px 16px 22px; border-radius:22px; }
+
+    .mobileHeader{ padding-bottom:16px; }
 }
