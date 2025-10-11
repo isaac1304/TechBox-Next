@@ -74,9 +74,9 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    <div className="relative flex items-center justify-center">
+                    <div className="relative flex items-center justify-center lg:justify-end">
                         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/20 via-white/5 to-transparent blur-3xl" aria-hidden />
-                        <div className="relative flex w-full max-w-[500px] flex-col gap-5">
+                        <div className="relative flex w-full max-w-[540px] flex-col gap-5 lg:items-end">
                             <HeroServiceGrid />
                             <div className="overflow-hidden rounded-3xl border border-white/12 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_70%)] p-6 shadow-[0_30px_60px_rgba(5,10,28,0.45)]">
                                 <div className="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-[rgba(12,19,48,0.65)] to-[rgba(12,27,64,0.92)] p-6">

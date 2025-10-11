@@ -5,13 +5,32 @@ import FlipCard from '@/components/FlipCard';
 import styles from './HeroServiceGrid.module.css';
 import { services } from '@/lib/services';
 
-const heroServiceSlugs = ['software', 'automatizacion', 'analytics', 'nube'] as const;
+const heroShowcase = [
+    { slug: 'software', variant: 'teal', layout: 'software', profile: 'profileLarge', square: true },
+    { slug: 'automatizacion', variant: 'navy', layout: 'automatizacion', profile: 'profileWide', square: false },
+    { slug: 'analytics', variant: 'teal', layout: 'analytics', profile: 'profileCompact', square: true },
+    { slug: 'nube', variant: 'navy', layout: 'nube', profile: 'profileCompact', square: true },
+    { slug: 'bigdata', variant: 'navy', layout: 'bigdata', profile: 'profileWide', square: false },
+    { slug: 'ciberseguridad', variant: 'teal', layout: 'ciberseguridad', profile: 'profileCompact', square: true },
+    { slug: 'consultoria', variant: 'navy', layout: 'consultoria', profile: 'profileTall', square: false },
+    { slug: 'mantenimiento', variant: 'teal', layout: 'mantenimiento', profile: 'profileCompact', square: true },
+    { slug: 'transformacion', variant: 'navy', layout: 'transformacion', profile: 'profileWide', square: false },
+] as const;
 
-const heroCopy: Record<(typeof heroServiceSlugs)[number], string> = {
+type HeroSlug = (typeof heroShowcase)[number]['slug'];
+type ShowcaseEntry = (typeof heroShowcase)[number];
+type HeroService = ShowcaseEntry & { service: (typeof services)[number] };
+
+const heroCopy: Record<HeroSlug, string> = {
     software: 'Productos web a medida con impacto medible desde el sprint uno.',
     automatizacion: 'RPA y flujos orquestados que liberan horas de tu equipo.',
     analytics: 'Datos accionables y tableros vivos para decidir con confianza.',
     nube: 'Infraestructura escalable y segura lista para crecer contigo.',
+    bigdata: 'Pipelines masivos y storage optimizado para crecer sin fricciones.',
+    ciberseguridad: 'Hardening, backups y respuesta ágil ante incidentes críticos.',
+    consultoria: 'Estrategia y roadmap alineados a tus objetivos de negocio.',
+    mantenimiento: 'Soporte evolutivo con métricas claras y mejoras continuas.',
+    transformacion: 'Procesos digitales que conectan equipos, datos y clientes.',
 };
 
 export default function HeroServiceGrid() {
@@ -29,9 +48,13 @@ export default function HeroServiceGrid() {
 
     const heroServices = useMemo(
         () =>
-            heroServiceSlugs
-                .map((slug) => services.find((svc) => svc.slug === slug))
-                .filter((svc): svc is NonNullable<typeof svc> => Boolean(svc)),
+            heroShowcase
+                .map((item): HeroService | null => {
+                    const svc = services.find((service) => service.slug === item.slug);
+                    if (!svc) return null;
+                    return { ...item, service: svc };
+                })
+                .filter((entry): entry is HeroService => Boolean(entry)),
         [],
     );
 
@@ -39,16 +62,16 @@ export default function HeroServiceGrid() {
         <div className={styles.wrapper} aria-label="Servicios destacados con animaciones interactivas">
             <div className={styles.glow} aria-hidden />
             <div className={styles.grid}>
-                {heroServices.map((svc, idx) => (
-                    <div key={svc.slug} className={styles.cell}>
+                {heroServices.map(({ slug, service, variant, layout, profile, square }) => (
+                    <div key={service.slug} className={`${styles.cell} ${styles[layout]}`}>
                         <FlipCard
-                            title={svc.name}
-                            text={heroCopy[svc.slug as (typeof heroServiceSlugs)[number]]}
-                            lottieSrc={svc.lottie}
-                            href={`/Servicios/${svc.slug}`}
-                            square
-                            variant={idx % 2 === 0 ? 'navy' : 'teal'}
-                            className={styles.card}
+                            title={service.name}
+                            text={heroCopy[slug]}
+                            lottieSrc={service.lottie}
+                            href={`/Servicios/${slug}`}
+                            square={square}
+                            variant={variant}
+                            className={`${styles.card} ${styles[profile]}`}
                         />
                     </div>
                 ))}
