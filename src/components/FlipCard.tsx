@@ -12,6 +12,7 @@ export type FlipCardProps = {
     href: string;
     square?: boolean;
     variant?: 'navy' | 'teal';
+    className?: string;
 };
 
 export default function FlipCard({
@@ -22,14 +23,15 @@ export default function FlipCard({
                                      href,
                                      square = true,
                                      variant = 'navy',
+                                     className,
                                  }: FlipCardProps) {
     return (
-        <article className={`${styles.card} ${square ? styles.square : ''} ${styles[variant]}`}>
+        <article className={`${styles.card} ${square ? styles.square : ''} ${styles[variant]} ${className ?? ''}`}>
             <div className={styles.inner}>
                 <div className={styles.front}>
                     <div className={styles.media}>
                         {lottieSrc ? (
-                            // @ts-expect-error
+                            // @ts-expect-error - Lottie web component is loaded globally at runtime
                             <lottie-player autoplay loop mode="normal" src={lottieSrc} style={{ width: '100%', height: '100%' }} />
                         ) : (
                             iconPng && (
