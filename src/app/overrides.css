@@ -31,9 +31,18 @@ a:hover { opacity:.9; }
 .btn-outline:hover{ background:rgba(12,19,46,0.9); border-color: color-mix(in srgb, var(--link) 60%, transparent); }
 
 /* Header flotante: deja espacio arriba para TODO el sitio */
-.with-float-header main { padding-top: calc(var(--header-h, 88px) + 22px); }
+body:not(.with-float-header) .site-main {
+    padding-top: clamp(88px, 12vh, 124px);
+}
+
+.with-float-header .site-main {
+    padding-top: calc(var(--header-h, 88px) + 28px);
+}
+
 @media (min-width:1024px){
-    .with-float-header main { padding-top: calc(var(--header-h, 96px) + 28px); }
+    .with-float-header .site-main {
+        padding-top: calc(var(--header-h, 84px) + 36px);
+    }
 }
 
 /* Calendly badge: espacio al final */

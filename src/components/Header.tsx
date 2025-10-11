@@ -38,14 +38,24 @@ export default function Header() {
 
     return (
         <header className={isSmall ? styles.mobileTop : styles.wrapper}>
-            <div ref={barRef} className={`${styles.bar} ${scrolled ? styles.scrolled : ''}`}>
-                <Link href="/" className={styles.logoWrap}>
-                    <span className={styles.logoGlow}>
-                        <Image src="/brand/techbox-logo.png" alt="TechBox" width={500} height={272} priority className={styles.logoImage} />
+            <div
+                ref={barRef}
+                className={`${styles.bar} ${scrolled ? styles.scrolled : ''} ${isSmall ? styles.barCompact : ''}`.trim()}
+            >
+                <Link href="/" className={`${styles.logoWrap} ${isSmall ? styles.logoWrapCompact : ''}`.trim()}>
+                    <span className={`${styles.logoGlow} ${isSmall ? styles.logoGlowCompact : ''}`.trim()}>
+                        <Image
+                            src="/brand/techbox-logo.png"
+                            alt="TechBox"
+                            width={500}
+                            height={272}
+                            priority
+                            className={`${styles.logoImage} ${isSmall ? styles.logoImageCompact : ''}`.trim()}
+                        />
                     </span>
                 </Link>
 
-                <div className={styles.actions}>
+                <div className={`${styles.actions} ${isSmall ? styles.actionsCompact : ''}`.trim()}>
                     {!isSmall && (
                         <nav className={styles.nav}>
                             <Link href="/Servicios" className={styles.link}>Servicios</Link>
