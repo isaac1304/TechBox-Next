@@ -1,8 +1,8 @@
 :root{
-    --ink: #0b1b2b;      /* texto principal */
-    --ink-sub: #334b68;  /* texto secundario */
-    --link: #2A2F73;     /* azul marca */
-    --teal: #2EC4B6;     /* acento */
+    --ink: #f5f8ff;      /* texto principal */
+    --ink-sub: rgba(200,211,255,0.78);  /* texto secundario */
+    --link: #67e1ff;     /* azul marca */
+    --teal: #3ad2c5;     /* acento */
 }
 
 /* Tipografía global */
@@ -22,13 +22,13 @@ a:hover { opacity:.9; }
 .btn-outline{
     display:inline-flex; align-items:center; gap:.5rem;
     padding:.625rem 1.25rem;
-    border-radius:12px;
-    border:1px solid color-mix(in oklab, var(--link) 36%, #0000);
+    border-radius:999px;
+    border:1px solid color-mix(in srgb, var(--link) 40%, transparent);
     color: var(--ink);
-    background: #fff8;
-    backdrop-filter: blur(4px);
+    background: rgba(8,13,32,0.6);
+    backdrop-filter: blur(10px);
 }
-.btn-outline:hover{ background:#fff; border-color: color-mix(in oklab, var(--link) 52%, #0000); }
+.btn-outline:hover{ background:rgba(12,19,46,0.9); border-color: color-mix(in srgb, var(--link) 60%, transparent); }
 
 /* Header flotante: deja espacio arriba para TODO el sitio */
 .with-float-header main { padding-top: calc(var(--header-h, 88px) + 22px); }
