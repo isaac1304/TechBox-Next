@@ -27,10 +27,10 @@ export default function WhyTechbox() {
     return (
         <section className="mx-auto w-full max-w-6xl px-4">
             <div className="mx-auto max-w-3xl text-center">
-                <span className="inline-flex items-center justify-center rounded-full border border-slate-300/80 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-slate-600 dark:border-white/[0.15] dark:bg-white/[0.15] dark:text-white/82">
+                <span className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/70 shadow-[0_0_18px_rgba(103,225,255,0.32)] backdrop-blur">
                     Metodología
                 </span>
-                <h2 className="mt-4 text-3xl font-semibold leading-tight text-slate-900 dark:text-white md:text-4xl">
+                <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-4xl">
                     Impulsamos tus proyectos <span className="text-[var(--accent-ice)]">paso a paso</span>
                 </h2>
             </div>
