@@ -3,31 +3,38 @@ import styles from './WhyTechbox.module.css';
 export default function WhyTechbox() {
     const items = [
         {
-            k: 'Tiempo de salida',
-            t: 'Semanas, no meses',
-            d: 'Plantillas, pipelines y librerías propias para acelerar desde el día uno.',
+            k: 'Paso 1',
+            t: 'Escuchamos',
+            d: 'Profundizamos en tus retos operativos, clientes y métricas para mapear oportunidades reales.',
         },
         {
-            k: 'Seguridad primero',
-            t: 'Backups y monitoreo',
-            d: 'Hardening, alertas y copias automatizadas sin costo sorpresa.',
+            k: 'Paso 2',
+            t: 'Proponemos',
+            d: 'Diseñamos un roadmap modular priorizando victorias tempranas y ROI tangible.',
         },
         {
-            k: 'Medimos resultados',
-            t: 'KPIs claros',
-            d: 'Tableros de horas ahorradas, conversión y SLA para decidir con datos.',
+            k: 'Paso 3',
+            t: 'Ejecutamos',
+            d: 'Co-creamos contigo: iteraciones cortas, automatizaciones y tableros desde el día uno.',
         },
         {
-            k: 'Entrega ágil',
-            t: 'Iteraciones cortas',
-            d: 'Hitos pequeños y visibles en cada sprint, con valor real para el negocio.',
+            k: 'Paso 4',
+            t: 'Acompañamos',
+            d: 'Monitoreo continuo, soporte y mejoras evolutivas para mantener el crecimiento.',
         },
     ];
 
     return (
         <section className="mx-auto w-full max-w-6xl px-4">
-            <h2 className="mb-6 text-center text-2xl font-bold text-[#0b1b2b]">¿Por qué TechBox?</h2>
-            <div className={styles.grid}>
+            <div className="mx-auto max-w-3xl text-center">
+                <span className="inline-flex items-center justify-center rounded-full border border-white/[0.15] bg-white/[0.15] px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/[0.82]">
+                    Metodología
+                </span>
+                <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-4xl">
+                    Impulsamos tus proyectos <span className="text-[var(--accent-ice)]">paso a paso</span>
+                </h2>
+            </div>
+            <div className={`${styles.grid} mt-10`}>
                 {items.map((it) => (
                     <article key={it.t} className={styles.card}>
                         <p className={styles.kicker}>{it.k}</p>

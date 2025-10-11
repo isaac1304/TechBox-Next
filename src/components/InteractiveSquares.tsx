@@ -36,31 +36,34 @@ export default function InteractiveSquares() {
                     <Link
                         key={item.slug}
                         href={`/Servicios/${item.slug}`}
-                        className={["group relative", ...item.base, ...item.sm, ...item.lg].join(" ")}
+                        className={[
+                            "group tile relative block h-full w-full",
+                            ...item.base,
+                            ...item.sm,
+                            ...item.lg,
+                        ].join(" ")}
                         role="listitem"
                     >
-                        <div className="tile h-full w-full">
-                            <div
-                                className={
-                                    `tile-inner rounded-3xl ${toneClass(item.tone)} 
-                   shadow-[0_16px_48px_-18px_rgba(2,6,23,.28)] 
-                   transition-shadow duration-500 ease-[cubic-bezier(.2,.8,.2,1)] 
+                        <div
+                            className={
+                                `tile-inner rounded-3xl ${toneClass(item.tone)}
+                   shadow-[0_16px_48px_-18px_rgba(2,6,23,.28)]
+                   transition-shadow duration-500 ease-[cubic-bezier(.2,.8,.2,1)]
                    group-hover:shadow-[0_28px_72px_-24px_rgba(2,6,23,.42)]`
-                                }
-                            >
-                                {/* Frente */}
-                                <div className="tile-front">
-                                    <div className="flex h-full w-full items-center justify-center p-6 text-center">
-                                        <div className="text-lg font-semibold md:text-xl">{s.name}</div>
-                                    </div>
+                            }
+                        >
+                            {/* Frente */}
+                            <div className="tile-front">
+                                <div className="flex h-full w-full items-center justify-center p-6 text-center">
+                                    <div className="text-lg font-semibold md:text-xl">{s.name}</div>
                                 </div>
-                                {/* Dorso */}
-                                <div className="tile-back bg-gradient-to-br from-black/10 to-black/25">
-                                    <div className="flex h-full w-full items-center justify-center p-6">
-                                        <div className="text-center">
-                                            <div className="text-sm opacity-95">Ver servicio</div>
-                                            <div className="mt-1 text-xs opacity-80">Detalles y contacto</div>
-                                        </div>
+                            </div>
+                            {/* Dorso */}
+                            <div className="tile-back bg-gradient-to-br from-black/10 to-black/25">
+                                <div className="flex h-full w-full items-center justify-center p-6">
+                                    <div className="text-center">
+                                        <div className="text-sm opacity-95">Ver servicio</div>
+                                        <div className="mt-1 text-xs opacity-80">Detalles y contacto</div>
                                     </div>
                                 </div>
                             </div>

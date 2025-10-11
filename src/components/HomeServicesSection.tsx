@@ -32,18 +32,18 @@ export default function HomeServicesSection() {
                     <Link
                         key={s!.slug}
                         href={`/Servicios/${s!.slug}`}
-                        className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--tech-navy-600)]/30 to-[var(--tech-teal)]/30 p-0.5 shadow-[0_16px_48px_-18px_rgba(2,6,23,.28)] transition hover:-translate-y-1 hover:shadow-[0_28px_72px_-24px_rgba(2,6,23,.42)]"
+                        className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--tech-navy-600)]/35 to-[var(--tech-teal)]/35 p-0.5 shadow-[0_16px_48px_-18px_rgba(2,6,23,.28)] transition hover:-translate-y-1 hover:shadow-[0_28px_72px_-24px_rgba(2,6,23,.42)]"
                     >
-                        <div className="relative flex h-36 items-center justify-between rounded-2xl bg-white/90 px-6 backdrop-blur dark:bg-slate-900/85">
+                        <div className="relative flex h-36 items-center justify-between overflow-hidden rounded-[1.6rem] border border-white/12 bg-[radial-gradient(circle_at_top,rgba(103,225,255,0.18),rgba(7,14,36,0.9))] px-6 py-6 text-white shadow-[0_20px_48px_rgba(4,10,28,0.5)] transition duration-300 before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(ellipse_at_top_right,rgba(103,225,255,0.35),transparent_55%)] before:opacity-70 before:transition before:duration-300 before:content-[''] group-hover:shadow-[0_26px_62px_rgba(4,10,28,0.56)] group-hover:before:opacity-100">
                             {/* Texto a la izquierda */}
                             <div className="pr-16">
-                                <h3 className="text-lg font-semibold md:text-xl">{s!.name}</h3>
-                                <p className="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
+                                <h3 className="text-lg font-semibold text-white md:text-xl">{s!.name}</h3>
+                                <p className="mt-1 line-clamp-2 text-sm text-white/75">
                                     {s!.short}
                                 </p>
-                                <span className="mt-3 inline-block text-sm font-medium text-teal-700 group-hover:underline dark:text-teal-400">
-                  Ver más →
-                </span>
+                                <span className="mt-3 inline-block text-sm font-medium text-[var(--accent-ice)] transition group-hover:text-white">
+                                    Ver más →
+                                </span>
                             </div>
 
                             {/* Mosaico de pixeles a la derecha */}
