@@ -3,15 +3,15 @@ import Link from 'next/link'
 
 export default function BlogList() {
     return (
-        <div className="max-w-4xl mx-auto px-6 py-12">
-            <h1 className="text-3xl font-bold text-blue-900 mb-6">Nuestro Blog</h1>
+        <div className="mx-auto max-w-4xl px-6 py-12 text-slate-700 dark:text-slate-200">
+            <h1 className="mb-6 text-3xl font-bold text-slate-900 dark:text-white">Nuestro Blog</h1>
             <ul className="space-y-6">
                 {blog.map(post => (
                     <li key={post.slug}>
-                        <Link href={`/Blog/${post.slug}`} className="block hover:underline">
-                            <h2 className="text-xl font-semibold text-blue-800">{post.titulo}</h2>
-                            <p className="text-gray-600">{post.resumen}</p>
-                            <span className="text-sm text-gray-400">{post.fecha}</span>
+                        <Link href={`/Blog/${post.slug}`} className="block rounded-2xl border border-transparent px-4 py-3 transition hover:border-slate-200 hover:bg-white dark:hover:border-slate-700/80 dark:hover:bg-slate-900/60">
+                            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{post.titulo}</h2>
+                            <p className="text-slate-600 dark:text-slate-300">{post.resumen}</p>
+                            <span className="text-sm text-slate-500 dark:text-slate-400">{post.fecha}</span>
                         </Link>
                     </li>
                 ))}

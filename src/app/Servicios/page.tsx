@@ -9,8 +9,8 @@ export default function ServiciosPage() {
     const items = services.slice(0, 9);
 
     return (
-        <main className="mx-auto max-w-6xl px-4 py-10 min-h-[calc(100vh-var(--header-h))] text-white">
-            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-6">
+        <main className="mx-auto max-w-6xl px-4 py-10 min-h-[calc(100vh-var(--header-h))] text-slate-700 dark:text-white">
+            <h1 className="mb-6 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
                 Nuestros servicios
             </h1>
 

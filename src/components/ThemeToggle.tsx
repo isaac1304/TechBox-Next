@@ -14,13 +14,11 @@ export default function ThemeToggle() {
     return (
         <button
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className="inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm
-                 border-transparent bg-slate-100 hover:bg-slate-200
-                 dark:bg-slate-800 dark:hover:bg-slate-700 transition"
-            aria-label="Toggle dark mode"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300/70 bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white dark:border-white/15 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-[0_10px_30px_rgba(8,18,48,0.45)]"
+            aria-label="Cambiar tema"
         >
-            {isDark ? <SunIcon size={16}/> : <MoonIcon size={16}/>}
-            {isDark ? 'Light' : 'Dark'}
+            {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+            <span className="hidden sm:inline-block">{isDark ? 'Claro' : 'Oscuro'}</span>
         </button>
     )
 }

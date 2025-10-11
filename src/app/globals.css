@@ -4,6 +4,27 @@
 
 /* ─── Sistema cromático ───────────────────────── */
 :root{
+  color-scheme: light;
+  --page-bg: #f5f7ff;
+  --page-bg-2: #eaf1ff;
+  --page-bg-3: #dee7ff;
+  --card-bg: rgba(255,255,255,0.88);
+  --card-bg-solid: #ffffff;
+  --card-border: rgba(148,163,184,0.4);
+  --card-border-soft: rgba(148,163,184,0.32);
+  --accent-sky: #53b6ff;
+  --accent-ice: #67e1ff;
+  --accent-teal: #3ad2c5;
+  --accent-lilac: #7d7bff;
+  --text-main: #0f172a;
+  --text-soft: #1f2937;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --focus-ring: rgba(59,130,246,0.45);
+}
+
+.dark{
+  color-scheme: dark;
   --page-bg: #040715;
   --page-bg-2: #050a1f;
   --page-bg-3: #070d27;
@@ -27,6 +48,7 @@ body{
   color: var(--text-main);
   min-height: 100%;
   font-feature-settings: "liga" on, "kern" on;
+  transition: background-color .4s ease, color .4s ease;
 }
 
 body::before{
@@ -35,12 +57,21 @@ body::before{
   inset: 0;
   z-index: -2;
   background:
+      radial-gradient(900px 680px at -10% 5%, rgba(99, 102, 241, 0.18), transparent 60%),
+      radial-gradient(820px 520px at 88% 0%, rgba(45, 212, 191, 0.18), transparent 65%),
+      radial-gradient(920px 680px at 50% 110%, rgba(59, 130, 246, 0.16), transparent 72%),
+      linear-gradient(180deg, var(--page-bg), var(--page-bg-2));
+  filter: saturate(110%) brightness(1.02);
+  pointer-events: none;
+}
+
+.dark body::before{
+  background:
       radial-gradient(1100px 820px at -8% -10%, rgba(94,120,255,0.32), transparent 60%),
       radial-gradient(900px 640px at 88% -20%, rgba(35,167,255,0.22), transparent 65%),
       radial-gradient(950px 740px at 50% 120%, rgba(24,71,255,0.28), transparent 70%),
       linear-gradient(180deg, var(--page-bg), var(--page-bg-2));
   filter: saturate(120%) brightness(1.05);
-  pointer-events: none;
 }
 
 body::after{
@@ -48,15 +79,147 @@ body::after{
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: .36;
-  background-image: radial-gradient(circle at center, rgba(103,225,255,0.28) 0.5px, transparent 0.5px);
-  background-size: 32px 32px;
+  opacity: .28;
+  background-image: radial-gradient(circle at center, rgba(59,130,246,0.18) 0.5px, transparent 0.5px);
+  background-size: 36px 36px;
   mix-blend-mode: screen;
   pointer-events: none;
 }
 
-a{ color: var(--accent-ice); text-decoration:none; }
-a:hover{ color: #8de9ff; }
+.dark body::after{
+  opacity: .36;
+  background-image: radial-gradient(circle at center, rgba(103,225,255,0.28) 0.5px, transparent 0.5px);
+  background-size: 32px 32px;
+}
+
+a{ color: var(--accent-sky); text-decoration:none; transition:color .2s ease; }
+a:hover{ color: var(--accent-ice); }
+
+/* ─── Light theme overrides for CSS modules ───── */
+.light [class*='Header_bar']{
+  border:1px solid rgba(148,163,184,0.4);
+  background:linear-gradient(140deg, rgba(248,250,255,0.92), rgba(237,242,255,0.86));
+  box-shadow:0 16px 44px rgba(15,23,42,0.14);
+}
+
+.light [class*='Header_scrolled']{
+  background:linear-gradient(140deg, rgba(255,255,255,0.95), rgba(243,246,255,0.92));
+  border-color:rgba(148,163,184,0.55);
+  box-shadow:0 20px 52px rgba(15,23,42,0.18);
+}
+
+.light [class*='Header_logoGlow']{
+  border:1px solid rgba(148,163,184,0.4);
+  background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(226,232,255,0.85));
+  box-shadow:0 12px 30px rgba(148,163,184,0.25);
+}
+
+.light [class*='Header_logoGlow']::before{
+  background:radial-gradient(circle at center, rgba(148,191,255,0.35), transparent 70%);
+  opacity:.9;
+}
+
+.light [class*='Header_logoImage']{ filter:drop-shadow(0 0 16px rgba(45,102,204,0.35)); }
+
+.light [class*='Header_nav']{ gap:3rem; }
+
+.light [class*='Header_link']{ color:#0f172a; }
+.light [class*='Header_link']:hover{ color:#1d4ed8; box-shadow: inset 0 -2px 0 0 rgba(59,130,246,0.6); }
+
+.light [class*='Header_actions']{ gap:1.2rem; }
+
+.light [class*='Header_mobileMenuButton']{
+  border-color:rgba(148,163,184,0.5);
+  background:rgba(248,250,255,0.9);
+  color:#0f172a;
+}
+
+.light [class*='Header_mobileMenuButton']:hover{
+  border-color:rgba(99,102,241,0.55);
+  background:rgba(224,231,255,0.85);
+}
+
+.light [class*='Header_mobilePanel']{
+  border-left:1px solid rgba(148,163,184,0.45);
+  background:rgba(248,250,255,0.95);
+  box-shadow:0 24px 48px rgba(15,23,42,0.18);
+}
+
+.light [class*='Header_mobileHeader']{ border-bottom:1px solid rgba(148,163,184,0.35); }
+
+.light [class*='Header_logoGlowSmall']{
+  border:1px solid rgba(148,163,184,0.42);
+  background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(229,236,255,0.88));
+  box-shadow:0 10px 26px rgba(148,163,184,0.24);
+}
+
+.light [class*='Header_logoGlowSmall']::before{
+  background:radial-gradient(circle at center, rgba(148,191,255,0.35), transparent 70%);
+}
+
+.light [class*='Header_logoImageMobile']{ filter:drop-shadow(0 0 10px rgba(45,102,204,0.3)); }
+
+.light [class*='Header_mobileClose']{
+  border:1px solid rgba(148,163,184,0.5);
+  color:#1f2937;
+  background:rgba(255,255,255,0.88);
+}
+
+.light [class*='Header_mobileClose']:hover{
+  background:rgba(224,231,255,0.92);
+  border-color:rgba(99,102,241,0.55);
+}
+
+.light [class*='Header_mobileNav']{ color:#475569; }
+
+.light [class*='Header_mobileLink']{
+  background:rgba(255,255,255,0.6);
+}
+
+.light [class*='Header_mobileLink']:hover{
+  background:rgba(224,231,255,0.85); color:#1d4ed8;
+}
+
+.light [class*='Header_mobileToggleRow']{ border-top:1px solid rgba(148,163,184,0.35); }
+
+.light [class*='FlipCard_card']{
+  --bg1: #f1f5ff;
+  --bg2: #e5edff;
+  --fg: #0f172a;
+  --shadow: 0 16px 38px rgba(15,23,42,0.16);
+}
+
+.light [class*='FlipCard_card'] [class*='FlipCard_front'],
+.light [class*='FlipCard_card'] [class*='FlipCard_back']{
+  border:1px solid rgba(148,163,184,0.4);
+}
+
+.light [class*='FlipCard_navy']{
+  --bg1: #eef2ff;
+  --bg2: #dbeafe;
+  --accent: #2563eb;
+}
+
+.light [class*='FlipCard_teal']{
+  --bg1: #ecfeff;
+  --bg2: #cffafe;
+  --accent: #0f766e;
+}
+
+.light [class*='WhyTechbox_card']{
+  border:1px solid rgba(148,163,184,0.42);
+  background:linear-gradient(150deg, rgba(255,255,255,0.95), rgba(226,232,255,0.85));
+  box-shadow:0 18px 40px rgba(15,23,42,0.12);
+}
+
+.light [class*='WhyTechbox_card']:hover{
+  border-color:rgba(99,102,241,0.55);
+  box-shadow:0 24px 52px rgba(15,23,42,0.16);
+}
+
+.light [class*='WhyTechbox_kicker']{ color:rgba(71,85,105,0.95); }
+.light [class*='WhyTechbox_h3']{ color:#0f172a; }
+.light [class*='WhyTechbox_p']{ color:rgba(51,65,85,0.88); }
 
 /* ─── Flip 3D (más smooth) ───────────────────── */
 .tile{ perspective:1400px; height:100%; width:100%; display:block; position:relative; }
