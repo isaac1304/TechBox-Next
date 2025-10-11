@@ -53,7 +53,7 @@ export default function CalendlyBadge() {
                     text: 'Agenda una llamada',
                     color: '#0069ff',
                     textColor: '#ffffff',
-                    branding: true,
+                    branding: false,
                 });
                 initializedRef.current = true;
             }
