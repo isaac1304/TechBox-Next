@@ -58,7 +58,9 @@ export default function Header() {
                 <div className={`${styles.actions} ${isSmall ? styles.actionsCompact : ''}`.trim()}>
                     {!isSmall && (
                         <nav className={styles.nav}>
-                            <Link href="/Servicios" className={styles.link}>Servicios</Link>
+                            <Link href="/Servicios" className={`${styles.link} ${styles.linkServicios}`.trim()}>
+                                Servicios
+                            </Link>
                             <Link href="/Blog" className={styles.link}>Blog</Link>
                             <Link href="/Contacto" className={styles.link}>Contacto</Link>
                         </nav>
@@ -97,7 +99,13 @@ export default function Header() {
                             </button>
                         </div>
                         <nav className={styles.mobileNav}>
-                            <Link href="/Servicios" className={styles.mobileLink} onClick={() => setOpen(false)}>Servicios</Link>
+                            <Link
+                                href="/Servicios"
+                                className={`${styles.mobileLink} ${styles.mobileLinkServicios}`.trim()}
+                                onClick={() => setOpen(false)}
+                            >
+                                Servicios
+                            </Link>
                             <Link href="/Blog" className={styles.mobileLink} onClick={() => setOpen(false)}>Blog</Link>
                             <Link href="/Contacto" className={styles.mobileLink} onClick={() => setOpen(false)}>Contacto</Link>
                         </nav>
