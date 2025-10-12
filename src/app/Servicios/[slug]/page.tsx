@@ -25,19 +25,19 @@ export default async function ServicioDetallePage({ params }: { params: Promise<
     if (!svc) return notFound();
 
     return (
-        <div className="pb-16 text-slate-900 dark:text-slate-100">
+        <div className="pb-16 text-[color:var(--text-main)]">
             <div className="relative isolate overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[rgba(247,249,255,0.96)] via-[rgba(223,236,255,0.86)] to-[rgba(210,244,255,0.78)] dark:from-[rgba(12,19,45,0.92)] dark:via-[rgba(32,71,160,0.68)] dark:to-[rgba(52,176,255,0.4)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(1200px_420px_at_-8%_-10%,rgba(99,102,241,0.22),transparent_65%)] dark:bg-[radial-gradient(1200px_520px_at_-8%_-12%,rgba(91,117,255,0.32),transparent_70%)]" />
                 <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-end sm:py-14">
                     <div className="order-last flex flex-1 flex-col sm:order-first">
-                        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-300/70 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.36em] text-slate-600 shadow-[0_10px_28px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10 dark:text-teal-200/90">
+                        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-300/70 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.36em] text-[color:var(--text-muted)] shadow-[0_10px_28px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10">
                             Servicio
                         </span>
-                        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-[2.75rem]">
+                        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-[color:var(--text-main)] sm:text-4xl md:text-[2.75rem]">
                             {svc.name}
                         </h1>
-                        <p className="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-300/90">
+                        <p className="mt-3 max-w-2xl text-sm text-[color:var(--text-muted)]">
                             {svc.longDescription}
                         </p>
                     </div>
@@ -53,12 +53,12 @@ export default async function ServicioDetallePage({ params }: { params: Promise<
             <div className="mx-auto mt-10 grid w-full max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
                 <article className="space-y-6">
                     <section className="rounded-3xl border border-slate-200/70 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/12 dark:bg-[rgba(8,13,32,0.82)] dark:shadow-[0_26px_52px_rgba(2,6,23,0.48)] sm:p-8">
-                        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">¿Qué incluye?</h2>
-                        <ul className="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200/90">
+                        <h2 className="text-xl font-semibold text-[color:var(--text-main)]">¿Qué incluye?</h2>
+                        <ul className="mt-5 space-y-3 text-sm text-[color:var(--text-soft)]">
                             {svc.includes.map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/95 px-4 py-3 shadow-[0_12px_26px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.08] dark:text-slate-200"
+                                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/95 px-4 py-3 text-[color:var(--text-soft)] shadow-[0_12px_26px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.08]"
                                 >
                                     <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[var(--accent-sky)] dark:bg-[var(--accent-ice)]" />
                                     <span>{item}</span>
@@ -68,12 +68,12 @@ export default async function ServicioDetallePage({ params }: { params: Promise<
                     </section>
 
                     <section className="rounded-3xl border border-slate-200/70 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/12 dark:bg-[rgba(8,13,32,0.82)] dark:shadow-[0_26px_52px_rgba(2,6,23,0.48)] sm:p-8">
-                        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Entregables</h2>
-                        <ul className="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200/90">
+                        <h2 className="text-xl font-semibold text-[color:var(--text-main)]">Entregables</h2>
+                        <ul className="mt-5 space-y-3 text-sm text-[color:var(--text-soft)]">
                             {svc.deliverables.map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/95 px-4 py-3 shadow-[0_12px_26px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.08] dark:text-slate-200"
+                                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/95 px-4 py-3 text-[color:var(--text-soft)] shadow-[0_12px_26px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.08]"
                                 >
                                     <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[var(--accent-teal)] dark:bg-[var(--accent-ice)]" />
                                     <span>{item}</span>
@@ -84,10 +84,10 @@ export default async function ServicioDetallePage({ params }: { params: Promise<
                 </article>
 
                 <aside className="md:sticky md:top-[calc(var(--header-h,96px)+24px)]">
-                    <div className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-slate-200/70 bg-white/90 p-6 text-slate-800 shadow-[0_20px_44px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/12 dark:bg-[rgba(8,13,32,0.82)] dark:text-white dark:shadow-[0_26px_52px_rgba(2,6,23,0.5)] sm:p-8">
+                    <div className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-slate-200/70 bg-white/90 p-6 text-[color:var(--text-soft)] shadow-[0_20px_44px_rgba(15,23,42,0.12)] backdrop-blur-md dark:border-white/12 dark:bg-[rgba(8,13,32,0.82)] dark:shadow-[0_26px_52px_rgba(2,6,23,0.5)] sm:p-8">
                         <div>
-                            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">¿Listo para conversar?</h3>
-                            <p className="mt-3 text-sm text-slate-600 dark:text-slate-200/90">
+                            <h3 className="text-lg font-semibold text-[color:var(--text-main)]">¿Listo para conversar?</h3>
+                            <p className="mt-3 text-sm text-[color:var(--text-muted)]">
                                 Agenda una llamada de 30 minutos con nuestro equipo para aterrizar el siguiente paso.
                             </p>
                         </div>
