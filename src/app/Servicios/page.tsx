@@ -37,10 +37,10 @@ export default function ServiciosPage() {
                             <Link
                                 key={svc.slug}
                                 href={`/Servicios/${svc.slug}`}
-                                className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80 p-6 text-left shadow-[0_12px_40px_-24px_rgba(30,64,175,0.6)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/40 hover:shadow-[0_25px_80px_-30px_rgba(59,130,246,0.65)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                                className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/80 p-6 text-left shadow-[0_12px_40px_-24px_rgba(88,28,135,0.55)] transition-all duration-300 hover:-translate-y-2 hover:border-[#b779ff]/45 hover:shadow-[0_25px_80px_-30px_rgba(123,63,184,0.65)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b779ff]"
                             >
                                 <div className="relative z-10">
-                                    <span className="mb-6 inline-flex h-3 w-3 rounded-full bg-blue-500" aria-hidden />
+                                    <span className="mb-6 inline-flex h-3 w-3 rounded-full bg-[#a855f7]" aria-hidden />
                                     <div className="relative min-h-[68px]">
                                         <h2 className="absolute inset-0 text-xl font-semibold text-white transition-all duration-300 group-hover:-translate-y-2 group-hover:opacity-0">
                                             {svc.name}
@@ -55,7 +55,7 @@ export default function ServiciosPage() {
                                         {svc.includes.slice(0, 3).map((item) => (
                                             <span
                                                 key={item}
-                                                className="rounded-full border border-white/10 px-3 py-1 tracking-wide text-slate-200/80 transition-colors duration-300 group-hover:border-blue-400/50 group-hover:text-blue-100"
+                                                className="rounded-full border border-white/10 px-3 py-1 tracking-wide text-slate-200/80 transition-colors duration-300 group-hover:border-[#d0a8ff]/50 group-hover:text-[#f4eaff]"
                                             >
                                                 {item}
                                             </span>
@@ -63,18 +63,18 @@ export default function ServiciosPage() {
                                     </div>
                                     <span
                                         aria-hidden
-                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-300 transition-colors duration-300 group-hover:border-blue-400/60 group-hover:text-blue-200"
+                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-300 transition-colors duration-300 group-hover:border-[#cda0ff]/60 group-hover:text-[#f7ebff]"
                                     >
                                         <ArrowUpRight className="h-4 w-4" />
                                     </span>
                                 </div>
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/15 to-blue-500/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#542866]/0 via-[#6d2f8c]/35 to-[#3e236b]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute -left-24 -top-24 h-48 w-48 rounded-full bg-blue-500/20 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                    className="pointer-events-none absolute -left-24 -top-24 h-48 w-48 rounded-full bg-[#a855f7]/25 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                             </Link>
                         ))}
