@@ -28,7 +28,7 @@
     position:relative;
     z-index:1;
     display:grid;
-    gap:18px;
+    gap:12px;
     width:min(100%, 620px);
     aspect-ratio:1;
     grid-template-columns:repeat(4, minmax(0, 1fr));
@@ -95,18 +95,18 @@
         padding:clamp(1.5rem, 6vw, 3rem);
         border-radius:40px;
     }
-    .grid{ width:min(100%, 520px); }
+    .grid{ width:min(100%, 520px); gap:10px; }
 }
 
 @media (max-width: 768px){
     .wrapper{ padding:clamp(1.25rem, 7vw, 2.5rem); border-radius:32px; }
-    .grid{ gap:14px; width:min(100%, 440px); }
+    .grid{ gap:9px; width:min(100%, 440px); }
     .card{ --media-size:clamp(64px, 18vw, 110px); }
 }
 
 @media (max-width: 580px){
     .wrapper{ padding:clamp(1rem, 8vw, 2rem); border-radius:26px; }
-    .grid{ width:100%; gap:12px; }
+    .grid{ width:100%; gap:8px; }
     .grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); grid-template-rows:repeat(5, minmax(0, 1fr)); aspect-ratio:auto; }
     .software{ grid-column:1 / span 2; grid-row:1 / span 2; }
     .automatizacion{ grid-column:3 / span 1; grid-row:1 / span 2; }
