@@ -140,9 +140,9 @@ export default function HomePage() {
                         <div className="grid gap-8 rounded-3xl border border-slate-200 bg-white/90 p-10 text-sm text-slate-600 shadow-[0_24px_48px_rgba(15,23,42,0.12)] dark:border-white/15 dark:bg-[rgba(7,11,30,0.72)] dark:text-white/85 dark:shadow-none">
                             <div>
                                 <h4 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-600 dark:text-white/75">TechBox</h4>
-                                <p className="mt-3 text-lg font-semibold text-slate-900 dark:text-white">2023 San José, Costa Rica</p>
-                                <p className="mt-1">jmoroco@techboxmail.com</p>
-                                <p className="mt-1">8888-8888</p>
+                                <p className="mt-3 text-lg font-semibold text-slate-900 dark:text-white">2025 Heredia, Costa Rica</p>
+                                <p className="mt-1">gerencia@techbox.cr</p>
+                                <p className="mt-1">+506 7016-5606</p>
                             </div>
                             <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
                                 <div>
@@ -151,7 +151,6 @@ export default function HomePage() {
                                         <li><Link href="/Servicios" className="transition hover:text-slate-900 dark:hover:text-white">Servicios</Link></li>
                                         <li><Link href="/Contacto" className="transition hover:text-slate-900 dark:hover:text-white">Agenda una cita</Link></li>
                                         <li><Link href="/Blog" className="transition hover:text-slate-900 dark:hover:text-white">Blog</Link></li>
-                                        <li><Link href="/Contacto" className="transition hover:text-slate-900 dark:hover:text-white">FAQ</Link></li>
                                     </ul>
                                 </div>
                                 <div>
