@@ -1,8 +1,15 @@
 :root{
-    --ink: #f5f8ff;      /* texto principal */
-    --ink-sub: rgba(200,211,255,0.78);  /* texto secundario */
-    --link: #67e1ff;     /* azul marca */
+    --ink: #0f172a;      /* texto principal en modo claro */
+    --ink-sub: rgba(15,23,42,0.72);  /* texto secundario en modo claro */
+    --link: #2563eb;     /* azul marca en modo claro */
     --teal: #3ad2c5;     /* acento */
+}
+
+.dark{
+    --ink: #f5f8ff;      /* texto principal en modo oscuro */
+    --ink-sub: rgba(200,211,255,0.78);  /* texto secundario en modo oscuro */
+    --link: #67e1ff;     /* azul marca en modo oscuro */
+    --teal: #3ad2c5;
 }
 
 /* Tipografía global */

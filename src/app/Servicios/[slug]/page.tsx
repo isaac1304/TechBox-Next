@@ -42,14 +42,14 @@ export default function ServicioDetallePage({ params }: { params: { slug: string
             </div>
 
             {/* Contenido */}
-            <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 py-10 text-white md:grid-cols-3">
+            <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 py-10 text-slate-700 dark:text-slate-200 md:grid-cols-3">
                 <article className="md:col-span-2">
-                    <p className="text-base leading-relaxed text-white/[0.85]">
+                    <p className="text-base leading-relaxed text-slate-600 dark:text-white/85">
                         Creamos soluciones a medida apoyadas en buenas prácticas y automatización para que tu equipo gane tiempo.
                     </p>
                     <section className="mt-8">
-                        <h2 className="text-xl font-semibold text-white">¿Qué haremos contigo?</h2>
-                        <ul className="mt-4 list-disc space-y-2 pl-5 text-white/[0.85]">
+                        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">¿Qué haremos contigo?</h2>
+                        <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-600 dark:text-white/85">
                             <li>Levantamiento rápido y priorización de oportunidades.</li>
                             <li>Plan de implementación por sprints con entregas quincenales.</li>
                             <li>Métricas y tableros desde el primer sprint.</li>
