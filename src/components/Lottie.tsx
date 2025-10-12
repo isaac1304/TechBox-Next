@@ -2,21 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-                src?: string;
-                background?: string;
-                speed?: number;
-                loop?: boolean;
-                autoplay?: boolean;
-                style?: React.CSSProperties;
-            };
-        }
-    }
-}
-
 type LottieProps = {
     src: string;
     className?: string;
@@ -29,13 +14,13 @@ export default function Lottie({ src, className, style }: LottieProps) {
     useEffect(() => {
         const existing = document.querySelector('script[data-lottie-player]');
         if (existing) { setLoaded(true); return; }
-        const s = document.createElement('script');
-        s.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
-        s.async = true;
-        (s as any).dataset = { lottiePlayer: '1' };
-        s.setAttribute('data-lottie-player', '1');
-        s.onload = () => setLoaded(true);
-        document.body.appendChild(s);
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
+        script.async = true;
+        script.dataset.lottiePlayer = '1';
+        script.setAttribute('data-lottie-player', '1');
+        script.onload = () => setLoaded(true);
+        document.body.appendChild(script);
     }, []);
 
     if (!loaded) return null;
