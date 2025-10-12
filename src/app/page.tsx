@@ -46,23 +46,6 @@ export default function HomePage() {
 
                 <HeroServiceGrid />
 
-                <div className="flex flex-wrap items-center justify-center gap-4">
-                    <Link
-                        href="/Contacto"
-                        className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--accent-ice)] via-[#6ff3ff] to-[var(--accent-teal)] px-6 py-3 text-base font-semibold text-slate-900 shadow-[0_20px_48px_rgba(64,194,255,0.35)] transition hover:translate-y-[-2px] hover:shadow-[0_24px_56px_rgba(64,194,255,0.45)]"
-                    >
-                        Agendar una cita
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                            <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </Link>
-                    <Link
-                        href="/Servicios"
-                        className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-900/20 px-6 py-3 text-base font-semibold text-slate-900 transition hover:border-slate-900/40 hover:text-slate-900 dark:border-white/25 dark:text-white/90 dark:hover:border-white/45 dark:hover:text-white"
-                    >
-                        Ver servicios
-                    </Link>
-                </div>
             </section>
 
             {/* Narrativa */}
