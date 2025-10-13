@@ -70,11 +70,11 @@ export default function ServiciosPage() {
                                 </div>
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#542866]/0 via-[#6d2f8c]/35 to-[#3e236b]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_80%_20%,rgba(173,123,255,0.55)_0%,rgba(76,29,149,0.45)_35%,rgba(30,41,59,0)_72%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute -left-24 -top-24 h-48 w-48 rounded-full bg-[#a855f7]/25 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                    className="pointer-events-none absolute inset-6 rounded-[28px] bg-[radial-gradient(circle_at_20%_80%,rgba(168,85,247,0.45)_0%,rgba(37,99,235,0.35)_35%,transparent_70%)] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                             </Link>
                         ))}
