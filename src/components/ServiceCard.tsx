@@ -18,13 +18,13 @@ export default function ServiceCard({ id, title, desc, href, Icon }: Props) {
       className={[
         "group h-full min-h-[10.5rem] max-h-[10.5rem] overflow-hidden",
         "p-6 rounded-xl border shadow-sm",
-        "bg-[#F3F8FF] text-[#0B1B2B] border-[#C5D9F6]",
-        "dark:bg-[#0B1B2B] dark:text-[#F3F8FF] dark:border-[#1C2F45]",
+        "bg-white text-[#0B1B2B] border-slate-200",
+        "dark:bg-[#0E2236] dark:text-[#F8FAFC] dark:border-[#0E2236]",
         "transition-colors duration-200",
-        "hover:bg-[#0B1B2B] hover:text-[#F8FAFC] hover:border-[#0B1B2B]",
-        "focus-visible:bg-[#0B1B2B] focus-visible:text-[#F8FAFC] focus-visible:border-[#0B1B2B]",
-        "dark:hover:bg-white dark:hover:text-[#0B1B2B] dark:hover:border-white",
-        "dark:focus-visible:bg-white dark:focus-visible:text-[#0B1B2B] dark:focus-visible:border-white",
+        "hover:bg-[#0E2236] hover:text-[#F8FAFC] hover:border-[#0E2236]",
+        "focus-visible:bg-[#0E2236] focus-visible:text-[#F8FAFC] focus-visible:border-[#0E2236]",
+        "dark:hover:bg-[#F3F8FF] dark:hover:text-[#0B1B2B] dark:hover:border-[#F3F8FF]",
+        "dark:focus-visible:bg-[#F3F8FF] dark:focus-visible:text-[#0B1B2B] dark:focus-visible:border-[#F3F8FF]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
       ].join(" ")}
       onClick={(e) => { if (to === "#") e.preventDefault(); }}
