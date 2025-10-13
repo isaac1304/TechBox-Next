@@ -8,7 +8,7 @@ export default function BlogList() {
             <ul className="space-y-6">
                 {blog.map(post => (
                     <li key={post.slug}>
-                        <Link href={`/Blog/${post.slug}`} className="block rounded-2xl border border-transparent px-4 py-3 transition hover:border-slate-200 hover:bg-white dark:hover:border-slate-700/80 dark:hover:bg-slate-900/60">
+                        <Link href={`/Blog/${post.slug}`} className="card-hover-gradient block rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm transition dark:border-slate-700/80 dark:bg-slate-900/60">
                             <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{post.titulo}</h2>
                             <p className="text-slate-600 dark:text-slate-300">{post.resumen}</p>
                             <span className="text-sm text-slate-500 dark:text-slate-400">{post.fecha}</span>

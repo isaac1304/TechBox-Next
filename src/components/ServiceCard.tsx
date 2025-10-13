@@ -17,12 +17,10 @@ export default function ServiceCard({ id, title, desc, href, Icon }: Props) {
       href={to}
       className={[
         "group h-full min-h-[10.5rem] max-h-[10.5rem] overflow-hidden",
-        "p-6 rounded-xl border shadow-sm",
+        "card-hover-gradient p-6 rounded-2xl border shadow-sm",
         "bg-white text-slate-900 border-slate-200",
         "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700",
         "transition-colors duration-200",
-        "hover:bg-gradient-to-r hover:from-[#f4f4f4] hover:to-[#e0e0e0] hover:text-slate-900",
-        "focus-visible:bg-gradient-to-r focus-visible:from-[#f4f4f4] focus-visible:to-[#e0e0e0] focus-visible:text-slate-900",
         "dark:hover:bg-slate-800 dark:hover:text-slate-100",
         "dark:focus-visible:bg-slate-800 dark:focus-visible:text-slate-100",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"

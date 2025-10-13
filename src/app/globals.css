@@ -21,6 +21,13 @@
   --text-muted: #475569;
   --text-dim: #64748b;
   --focus-ring: rgba(59,130,246,0.45);
+  --hover-grad-from: #f7f8fa;
+  --hover-grad-to: #e8eef9;
+}
+
+html,
+body{
+  background: #ffffff !important;
 }
 
 .dark{
@@ -49,6 +56,16 @@ body{
   min-height: 100%;
   font-feature-settings: "liga" on, "kern" on;
   transition: background-color .4s ease, color .4s ease;
+}
+
+.card-hover-gradient{
+  background: #ffffff;
+  transition: background 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card-hover-gradient:hover,
+.card-hover-gradient:focus-visible{
+  background: linear-gradient(90deg, var(--hover-grad-from), var(--hover-grad-to));
 }
 
 body::before{
@@ -90,6 +107,14 @@ body::after{
   opacity: .36;
   background-image: radial-gradient(circle at center, rgba(103,225,255,0.28) 0.5px, transparent 0.5px);
   background-size: 32px 32px;
+}
+
+body::before,
+body::after,
+.dark body::before,
+.dark body::after{
+  background: transparent !important;
+  background-image: none !important;
 }
 
 a{ color: var(--accent-sky); text-decoration:none; transition:color .2s ease; }
