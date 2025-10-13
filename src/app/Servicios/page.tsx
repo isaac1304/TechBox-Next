@@ -70,8 +70,10 @@ export default function ServiciosPage() {
                                 </div>
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#542866]/0 via-[#6d2f8c]/35 to-[#3e236b]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                />
+                                    className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                >
+                                    <div className="absolute inset-[10%] rounded-[1.25rem] bg-[radial-gradient(circle_at_75%_25%,rgba(109,47,140,0.6)_0%,rgba(88,45,132,0.45)_40%,rgba(62,35,107,0.25)_60%,transparent_90%)] blur-[1px]" />
+                                </div>
                                 <div
                                     aria-hidden
                                     className="pointer-events-none absolute -left-24 -top-24 h-48 w-48 rounded-full bg-[#a855f7]/25 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
