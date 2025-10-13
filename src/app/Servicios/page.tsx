@@ -72,7 +72,7 @@ export default function ServiciosPage() {
                                     aria-hidden
                                     className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                 >
-                                    <div className="absolute inset-[8%] rounded-[1.25rem] bg-[radial-gradient(circle_at_60%_30%,rgba(91,115,255,0.95)_0%,rgba(63,136,250,0.82)_35%,rgba(37,99,235,0.55)_58%,rgba(30,64,175,0.22)_74%,transparent_90%)] shadow-[inset_0_0_45px_rgba(30,64,175,0.35)] transition-transform duration-300 group-hover:scale-[1.03] dark:bg-[radial-gradient(circle_at_60%_30%,rgba(145,64,255,0.88)_0%,rgba(109,57,206,0.75)_38%,rgba(64,38,143,0.52)_62%,rgba(28,28,95,0.28)_78%,transparent_92%)] dark:shadow-[inset_0_0_55px_rgba(74,29,150,0.38)]" />
+                                    <div className="absolute inset-[8%] rounded-[1.25rem] bg-[linear-gradient(135deg,#f8fafc_0%,#e2e8f0_40%,#111827_100%)] shadow-[inset_0_0_45px_rgba(30,41,59,0.4)] transition-transform duration-300 group-hover:scale-[1.03] dark:bg-[linear-gradient(135deg,#38bdf8_0%,#6366f1_45%,#22c55e_100%)] dark:shadow-[inset_0_0_55px_rgba(59,7,141,0.45)]" />
                                 </div>
                                 <div
                                     aria-hidden
