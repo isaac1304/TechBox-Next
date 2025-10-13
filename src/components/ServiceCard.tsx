@@ -17,22 +17,18 @@ export default function ServiceCard({ id, title, desc, href, Icon }: Props) {
       href={to}
       className={[
         "group h-full min-h-[10.5rem] max-h-[10.5rem] overflow-hidden",
-        "card-hover-gradient p-6 rounded-2xl border shadow-sm",
-        "bg-white text-slate-900 border-slate-200",
-        "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700",
-        "transition-colors duration-200",
-        "dark:hover:bg-slate-800 dark:hover:text-slate-100",
-        "dark:focus-visible:bg-slate-800 dark:focus-visible:text-slate-100",
+        "ibmish-hover bg-white p-6 text-slate-900",
+        "rounded-2xl border border-slate-200 shadow-sm transition-colors duration-200",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
       ].join(" ")}
       onClick={(e) => { if (to === "#") e.preventDefault(); }}
     >
       <div className="flex h-full flex-col justify-between">
         <div>
-          <h3 className="text-base font-semibold leading-tight">{title}</h3>
-          <p className="mt-2 text-sm opacity-90 line-clamp-2">{desc}</p>
+          <h3 className="text-base font-semibold leading-tight transition-colors duration-200 group-hover:text-[var(--card-text)] group-focus-visible:text-[var(--card-text)]">{title}</h3>
+          <p className="mt-2 text-sm text-slate-600 transition-colors duration-200 line-clamp-2 group-hover:text-[var(--card-text)] group-focus-visible:text-[var(--card-text)]">{desc}</p>
         </div>
-        <div className="mt-6 flex justify-end">
+        <div className="mt-6 flex justify-end text-slate-500 transition-colors duration-200 group-hover:text-[var(--card-text)] group-focus-visible:text-[var(--card-text)]">
           {Icon ? (
             <Icon className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1" />
           ) : (
