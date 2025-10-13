@@ -9,6 +9,9 @@
     --accent: var(--teal);
     --shadow: 0 8px 30px rgba(0,0,0,.25);
 
+    --hover-gradient-light: linear-gradient(130deg, #ffffff 0%, #f4f7ff 55%, #e7ecf7 100%);
+    --hover-gradient-dark: linear-gradient(138deg, #001f73 0%, #0035c7 45%, #00a8ff 80%, #00ffae 100%);
+
     --card-width: min(100%, 320px);
     --card-min-height: 260px;
     --card-radius: 18px;
@@ -45,6 +48,30 @@
     border-radius:var(--card-radius);
     padding:18px;
     backface-visibility:hidden;
+}
+
+.card:hover{
+    --fg:#f1f6ff;
+    --accent:#9be7ff;
+}
+
+.card:hover .front,
+.card:hover .back{
+    background:var(--hover-gradient-dark);
+    color:var(--fg);
+    border-color:rgba(7,19,58,.4);
+}
+
+:global(.dark) .card:hover{
+    --fg:#07163a;
+    --accent:#0f2b8f;
+}
+
+:global(.dark) .card:hover .front,
+:global(.dark) .card:hover .back{
+    background:var(--hover-gradient-light);
+    color:var(--fg);
+    border-color:rgba(9,20,58,.18);
 }
 
 .back{ transform:rotateY(180deg); }
