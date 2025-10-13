@@ -13,7 +13,8 @@ export default function ServiceCard({ title, desc, href, Icon }: Props) {
     <Link
       href={href}
       className={[
-        "group h-full min-h-[11rem] p-6 rounded-xl border shadow-sm",
+        "group h-full min-h-[10.5rem] max-h-[10.5rem] overflow-hidden",
+        "p-6 rounded-xl border shadow-sm",
         "bg-white text-slate-900 border-slate-200",
         "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700",
         "transition-colors duration-200",
@@ -32,19 +33,8 @@ export default function ServiceCard({ title, desc, href, Icon }: Props) {
           {Icon ? (
             <Icon className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1" />
           ) : (
-            <svg
-              viewBox="0 0 24 24"
-              className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 12h14M13 5l7 7-7 7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg viewBox="0 0 24 24" className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           )}
         </div>

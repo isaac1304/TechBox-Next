@@ -22,10 +22,8 @@ export default function Page() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[11rem]">
-          {services.map((s) => (
-            <ServiceCard key={s.title} {...s} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[10.5rem]">
+          {services.map((s) => <ServiceCard key={s.title} {...s} />)}
         </div>
       </section>
     </main>
