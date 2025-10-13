@@ -1,14 +1,14 @@
 import ServiceCard from "@/components/ServiceCard";
 
 const services = [
-  { title: "Agentes de IA", desc: "Asistentes y automatización inteligente.", href: "/servicios/agentes" },
-  { title: "Datos para IA", desc: "Gobierno y features de datos.", href: "/servicios/datos" },
-  { title: "Automatización", desc: "RPA, integraciones y orquestación.", href: "/servicios/automatizacion" },
-  { title: "Nube híbrida", desc: "Arquitecturas multi-cloud y on-prem.", href: "/servicios/nube" },
-  { title: "Modelos de IA", desc: "Entrenamiento, evaluación y MLOps.", href: "/servicios/modelos" },
-  { title: "Analytics", desc: "ETL/ELT y dashboards para decisiones.", href: "/servicios/analytics" },
-  { title: "Seguridad e identidad", desc: "Hardening, IAM y monitoreo.", href: "/servicios/seguridad" },
-  { title: "Consultoría", desc: "Assessments y roadmaps pragmáticos.", href: "/servicios/consultoria" }
+  { id: "agentes",      title: "Agentes de IA",           desc: "Asistentes y automatización inteligente.", href: "#agentes" },
+  { id: "datos",        title: "Datos para IA",           desc: "Gobierno y features de datos.",            href: "#datos" },
+  { id: "automatiza",   title: "Automatización",          desc: "RPA, integraciones y orquestación.",      href: "#automatiza" },
+  { id: "nube",         title: "Nube híbrida",            desc: "Arquitecturas multi-cloud y on-prem.",    href: "#nube" },
+  { id: "modelos",      title: "Modelos de IA",           desc: "Entrenamiento, evaluación y MLOps.",      href: "#modelos" },
+  { id: "analytics",    title: "Analytics",               desc: "ETL/ELT y dashboards para decisiones.",   href: "#analytics" },
+  { id: "seguridad",    title: "Seguridad e identidad",   desc: "Hardening, IAM y monitoreo.",             href: "#seguridad" },
+  { id: "consultoria",  title: "Consultoría",             desc: "Assessments y roadmaps pragmáticos.",     href: "#consultoria" },
 ];
 
 export default function Page() {
@@ -23,7 +23,7 @@ export default function Page() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[10.5rem]">
-          {services.map((s) => <ServiceCard key={s.title} {...s} />)}
+          {services.map((s) => <ServiceCard key={s.id} {...s} />)}
         </div>
       </section>
     </main>
