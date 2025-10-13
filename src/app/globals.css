@@ -2,10 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Sistema cromático ───────────────────────── */
+/* ===== Base blanca global ===== */
+html,
+body{
+  background: #ffffff !important;
+}
+
+/* Si existe decoración en body::before/::after, forzar transparente */
+body::before,
+body::after{
+  background: transparent !important;
+}
+
+/* ===== Tokens de marca (usa los del logo si están en /public/*.svg) ===== */
+/* Fallback definido por instrucciones */
 :root{
   color-scheme: light;
-  --page-bg: #f5f7ff;
+  --page-bg: #ffffff;
   --page-bg-2: #eaf1ff;
   --page-bg-3: #dee7ff;
   --card-bg: rgba(255,255,255,0.88);
@@ -21,6 +34,14 @@
   --text-muted: #475569;
   --text-dim: #64748b;
   --focus-ring: rgba(59,130,246,0.45);
+  --hover-grad-from: #f7f8fa;
+  --hover-grad-to: #e8eef9;
+  --brand-navy: #273670;
+  --brand-navy-300: #3e4aa0;
+  --brand-teal: #22c1b1;
+  --brand-teal-300: #7de9d8;
+  --card-surface: #0f172a;
+  --card-text: #f8fafc;
 }
 
 .dark{
@@ -49,6 +70,36 @@ body{
   min-height: 100%;
   font-feature-settings: "liga" on, "kern" on;
   transition: background-color .4s ease, color .4s ease;
+}
+
+.card-hover-gradient{
+  background: #ffffff;
+  transition: background 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card-hover-gradient:hover,
+.card-hover-gradient:focus-visible{
+  background: linear-gradient(90deg, var(--hover-grad-from), var(--hover-grad-to));
+}
+
+/* Utilidad base para cards en todo el sitio (excepto FlipCard) */
+.card-surface{
+  background: var(--card-surface) !important;
+  color: var(--card-text) !important;
+  transition: background 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* Hover muy colorido para /Servicios ONLY */
+.ibmish-hover:hover,
+.ibmish-hover:focus-visible{
+  background: linear-gradient(
+    120deg,
+    var(--brand-navy) 0%,
+    var(--brand-navy-300) 22%,
+    var(--brand-teal) 60%,
+    var(--brand-teal-300) 85%
+  ) !important;
+  color: var(--card-text) !important;
 }
 
 body::before{
@@ -90,6 +141,14 @@ body::after{
   opacity: .36;
   background-image: radial-gradient(circle at center, rgba(103,225,255,0.28) 0.5px, transparent 0.5px);
   background-size: 32px 32px;
+}
+
+body::before,
+body::after,
+.dark body::before,
+.dark body::after{
+  background: transparent !important;
+  background-image: none !important;
 }
 
 a{ color: var(--accent-sky); text-decoration:none; transition:color .2s ease; }

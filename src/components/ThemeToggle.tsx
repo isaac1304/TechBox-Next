@@ -14,7 +14,7 @@ export default function ThemeToggle() {
     return (
         <button
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300/70 bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white dark:border-white/15 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-[0_10px_30px_rgba(8,18,48,0.45)]"
+            className="hidden inline-flex items-center gap-2 rounded-full border border-slate-300/70 bg-white/90 px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-white dark:border-white/15 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-[0_10px_30px_rgba(8,18,48,0.45)]"
             aria-label="Cambiar tema"
         >
             {isDark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
