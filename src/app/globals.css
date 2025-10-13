@@ -5,7 +5,7 @@
 /* ─── Sistema cromático ───────────────────────── */
 :root{
   color-scheme: light;
-  --page-bg: #f5f7ff;
+  --page-bg: #ffffff;
   --page-bg-2: #eaf1ff;
   --page-bg-3: #dee7ff;
   --card-bg: rgba(255,255,255,0.88);
