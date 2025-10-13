@@ -1,18 +1,15 @@
 import ServiceCard from "@/components/ServiceCard";
-import serviciosData from "@/data/servicios.json";
 
-type Servicio = {
-  slug: string;
-  titulo: string;
-  descripcion: string;
-};
-
-const services = (serviciosData as Servicio[]).map(({ slug, titulo, descripcion }) => ({
-  id: slug,
-  title: titulo,
-  desc: descripcion,
-  href: `/Servicios/${slug}`,
-}));
+const services = [
+  { id: "agentes",     title: "Agentes de IA",          desc: "Asistentes y automatización inteligente." },
+  { id: "datos",       title: "Datos para IA",          desc: "Gobierno y features de datos." },
+  { id: "automatiza",  title: "Automatización",         desc: "RPA, integraciones y orquestación." },
+  { id: "nube",        title: "Nube híbrida",           desc: "Arquitecturas multi-cloud y on-prem." },
+  { id: "modelos",     title: "Modelos de IA",          desc: "Entrenamiento, evaluación y MLOps." },
+  { id: "analytics",   title: "Analytics",              desc: "ETL/ELT y dashboards para decisiones." },
+  { id: "seguridad",   title: "Seguridad e identidad",  desc: "Hardening, IAM y monitoreo." },
+  { id: "consultoria", title: "Consultoría",            desc: "Assessments y roadmaps pragmáticos." },
+];
 
 export default function Page() {
   return (
