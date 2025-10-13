@@ -21,10 +21,10 @@ export default function ServiceCard({ id, title, desc, href, Icon }: Props) {
         "bg-white text-slate-900 border-slate-200",
         "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700",
         "transition-colors duration-200",
-        "hover:bg-gradient-to-b hover:from-[#E7EFFD] hover:via-[#D0CFEF] hover:to-[#D8E5FD] hover:text-[#0B1B2B] hover:border-transparent",
-        "focus-visible:bg-gradient-to-b focus-visible:from-[#E7EFFD] focus-visible:via-[#D0CFEF] focus-visible:to-[#D8E5FD] focus-visible:text-[#0B1B2B] focus-visible:border-transparent",
-        "dark:hover:bg-gradient-to-b dark:hover:from-[#3351FC] dark:hover:to-[#1F7177] dark:hover:text-[#F8FAFC] dark:hover:border-transparent",
-        "dark:focus-visible:bg-gradient-to-b dark:focus-visible:from-[#3351FC] dark:focus-visible:to-[#1F7177] dark:focus-visible:text-[#F8FAFC] dark:focus-visible:border-transparent",
+        "hover:bg-gradient-to-r hover:from-[#f4f4f4] hover:to-[#e0e0e0] hover:text-slate-900",
+        "focus-visible:bg-gradient-to-r focus-visible:from-[#f4f4f4] focus-visible:to-[#e0e0e0] focus-visible:text-slate-900",
+        "dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:hover:border-slate-600",
+        "dark:focus-visible:bg-slate-800 dark:focus-visible:text-slate-100 dark:focus-visible:border-slate-600",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
       ].join(" ")}
       onClick={(e) => { if (to === "#") e.preventDefault(); }}
