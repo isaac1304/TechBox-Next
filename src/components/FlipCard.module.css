@@ -1,10 +1,10 @@
 /* src/components/FlipCard.module.css */
 .card{
-    --navy: #2A2F73;     /* cubo */
-    --teal: #2EC4B6;     /* píxeles */
+    --navy: #5a67ff;     /* cubo */
+    --teal: #54e0d5;     /* píxeles */
 
     --bg1: var(--navy);
-    --bg2: #1f245d;      /* navy más oscuro */
+    --bg2: #3a43c8;      /* navy más oscuro */
     --fg:  #F4F8FF;      /* más claro para legibilidad */
     --accent: var(--teal);
     --shadow: 0 8px 30px rgba(0,0,0,.25);
@@ -82,5 +82,5 @@
 }
 
 /* Variantes intercaladas */
-.navy{ --bg1: var(--navy); --bg2:#1f245d; --accent:var(--teal); }
-.teal{ --bg1: #1a6f66;   --bg2:#104a45; --accent:var(--teal); }
+.navy{ --bg1: var(--navy); --bg2:#3a43c8; --accent:var(--teal); }
+.teal{ --bg1: #7ff2ff;   --bg2:#36c7c6; --accent:var(--teal); }
