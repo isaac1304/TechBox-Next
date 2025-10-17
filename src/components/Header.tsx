@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.css';
-import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -80,7 +79,6 @@ export default function Header() {
                             <Link href="/Contacto" className={styles.link}>Contacto</Link>
                         </nav>
                     )}
-                    <ThemeToggle />
                     {isSmall && (
                         <button
                             aria-label="Abrir menú"
@@ -177,9 +175,6 @@ export default function Header() {
                                 </svg>
                             </Link>
                         </nav>
-                        <div className={styles.mobileToggleRow}>
-                            <ThemeToggle />
-                        </div>
                     </div>
                 </div>
             )}
