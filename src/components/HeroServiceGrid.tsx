@@ -6,15 +6,15 @@ import styles from './HeroServiceGrid.module.css';
 import { services } from '@/lib/services';
 
 const heroShowcase = [
-    { slug: 'software', variant: 'teal', layout: 'software', profile: 'profileLarge', square: true },
-    { slug: 'automatizacion', variant: 'navy', layout: 'automatizacion', profile: 'profileWide', square: false },
-    { slug: 'analytics', variant: 'teal', layout: 'analytics', profile: 'profileCompact', square: true },
-    { slug: 'nube', variant: 'navy', layout: 'nube', profile: 'profileCompact', square: true },
-    { slug: 'bigdata', variant: 'navy', layout: 'bigdata', profile: 'profileWide', square: false },
-    { slug: 'ciberseguridad', variant: 'teal', layout: 'ciberseguridad', profile: 'profileCompact', square: true },
-    { slug: 'consultoria', variant: 'navy', layout: 'consultoria', profile: 'profileTall', square: false },
-    { slug: 'mantenimiento', variant: 'teal', layout: 'mantenimiento', profile: 'profileCompact', square: true },
-    { slug: 'transformacion', variant: 'navy', layout: 'transformacion', profile: 'profileWide', square: false },
+    { slug: 'software', variant: 'teal', profile: 'profileLarge', square: true },
+    { slug: 'automatizacion', variant: 'navy', profile: 'profileWide', square: false },
+    { slug: 'analytics', variant: 'teal', profile: 'profileCompact', square: true },
+    { slug: 'nube', variant: 'navy', profile: 'profileCompact', square: true },
+    { slug: 'bigdata', variant: 'navy', profile: 'profileWide', square: false },
+    { slug: 'ciberseguridad', variant: 'teal', profile: 'profileCompact', square: true },
+    { slug: 'consultoria', variant: 'navy', profile: 'profileTall', square: false },
+    { slug: 'mantenimiento', variant: 'teal', profile: 'profileCompact', square: true },
+    { slug: 'transformacion', variant: 'navy', profile: 'profileWide', square: false },
 ] as const;
 
 type HeroSlug = (typeof heroShowcase)[number]['slug'];
@@ -62,8 +62,8 @@ export default function HeroServiceGrid() {
         <div className={styles.wrapper} aria-label="Servicios destacados con animaciones interactivas">
             <div className={styles.glow} aria-hidden />
             <div className={styles.grid}>
-                {heroServices.map(({ slug, service, variant, layout, profile, square }) => (
-                    <div key={service.slug} className={`${styles.cell} ${styles[layout]}`}>
+                {heroServices.map(({ slug, service, variant, profile, square }) => (
+                    <div key={service.slug} className={styles.cell}>
                         <FlipCard
                             title={service.name}
                             text={heroCopy[slug]}
