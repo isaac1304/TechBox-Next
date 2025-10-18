@@ -264,19 +264,18 @@ a:hover{ color: var(--accent-ice); }
 }
 
 .light [class*='WhyTechbox_card']{
-  border:1px solid rgba(148,163,184,0.42);
-  background:linear-gradient(150deg, rgba(255,255,255,0.95), rgba(226,232,255,0.85));
-  box-shadow:0 18px 40px rgba(15,23,42,0.12);
+  border:1px solid #ddd;
+  background:rgba(230,241,236,0.95);
+  box-shadow:0 6px 12px rgba(15,23,42,0.08);
 }
 
 .light [class*='WhyTechbox_card']:hover{
-  border-color:rgba(99,102,241,0.55);
-  box-shadow:0 24px 52px rgba(15,23,42,0.16);
+  box-shadow:0 14px 24px rgba(15,23,42,0.12);
 }
 
-.light [class*='WhyTechbox_kicker']{ color:rgba(71,85,105,0.95); }
+.light [class*='WhyTechbox_kicker']{ color:rgba(15,118,110,0.9); }
 .light [class*='WhyTechbox_h3']{ color:#0f172a; }
-.light [class*='WhyTechbox_p']{ color:rgba(51,65,85,0.88); }
+.light [class*='WhyTechbox_p']{ color:rgba(30,41,59,0.88); }
 
 /* ─── Flip 3D (más smooth) ───────────────────── */
 .tile{ perspective:1400px; height:100%; width:100%; display:block; position:relative; }
