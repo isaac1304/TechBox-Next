@@ -199,8 +199,6 @@
 
 .mobileLink:hover .mobileLinkIcon{ opacity:1; transform:translateX(2px); }
 
-.mobileToggleRow{ margin-top:auto; padding-top:16px; border-top:1px solid rgba(72,198,220,0.32); display:flex; justify-content:flex-end; }
-
 /* Mobile */
 .mobileTop{
     position:fixed; top:0; left:0; right:0; z-index:50;
