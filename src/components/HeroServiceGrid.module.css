@@ -110,6 +110,7 @@
 
 @media (max-width: 768px){
     .wrapper{ padding:clamp(1.5rem, 8vw, 2.25rem); border-radius:14px; }
+
     .grid{ grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); }
     .card{ --media-size:clamp(64px, 18vw, 110px); --card-min-height:0px; }
     .card p{ display:none; }
