@@ -54,3 +54,127 @@ body:not(.with-float-header) .site-main {
 
 /* Calendly badge: espacio al final */
 body.calendly-badge-visible { padding-bottom: clamp(90px, 9vh, 140px); }
+
+/* ========================= SERVICES GRID ========================= */
+#services .services-grid,
+#services .cards-grid,
+#services .service-cards,
+#services .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(10px, 2vw, 20px);
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+}
+
+/* ========================= CARD ========================= */
+#services .service-card,
+#services .service-tile,
+#services .card,
+#services .tile {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(12px, 2.2vw, 22px);
+    gap: clamp(6px, 1.2vw, 12px);
+}
+
+#services .service-card > *,
+#services .service-tile > *,
+#services .card > *,
+#services .tile > * {
+    min-height: 0;
+    max-width: 100%;
+}
+
+#services .service-card .card-body,
+#services .service-card .content,
+#services .service-card .inner {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+#services .service-card img,
+#services .service-card svg,
+#services .service-tile img,
+#services .service-tile svg,
+#services .card img,
+#services .card svg,
+#services .tile img,
+#services .tile svg {
+    display: block;
+    width: 100%;
+    max-width: 80%;
+    max-height: 55%;
+    height: auto;
+    object-fit: contain;
+}
+
+#services .card-title,
+#services .service-card h3,
+#services .service-card h4 {
+    font-size: clamp(16px, 1.6vw, 22px);
+    line-height: 1.2;
+    text-align: center;
+    max-width: 92%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#services .card-desc,
+#services .service-card p {
+    font-size: clamp(12px, 1.2vw, 16px);
+    line-height: 1.35;
+    text-align: center;
+    max-width: 92%;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    #services .services-grid,
+    #services .cards-grid,
+    #services .service-cards,
+    #services .solutions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #services .card-desc,
+    #services .service-card p {
+        display: none !important;
+    }
+
+    #services .service-card img,
+    #services .service-card svg,
+    #services .service-tile img,
+    #services .service-tile svg,
+    #services .card img,
+    #services .card svg,
+    #services .tile img,
+    #services .tile svg {
+        max-height: 65%;
+    }
+}
+
+@media (max-width: 480px) {
+    #services .services-grid,
+    #services .cards-grid,
+    #services .service-cards,
+    #services .solutions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 8px;
+    }
+}
