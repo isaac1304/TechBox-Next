@@ -15,7 +15,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "aos": ["src/lib/aos.ts"],
+      "aos/dist/aos.css": ["src/lib/aos.css"]
     },
     "plugins": [
       {

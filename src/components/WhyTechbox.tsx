@@ -1,3 +1,9 @@
+"use client";
+
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import styles from './WhyTechbox.module.css';
 
 export default function WhyTechbox() {
@@ -24,6 +30,13 @@ export default function WhyTechbox() {
         },
     ];
 
+    useEffect(() => {
+        AOS.init({ duration: 600, once: true });
+        return () => {
+            AOS.destroy();
+        };
+    }, []);
+
     return (
         <section className="mx-auto w-full max-w-6xl px-4">
             <div className="mx-auto max-w-3xl text-center">
@@ -36,7 +49,7 @@ export default function WhyTechbox() {
             </div>
             <div className={`${styles.grid} mt-10`}>
                 {items.map((it) => (
-                    <article key={it.t} className={styles.card}>
+                    <article key={it.t} className={styles.card} data-aos="fade-up">
                         <p className={styles.kicker}>{it.k}</p>
                         <h3 className={styles.h3}>{it.t}</h3>
                         <p className={styles.p}>{it.d}</p>
