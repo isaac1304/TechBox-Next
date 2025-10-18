@@ -104,6 +104,12 @@
     }
 }
 
+@media (min-width: 1024px){
+    .grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 768px){
     .wrapper{ padding:clamp(1.25rem, 7vw, 2.5rem); border-radius:32px; }
     .card{ --media-size:clamp(64px, 18vw, 110px); --card-min-height:0px; }
