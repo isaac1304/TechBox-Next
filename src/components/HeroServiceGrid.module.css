@@ -31,7 +31,7 @@
 .cell{
     position:relative;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     min-height:0;
     transition:transform .45s cubic-bezier(.25,.8,.25,1);
@@ -99,6 +99,12 @@
     .wrapper{
         padding:clamp(1.75rem, 6vw, 2.5rem);
         border-radius:16px;
+    }
+
+    .grid{
+        width:max-content;
+        width:fit-content;
+        max-width:100%;
     }
 }
 
