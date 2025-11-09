@@ -1,77 +1,294 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import Script from "next/script";
+import Hero from "./components/Hero";
+import ValuePillars from "./components/ValuePillars";
+import Practices from "./components/Practices";
+import Industries from "./components/Industries";
+import CaseStudies from "./components/CaseStudies";
+import Process from "./components/Process";
+import Differentiators from "./components/Differentiators";
+import Badges from "./components/Badges";
+import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
+import FinalCTAWithForm from "./components/FinalCTAWithForm";
 
 const services = [
-    { slug: 'software',        name: 'Software',        img: '/services/software.png' },
-    { slug: 'automatizacion',  name: 'Automatización',  img: '/services/automatizacion.png' },
-    { slug: 'analytics',       name: 'Analytics',       img: '/services/analytics.png' },
-    { slug: 'bigdata',         name: 'Big Data',        img: '/services/bigdata.png' },
-    { slug: 'ciberseguridad',  name: 'Ciberseguridad',  img: '/services/seguridad.png' },
-    { slug: 'consultoria',     name: 'Consultoría',     img: '/services/consultoria.png' },
-    { slug: 'mantenimiento',   name: 'Mantenimiento',   img: '/services/mantenimiento.png' },
-    { slug: 'nube',            name: 'Nube',            img: '/services/nube.png' },
-    { slug: 'transformacion',  name: 'Transformación',  img: '/services/transformacion.png' },
+  { slug: "software", name: "Software" },
+  { slug: "automatizacion", name: "Automatización" },
+  { slug: "analytics", name: "Analytics" },
+  { slug: "bigdata", name: "Big Data" },
+  { slug: "ciberseguridad", name: "Ciberseguridad" },
+  { slug: "consultoria", name: "Consultoría" },
+  { slug: "mantenimiento", name: "Mantenimiento" },
+  { slug: "nube", name: "Nube" },
+  { slug: "transformacion", name: "Transformación" },
 ];
 
+export const metadata: Metadata = {
+  title: "Servicios | Techbox",
+  description:
+    "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.",
+};
+
 export async function generateStaticParams() {
-    return services.map((s) => ({ slug: s.slug }));
+  return services.map((service) => ({ slug: service.slug }));
 }
 
-export default function ServicioDetallePage({ params }: { params: { slug: string } }) {
-    const svc = services.find((s) => s.slug === params.slug);
-    if (!svc) return notFound();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Techbox Servicios",
+  url: "https://www.techbox.cr/Servicios",
+  areaServed: "Latin America",
+  description:
+    "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.",
+  sameAs: [],
+};
 
-    return (
-        <div>
-            {/* HERO compacto con PNG controlado */}
-            <div className="relative h-[160px] sm:h-[180px] md:h-[200px] w-full overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative h-28 w-28 sm:h-32 sm:w-32">
-                        <Image src={svc.img} alt={svc.name} fill className="object-contain" />
-                    </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-[rgba(14,24,60,0.85)] via-[rgba(38,99,255,0.45)] to-[rgba(61,196,255,0.32)]" />
-                <div className="absolute inset-0 mx-auto flex w-full max-w-6xl items-end px-4 pb-5">
-                    <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-wider text-teal-300">Servicio</p>
-                        <h1 className="mt-1 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-                            {svc.name}
-                        </h1>
-                    </div>
-                </div>
-            </div>
+const pillars = [
+  {
+    title: "Velocidad con calidad",
+    description:
+      "Entregamos valor en ciclos cortos, con estándares de ingeniería modernos.",
+  },
+  {
+    title: "Arquitectura segura",
+    description:
+      "Diseño con seguridad por defecto, cumplimiento y observabilidad.",
+  },
+  {
+    title: "Datos accionables",
+    description:
+      "Métricas, analítica y ML alineados a KPIs de negocio.",
+  },
+  {
+    title: "Equipo a tu medida",
+    description:
+      "Células cross-funcionales que se integran con tu organización.",
+  },
+];
 
-            {/* Contenido */}
-            <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 py-10 text-slate-700 dark:text-slate-200 md:grid-cols-3">
-                <article className="md:col-span-2">
-                    <p className="text-base leading-relaxed text-slate-600 dark:text-white/85">
-                        Creamos soluciones a medida apoyadas en buenas prácticas y automatización para que tu equipo gane tiempo.
-                    </p>
-                    <section className="mt-8">
-                        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">¿Qué haremos contigo?</h2>
-                        <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-600 dark:text-white/85">
-                            <li>Levantamiento rápido y priorización de oportunidades.</li>
-                            <li>Plan de implementación por sprints con entregas quincenales.</li>
-                            <li>Métricas y tableros desde el primer sprint.</li>
-                        </ul>
-                    </section>
-                </article>
+const practices = [
+  {
+    title: "Estrategia y Descubrimiento",
+    description:
+      "Alineamos objetivos, medimos impacto y definimos roadmap priorizado.",
+    results: [
+      "Resultados: backlog priorizado, prototipos, estimaciones y métricas de éxito.",
+    ],
+  },
+  {
+    title: "Desarrollo de Productos Digitales",
+    description:
+      "Frontend, backend y mobile con CI/CD, testing y performance desde el día uno.",
+    results: [
+      "Resultados: releases frecuentes, deuda técnica controlada, UX medible.",
+    ],
+  },
+  {
+    title: "Modernización y Cloud",
+    description:
+      "Migraciones, contenedores, observabilidad, seguridad y costes optimizados.",
+    results: [
+      "Resultados: resiliencia, escalabilidad y time-to-market reducido.",
+    ],
+  },
+  {
+    title: "Data, Analytics & AI",
+    description:
+      "Data pipelines, gobernanza, dashboards y casos de ML generativos/classic.",
+    results: [
+      "Resultados: decisiones con datos, automatización y crecimiento eficiente.",
+    ],
+  },
+];
 
-                <aside className="md:sticky md:top-[calc(var(--header-h,96px)+24px)]">
-                    <div className="rounded-3xl border border-white/[0.14] bg-[rgba(8,13,32,0.76)] p-6 shadow-[0_26px_52px_rgba(2,6,23,0.55)]">
-                        <h3 className="text-lg font-semibold text-white">¿Listo para conversar?</h3>
-                        <p className="mt-2 text-sm text-white/[0.85]">
-                            Agenda una llamada de 30 minutos con nuestro equipo.
-                        </p>
-                        <a
-                            href="/Contacto"
-                            className="mt-4 inline-block rounded-full bg-gradient-to-r from-[var(--accent-ice)] to-[var(--accent-teal)] px-5 py-2 text-[#041520] font-semibold shadow-[0_18px_40px_rgba(64,194,255,0.35)] transition hover:-translate-y-[1px] hover:shadow-[0_22px_48px_rgba(64,194,255,0.45)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)]"
-                        >
-                            Ir a Contacto
-                        </a>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    );
+const industries = [
+  {
+    name: "Retail & eCommerce",
+    description:
+      "Conversión, OMS, personalización y fidelización.",
+  },
+  {
+    name: "Servicios Financieros",
+    description:
+      "Cumplimiento, scoring, antifraude y apps seguras.",
+  },
+  {
+    name: "Salud",
+    description:
+      "Interoperabilidad, privacidad y experiencias del paciente.",
+  },
+  {
+    name: "Manufactura",
+    description: "IoT, trazabilidad y mantenimiento predictivo.",
+  },
+  {
+    name: "Telecom",
+    description: "Provisionamiento, billing y experiencia digital.",
+  },
+];
+
+const caseStudies = [
+  {
+    title: "Checkout 3× más rápido",
+    result:
+      "Redujimos TTFB 42% y mejoramos conversión 18% en 8 semanas.",
+  },
+  {
+    title: "Migración a nube segura",
+    result:
+      "De monolito a microservicios con 99.95% uptime y -27% costos.",
+  },
+  {
+    title: "Analítica accionable",
+    result:
+      "Dashboard ejecutivo con KPIs en tiempo real; decisiones semanales basadas en datos.",
+  },
+];
+
+const processSteps = [
+  {
+    title: "Descubrimiento",
+    description: "Metas, usuarios y restricciones claras.",
+  },
+  {
+    title: "Diseño de solución",
+    description: "Arquitectura, riesgos y plan de entrega.",
+  },
+  {
+    title: "Construcción",
+    description: "Sprints con demo y feedback continuo.",
+  },
+  {
+    title: "Aseguramiento",
+    description:
+      "Pruebas, seguridad, observabilidad y hardening.",
+  },
+  {
+    title: "Despliegue y éxito",
+    description:
+      "Go-live asistido, medición y mejora continua.",
+  },
+];
+
+const differentiators = [
+  "Seniority comprobable, governance técnica y calidad medible.",
+  "Seguridad desde el diseño y cumplimiento práctico.",
+  "Entregas frecuentes con foco en impacto.",
+  "Co-creación con tu equipo: transferencia de conocimiento real.",
+];
+
+const badges = ["AWS Partner", "Google Cloud Partner", "ISO 27001"];
+
+const testimonials = [
+  {
+    quote:
+      "Techbox aceleró nuestro roadmap sin comprometer seguridad.",
+    author: "Carolina M., CIO",
+  },
+  {
+    quote:
+      "Pasamos de idea a MVP en semanas, con métricas claras.",
+    author: "Jorge R., VP Producto",
+  },
+];
+
+const faqItems = [
+  {
+    question: "¿Cómo empieza un proyecto?",
+    answer:
+      "Con un workshop de descubrimiento para alinear objetivos y priorizar impacto.",
+  },
+  {
+    question: "¿Trabajan con equipos internos?",
+    answer:
+      "Sí, células mixtas y transferencia de conocimiento.",
+  },
+  {
+    question: "¿Cómo miden el éxito?",
+    answer:
+      "KPIs definidos al inicio y revisados cada sprint.",
+  },
+  {
+    question: "¿Tiempos de entrega?",
+    answer: "Ciclos cortos; roadmap validado en Descubrimiento.",
+  },
+  {
+    question: "¿Seguridad y cumplimiento?",
+    answer: "Seguridad by-design y estándares reconocidos.",
+  },
+  {
+    question: "¿Costos?",
+    answer:
+      "Propuestas transparentes; optimizamos TCO en cada fase.",
+  },
+];
+
+export default function ServicioDetallePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const service = services.find((item) => item.slug === params.slug);
+
+  if (!service) {
+    return notFound();
+  }
+
+  return (
+    <>
+      <Script
+        id="jsonld-servicios"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="bg-slate-950 text-slate-100">
+        <Hero
+          title="Impulsamos tu negocio con tecnología que sí mueve la aguja"
+          subtitle="Consultoría, ingeniería y productos digitales para lanzar más rápido, operar con confianza y crecer con datos."
+          primaryCta={{ href: "#cta", label: "Habla con un experto" }}
+          secondaryCta={{ href: "#casos", label: "Ver casos de éxito" }}
+        />
+        <section id="propuesta" className="mx-auto max-w-6xl px-4 py-16">
+          <ValuePillars pillars={pillars} />
+        </section>
+        <section id="practicas" className="bg-slate-900/60">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <Practices practices={practices} />
+          </div>
+        </section>
+        <section id="industrias" className="mx-auto max-w-6xl px-4 py-16">
+          <Industries industries={industries} />
+        </section>
+        <section id="casos" className="bg-slate-900/60">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <CaseStudies caseStudies={caseStudies} />
+          </div>
+        </section>
+        <section id="proceso" className="mx-auto max-w-6xl px-4 py-16">
+          <Process steps={processSteps} />
+        </section>
+        <section id="diferenciales" className="bg-slate-900/60">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <Differentiators differentiators={differentiators} />
+            <Badges badges={badges} />
+          </div>
+        </section>
+        <section id="testimonios" className="mx-auto max-w-6xl px-4 py-16">
+          <Testimonials testimonials={testimonials} />
+        </section>
+        <section id="faq" className="bg-slate-900/60">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <FAQ items={faqItems} />
+          </div>
+        </section>
+        <section id="cta" className="mx-auto max-w-6xl px-4 py-16">
+          <FinalCTAWithForm />
+        </section>
+      </main>
+    </>
+  );
 }
