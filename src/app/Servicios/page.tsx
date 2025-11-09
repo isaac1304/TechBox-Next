@@ -1,34 +1,59 @@
-import ServiceCard from "@/components/ServiceCard";
-import serviciosData from "@/data/servicios.json";
+import type { Metadata } from "next";
+import Script from "next/script";
 
-type Servicio = {
-  slug: string;
-  titulo: string;
-  descripcion: string;
+import { Badges } from "./components/Badges";
+import { CaseStudies } from "./components/CaseStudies";
+import { Differentiators } from "./components/Differentiators";
+import { FAQ } from "./components/FAQ";
+import { FinalCTAWithForm } from "./components/FinalCTAWithForm";
+import { Hero } from "./components/Hero";
+import { Industries } from "./components/Industries";
+import { Practices } from "./components/Practices";
+import { Process } from "./components/Process";
+import { Testimonials } from "./components/Testimonials";
+import { ValuePillars } from "./components/ValuePillars";
+
+const description =
+  "Consultoría, ingeniería y productos digitales de Techbox para lanzar más rápido, operar con confianza y crecer con datos accionables en Latinoamérica.";
+
+export const metadata: Metadata = {
+  title: "Servicios | Techbox",
+  description,
 };
 
-const services = (serviciosData as Servicio[]).map(({ slug, titulo, descripcion }) => ({
-  id: slug,
-  title: titulo,
-  desc: descripcion,
-  href: `/Servicios/${slug}`,
-}));
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Techbox",
+  url: "https://techbox.cr/Servicios",
+  areaServed: "Latin America",
+  description,
+  sameAs: [],
+};
 
-export default function Page() {
+export default function ServiciosPage() {
   return (
-    <main className="py-10">
-      <section className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold">Nuestros Servicios</h1>
-          <p className="mt-2 text-sm opacity-80">
-            Soluciones que combinan ingeniería, datos y automatización con resultados medibles.
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[10.5rem]">
-          {services.map((s) => <ServiceCard key={s.id} {...s} />)}
-        </div>
-      </section>
+    <main className="flex flex-col">
+      <Script
+        id="jsonld-professional-service"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Hero
+        // videoSrc="/media/hero-techbox.mp4"           // NO incluir este archivo en el PR
+        // posterSrc="/media/hero-techbox-poster.jpg"   // NO incluir este archivo en el PR
+      />
+      <ValuePillars />
+      <Practices />
+      <Industries />
+      <CaseStudies />
+      <Process />
+      <Differentiators />
+      <Badges />
+      <Testimonials />
+      <FAQ />
+      <FinalCTAWithForm />
     </main>
   );
 }
