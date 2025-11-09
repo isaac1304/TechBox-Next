@@ -25,24 +25,23 @@ const services = [
   { slug: "transformacion", name: "Transformación" },
 ];
 
+const description =
+  "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.";
+
 export const metadata: Metadata = {
   title: "Servicios | Techbox",
-  description:
-    "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.",
+  description,
 };
 
 export async function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-const jsonLd = {
+const baseJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Techbox Servicios",
-  url: "https://www.techbox.cr/Servicios",
   areaServed: "Latin America",
-  description:
-    "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.",
+  description,
   sameAs: [],
 };
 
@@ -226,16 +225,24 @@ const faqItems = [
   },
 ];
 
-export default function ServicioDetallePage({
+export default async function ServicioDetallePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const service = services.find((item) => item.slug === params.slug);
+  const { slug } = await params;
+
+  const service = services.find((item) => item.slug === slug);
 
   if (!service) {
     return notFound();
   }
+
+  const jsonLd = {
+    ...baseJsonLd,
+    name: `Techbox Servicios - ${service.name}`,
+    url: `https://www.techbox.cr/Servicios/${service.slug}`,
+  };
 
   return (
     <>
