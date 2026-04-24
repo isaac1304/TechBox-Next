@@ -3,7 +3,7 @@ export const site = {
   domain: 'techbox.cr',
   email: 'gerencia@techbox.cr',
   phone: '+506 7016-5606',
-  whatsapp: 'https://wa.me/50600000000',
+  whatsapp: 'https://wa.me/message/D56BK4UPJ5IDJ1',
   whatsappLabel: 'Escribir por WhatsApp',
   calendly: 'https://calendly.com/techbox/consulta',
   location: 'Heredia, Costa Rica',
