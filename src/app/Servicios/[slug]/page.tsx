@@ -1,229 +1,32 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Script from "next/script";
-import Hero from "./components/Hero";
-import ValuePillars from "./components/ValuePillars";
-import Practices from "./components/Practices";
-import Industries from "./components/Industries";
-import CaseStudies from "./components/CaseStudies";
-import Process from "./components/Process";
-import Differentiators from "./components/Differentiators";
-import Badges from "./components/Badges";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import FinalCTAWithForm from "./components/FinalCTAWithForm";
-
-const services = [
-  { slug: "software", name: "Software" },
-  { slug: "automatizacion", name: "Automatización" },
-  { slug: "analytics", name: "Analytics" },
-  { slug: "bigdata", name: "Big Data" },
-  { slug: "ciberseguridad", name: "Ciberseguridad" },
-  { slug: "consultoria", name: "Consultoría" },
-  { slug: "mantenimiento", name: "Mantenimiento" },
-  { slug: "nube", name: "Nube" },
-  { slug: "transformacion", name: "Transformación" },
-];
-
-const description =
-  "Consultoría, ingeniería y analítica de Techbox para lanzar productos rápido, operar con seguridad y crecer con datos medibles en toda Latinoamérica empresarial.";
-
-export const metadata: Metadata = {
-  title: "Servicios | Techbox",
-  description,
-};
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, AlertTriangle, Sparkles } from 'lucide-react';
+import { services, getServiceBySlug } from '@/data/services';
+import { LinkButton } from '@/components/Button';
+import SectionHeading from '@/components/SectionHeading';
+import ServiceCard from '@/components/ServiceCard';
+import ServiceIcon from '@/components/ServiceIcon';
+import CTASection from '@/components/CTASection';
+import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return services.map((s) => ({ slug: s.slug }));
 }
 
-const baseJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  areaServed: "Latin America",
-  description,
-  sameAs: [],
-};
-
-const pillars = [
-  {
-    title: "Velocidad con calidad",
-    description:
-      "Entregamos valor en ciclos cortos, con estándares de ingeniería modernos.",
-  },
-  {
-    title: "Arquitectura segura",
-    description:
-      "Diseño con seguridad por defecto, cumplimiento y observabilidad.",
-  },
-  {
-    title: "Datos accionables",
-    description:
-      "Métricas, analítica y ML alineados a KPIs de negocio.",
-  },
-  {
-    title: "Equipo a tu medida",
-    description:
-      "Células cross-funcionales que se integran con tu organización.",
-  },
-];
-
-const practices = [
-  {
-    title: "Estrategia y Descubrimiento",
-    description:
-      "Alineamos objetivos, medimos impacto y definimos roadmap priorizado.",
-    results: [
-      "Resultados: backlog priorizado, prototipos, estimaciones y métricas de éxito.",
-    ],
-  },
-  {
-    title: "Desarrollo de Productos Digitales",
-    description:
-      "Frontend, backend y mobile con CI/CD, testing y performance desde el día uno.",
-    results: [
-      "Resultados: releases frecuentes, deuda técnica controlada, UX medible.",
-    ],
-  },
-  {
-    title: "Modernización y Cloud",
-    description:
-      "Migraciones, contenedores, observabilidad, seguridad y costes optimizados.",
-    results: [
-      "Resultados: resiliencia, escalabilidad y time-to-market reducido.",
-    ],
-  },
-  {
-    title: "Data, Analytics & AI",
-    description:
-      "Data pipelines, gobernanza, dashboards y casos de ML generativos/classic.",
-    results: [
-      "Resultados: decisiones con datos, automatización y crecimiento eficiente.",
-    ],
-  },
-];
-
-const industries = [
-  {
-    name: "Retail & eCommerce",
-    description:
-      "Conversión, OMS, personalización y fidelización.",
-  },
-  {
-    name: "Servicios Financieros",
-    description:
-      "Cumplimiento, scoring, antifraude y apps seguras.",
-  },
-  {
-    name: "Salud",
-    description:
-      "Interoperabilidad, privacidad y experiencias del paciente.",
-  },
-  {
-    name: "Manufactura",
-    description: "IoT, trazabilidad y mantenimiento predictivo.",
-  },
-  {
-    name: "Telecom",
-    description: "Provisionamiento, billing y experiencia digital.",
-  },
-];
-
-const caseStudies = [
-  {
-    title: "Checkout 3× más rápido",
-    result:
-      "Redujimos TTFB 42% y mejoramos conversión 18% en 8 semanas.",
-  },
-  {
-    title: "Migración a nube segura",
-    result:
-      "De monolito a microservicios con 99.95% uptime y -27% costos.",
-  },
-  {
-    title: "Analítica accionable",
-    result:
-      "Dashboard ejecutivo con KPIs en tiempo real; decisiones semanales basadas en datos.",
-  },
-];
-
-const processSteps = [
-  {
-    title: "Descubrimiento",
-    description: "Metas, usuarios y restricciones claras.",
-  },
-  {
-    title: "Diseño de solución",
-    description: "Arquitectura, riesgos y plan de entrega.",
-  },
-  {
-    title: "Construcción",
-    description: "Sprints con demo y feedback continuo.",
-  },
-  {
-    title: "Aseguramiento",
-    description:
-      "Pruebas, seguridad, observabilidad y hardening.",
-  },
-  {
-    title: "Despliegue y éxito",
-    description:
-      "Go-live asistido, medición y mejora continua.",
-  },
-];
-
-const differentiators = [
-  "Seniority comprobable, governance técnica y calidad medible.",
-  "Seguridad desde el diseño y cumplimiento práctico.",
-  "Entregas frecuentes con foco en impacto.",
-  "Co-creación con tu equipo: transferencia de conocimiento real.",
-];
-
-const badges = ["AWS Partner", "Google Cloud Partner", "ISO 27001"];
-
-const testimonials = [
-  {
-    quote:
-      "Techbox aceleró nuestro roadmap sin comprometer seguridad.",
-    author: "Carolina M., CIO",
-  },
-  {
-    quote:
-      "Pasamos de idea a MVP en semanas, con métricas claras.",
-    author: "Jorge R., VP Producto",
-  },
-];
-
-const faqItems = [
-  {
-    question: "¿Cómo empieza un proyecto?",
-    answer:
-      "Con un workshop de descubrimiento para alinear objetivos y priorizar impacto.",
-  },
-  {
-    question: "¿Trabajan con equipos internos?",
-    answer:
-      "Sí, células mixtas y transferencia de conocimiento.",
-  },
-  {
-    question: "¿Cómo miden el éxito?",
-    answer:
-      "KPIs definidos al inicio y revisados cada sprint.",
-  },
-  {
-    question: "¿Tiempos de entrega?",
-    answer: "Ciclos cortos; roadmap validado en Descubrimiento.",
-  },
-  {
-    question: "¿Seguridad y cumplimiento?",
-    answer: "Seguridad by-design y estándares reconocidos.",
-  },
-  {
-    question: "¿Costos?",
-    answer:
-      "Propuestas transparentes; optimizamos TCO en cada fase.",
-  },
-];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+  if (!service) return { title: 'Servicio no encontrado' };
+  return {
+    title: service.title,
+    description: service.description,
+  };
+}
 
 export default async function ServicioDetallePage({
   params,
@@ -231,71 +34,151 @@ export default async function ServicioDetallePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const service = getServiceBySlug(slug);
+  if (!service) return notFound();
 
-  const service = services.find((item) => item.slug === slug);
-
-  if (!service) {
-    return notFound();
-  }
-
-  const jsonLd = {
-    ...baseJsonLd,
-    name: `Techbox Servicios - ${service.name}`,
-    url: `https://www.techbox.cr/Servicios/${service.slug}`,
-  };
+  const related = service.relatedServices
+    .map((s) => getServiceBySlug(s))
+    .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
     <>
-      <Script
-        id="jsonld-servicios"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <main className="bg-slate-950 text-slate-100">
-        <Hero
-          title="Impulsamos tu negocio con tecnología que sí mueve la aguja"
-          subtitle="Consultoría, ingeniería y productos digitales para lanzar más rápido, operar con confianza y crecer con datos."
-          primaryCta={{ href: "#cta", label: "Habla con un experto" }}
-          secondaryCta={{ href: "#casos", label: "Ver casos de éxito" }}
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:px-6">
+          <div className="flex flex-col gap-5">
+            <Link
+              href="/servicios"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
+            >
+              ← Servicios
+            </Link>
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+              <ServiceIcon name={service.icon} className="h-3.5 w-3.5" />
+              {service.tagline}
+            </span>
+            <h1 className="text-[2.25rem] font-semibold leading-tight text-[var(--text)] md:text-[3rem]">
+              {service.title}
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
+              {service.longDescription}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <LinkButton href={site.calendly} external variant="primary">
+                Agendar diagnóstico <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+              <LinkButton href={site.whatsapp} external variant="whatsapp">
+                Escribir por WhatsApp
+              </LinkButton>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="card flex flex-col gap-4 p-7">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gradient-brand)] text-white shadow-[0_12px_30px_-12px_rgba(42,47,115,0.6)]">
+                <ServiceIcon name={service.icon} className="h-7 w-7" />
+              </span>
+              <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                Qué incluye
+              </h2>
+              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {service.features.map((f) => (
+                  <li
+                    key={f}
+                    className="flex items-start gap-2 text-sm text-[var(--text-muted)]"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal)]" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem / Solution */}
+      <section className="mx-auto grid w-full max-w-6xl gap-5 px-4 pb-20 md:grid-cols-2 lg:px-6">
+        <div className="card flex flex-col gap-4 p-7">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+            <AlertTriangle className="h-4 w-4 text-[var(--brand-navy)] dark:text-[var(--brand-teal)]" />
+            El problema
+          </div>
+          <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+            {service.problem}
+          </p>
+        </div>
+        <div className="card flex flex-col gap-4 p-7">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+            <Sparkles className="h-4 w-4 text-[var(--brand-teal)]" />
+            Cómo lo resolvemos
+          </div>
+          <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+            {service.solution}
+          </p>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
+        <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
+          <SectionHeading
+            eyebrow="Beneficios"
+            title={<>Lo que <span className="text-gradient-brand">gana tu negocio</span></>}
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {service.benefits.map((b) => (
+              <article key={b.title} className="card flex flex-col gap-3 p-7">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <h3 className="text-base font-semibold text-[var(--text)]">{b.title}</h3>
+                <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+                  {b.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use cases */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-20 lg:px-6">
+        <SectionHeading
+          eyebrow="Ejemplos"
+          title="Cómo se ve en la práctica"
+          description="Escenarios reales donde este servicio entrega valor desde las primeras semanas."
         />
-        <section id="propuesta" className="mx-auto max-w-6xl px-4 py-16">
-          <ValuePillars pillars={pillars} />
-        </section>
-        <section id="practicas" className="bg-slate-900/60">
-          <div className="mx-auto max-w-6xl px-4 py-16">
-            <Practices practices={practices} />
+        <div className="mt-10 grid gap-3 md:grid-cols-2">
+          {service.useCases.map((u) => (
+            <div
+              key={u}
+              className="card flex items-start gap-3 p-5 text-sm text-[var(--text-muted)]"
+            >
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal)]" />
+              {u}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Related */}
+      {related.length > 0 && (
+        <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+          <SectionHeading
+            eyebrow="Continúa"
+            title="Servicios que suelen ir de la mano"
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {related.map((r) => (
+              <ServiceCard key={r.slug} service={r} />
+            ))}
           </div>
         </section>
-        <section id="industrias" className="mx-auto max-w-6xl px-4 py-16">
-          <Industries industries={industries} />
-        </section>
-        <section id="casos" className="bg-slate-900/60">
-          <div className="mx-auto max-w-6xl px-4 py-16">
-            <CaseStudies caseStudies={caseStudies} />
-          </div>
-        </section>
-        <section id="proceso" className="mx-auto max-w-6xl px-4 py-16">
-          <Process steps={processSteps} />
-        </section>
-        <section id="diferenciales" className="bg-slate-900/60">
-          <div className="mx-auto max-w-6xl px-4 py-16">
-            <Differentiators differentiators={differentiators} />
-            <Badges badges={badges} />
-          </div>
-        </section>
-        <section id="testimonios" className="mx-auto max-w-6xl px-4 py-16">
-          <Testimonials testimonials={testimonials} />
-        </section>
-        <section id="faq" className="bg-slate-900/60">
-          <div className="mx-auto max-w-6xl px-4 py-16">
-            <FAQ items={faqItems} />
-          </div>
-        </section>
-        <section id="cta" className="mx-auto max-w-6xl px-4 py-16">
-          <FinalCTAWithForm />
-        </section>
-      </main>
+      )}
+
+      <section className="pb-24">
+        <CTASection />
+      </section>
     </>
   );
 }

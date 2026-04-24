@@ -1,21 +1,42 @@
-import blog from '@/data/blog.json'
-import Link from 'next/link'
+import type { Metadata } from 'next';
+import SectionHeading from '@/components/SectionHeading';
+import BlogCard from '@/components/BlogCard';
+import CTASection from '@/components/CTASection';
+import { blogPosts } from '@/data/blog';
 
-export default function BlogList() {
-    return (
-        <div className="mx-auto max-w-4xl px-6 py-12 text-slate-700 dark:text-slate-200">
-            <h1 className="mb-6 text-3xl font-bold text-slate-900 dark:text-white">Nuestro Blog</h1>
-            <ul className="space-y-6">
-                {blog.map(post => (
-                    <li key={post.slug}>
-                        <Link href={`/Blog/${post.slug}`} className="card-surface block rounded-2xl border border-slate-700/40 px-4 py-3 shadow-sm transition">
-                            <h2 className="text-xl font-semibold text-[var(--card-text)]">{post.titulo}</h2>
-                            <p className="text-slate-200/80">{post.resumen}</p>
-                            <span className="text-sm text-slate-200/60">{post.fecha}</span>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Artículos prácticos sobre automatización, cloud, ciberseguridad y datos para pymes. Publicados por el equipo de TechBox.',
+};
+
+export default function BlogPage() {
+  const sorted = [...blogPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  return (
+    <>
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
+        <SectionHeading
+          eyebrow="Blog"
+          title={<>Ideas prácticas para <span className="text-gradient-brand">equipos que crecen</span></>}
+          description="Escribimos sobre automatización, cloud, ciberseguridad y datos desde la práctica. Sin humo y sin lenguaje técnico innecesario."
+        />
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {sorted.map((p) => (
+            <BlogCard key={p.slug} post={p} />
+          ))}
         </div>
-    )
+      </section>
+
+      <section className="pb-24">
+        <CTASection
+          title="¿Quieres ver un tema específico?"
+          description="Escríbenos y lo ponemos en la lista. Respondemos consultas reales que llegan desde pymes."
+        />
+      </section>
+    </>
+  );
 }
