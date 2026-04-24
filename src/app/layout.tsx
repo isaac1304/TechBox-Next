@@ -1,27 +1,64 @@
-// app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
-import './overrides.css';
 import Header from '@/components/Header';
-import CalendlyBadge from '@/components/CalendlyBadge';
+import Footer from '@/components/Footer';
+import WhatsAppFloating from '@/components/WhatsAppFloating';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
+const siteUrl = 'https://techbox.cr';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'TechBox | Software, cloud y automatización para pymes',
+    template: '%s | TechBox',
+  },
+  description:
+    'TechBox ayuda a pequeñas y medianas empresas en Costa Rica a crear software, automatizar procesos, implementar infraestructura cloud, mejorar su ciberseguridad y tomar mejores decisiones con datos.',
+  keywords: [
+    'TechBox',
+    'Costa Rica',
+    'software pymes',
+    'automatización',
+    'cloud',
+    'ciberseguridad',
+    'Power BI',
+    'consultoría tecnológica',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'es_CR',
+    url: siteUrl,
+    siteName: 'TechBox',
+    title: 'TechBox | Software, cloud y automatización para pymes',
+    description:
+      'Tecnología práctica para hacer crecer tu negocio. Software, cloud, automatización, ciberseguridad y datos para pymes en Costa Rica.',
+  },
+  twitter: {
+    card: 'summary_large_image',
     title: 'TechBox',
-    description: 'Soluciones para PYMES: software, cloud y automatización',
+    description:
+      'Tecnología práctica para hacer crecer tu negocio en Costa Rica y LatAm.',
+  },
+  icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <html lang="es" suppressHydrationWarning>
-        <body className="antialiased transition-colors duration-300" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
-        <Header />
-        <main className="site-main">{children}</main>
-        {/* Badge flotante de Calendly */}
-        <CalendlyBadge />
+  return (
+    <html lang="es" suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Header />
+          <main className="site-main">{children}</main>
+          <Footer />
+          <WhatsAppFloating />
         </ThemeProvider>
-        </body>
-        </html>
-    );
+      </body>
+    </html>
+  );
 }

@@ -1,171 +1,231 @@
 import Link from 'next/link';
-import WhyTechbox from '@/components/WhyTechbox';
-import HeroServiceGrid from '@/components/HeroServiceGrid';
+import {
+  Layers,
+  TrendingUp,
+  HandshakeIcon,
+  Target,
+  ArrowRight,
+  AlertTriangle,
+  CheckCircle2,
+} from 'lucide-react';
+import { LinkButton } from '@/components/Button';
+import SectionHeading from '@/components/SectionHeading';
+import ServiceCard from '@/components/ServiceCard';
+import ValueCard from '@/components/ValueCard';
+import UseCaseCard from '@/components/UseCaseCard';
+import ProcessStep from '@/components/ProcessStep';
+import CTASection from '@/components/CTASection';
+import PixelMosaic from '@/components/PixelMosaic';
+import { services } from '@/data/services';
+import { useCases } from '@/data/useCases';
+import { site } from '@/lib/site';
 
-const solutionCards = [
-    {
-        title: 'Soluciones llave en mano',
-        desc: 'Implementamos soluciones escalables listas para operar, con soporte continuo y monitoreo.',
-    },
-    {
-        title: 'Transformación Digital',
-        desc: 'Llevamos tu negocio al siguiente nivel conectando procesos, personas y tecnología en un roadmap claro.',
-    },
-    {
-        title: 'Expertos en Cloud',
-        desc: 'Diseñamos plataformas sobre Google Cloud y AWS para escalar sin fricciones y con costos controlados.',
-    },
-    {
-        title: 'Ciberseguridad integrada',
-        desc: 'Tu información y la de tus clientes protegida desde el primer sprint con protocolos certificados.',
-    },
+const values = [
+  {
+    title: 'Soluciones a la medida',
+    description:
+      'Nada de plantillas genéricas. Cada proyecto se diseña según cómo opera tu negocio.',
+    icon: <Layers className="h-5 w-5" />,
+  },
+  {
+    title: 'Tecnología escalable',
+    description:
+      'Construimos sobre bases modernas para que el software crezca con tu empresa.',
+    icon: <TrendingUp className="h-5 w-5" />,
+  },
+  {
+    title: 'Acompañamiento cercano',
+    description:
+      'Hablamos tu idioma: claro, directo y enfocado en resultados concretos.',
+    icon: <HandshakeIcon className="h-5 w-5" />,
+  },
+  {
+    title: 'Enfoque en resultados',
+    description:
+      'Medimos el impacto en tiempo, errores y decisiones, no solo en entregables.',
+    icon: <Target className="h-5 w-5" />,
+  },
+];
+
+const painPoints = [
+  'Procesos manuales que consumen horas cada semana',
+  'Sistemas desconectados entre ventas, operación y finanzas',
+  'Poca visibilidad sobre lo que realmente pasa en el negocio',
+  'Riesgos de ciberseguridad sin un plan claro',
+  'Sin un equipo técnico interno para liderar el cambio',
+];
+
+const solutions = [
+  'Automatizaciones que ahorran tiempo desde la primera semana',
+  'Sistemas y datos integrados en una sola vista',
+  'Tableros claros para gerencia y equipos operativos',
+  'Controles de seguridad básicos y efectivos',
+  'Un equipo externo que se integra como si fuera propio',
+];
+
+const processSteps = [
+  { title: 'Diagnóstico inicial', description: 'Escuchamos tu negocio y revisamos cómo opera hoy.' },
+  { title: 'Propuesta clara', description: 'Definimos alcance, plazos e inversión antes de empezar.' },
+  { title: 'Diseño y desarrollo', description: 'Iteramos contigo con entregas tempranas y visibles.' },
+  { title: 'Implementación', description: 'Desplegamos, migramos datos y capacitamos al equipo.' },
+  { title: 'Soporte continuo', description: 'Acompañamos la evolución y mejoramos con el uso real.' },
 ];
 
 export default function HomePage() {
-    return (
-        <main className="relative isolate overflow-hidden">
-            <div className="pointer-events-none absolute -left-[25%] top-[-10%] h-[640px] w-[640px] rounded-full bg-[radial-gradient(circle_at_center,rgba(83,182,255,0.3),transparent_60%)] blur-3xl" />
-            <div className="pointer-events-none absolute -right-[20%] top-[10%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(125,123,255,0.32),transparent_60%)] blur-3xl" />
+  return (
+    <>
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 md:py-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:px-6">
+          <div className="flex flex-col gap-6">
+            <span className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+              Consultoría tecnológica · Costa Rica
+            </span>
+            <h1 className="text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-[var(--text)] md:text-[3.25rem]">
+              Tecnología práctica para{' '}
+              <span className="text-gradient-brand">hacer crecer tu negocio</span>
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
+              En TechBox ayudamos a pequeñas y medianas empresas a crear software,
+              automatizar procesos, proteger su información y aprovechar la nube
+              sin complicaciones.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <LinkButton href={site.calendly} external variant="primary">
+                Agendar consulta <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+              <LinkButton href="/servicios" variant="secondary">
+                Ver servicios
+              </LinkButton>
+            </div>
+            <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-[var(--text-soft)]">
+              <span>✓ Diagnóstico sin costo</span>
+              <span>✓ Propuesta en 5 días hábiles</span>
+              <span>✓ Equipo senior</span>
+            </div>
+          </div>
+          <div className="relative">
+            <PixelMosaic size={6} className="max-w-md mx-auto" />
+          </div>
+        </div>
+      </section>
 
-            {/* HERO GRID */}
-            <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 pb-24 pt-28 text-center lg:px-6">
-                <div className="max-w-3xl space-y-4">
-                    <span className="inline-flex items-center justify-center rounded-full border border-slate-200/80 bg-white/70 px-4 py-1 text-[12px] font-semibold uppercase tracking-[0.24em] text-slate-600 dark:border-white/[0.18] dark:bg-white/[0.12] dark:text-white/80">
-                        Explora nuestras soluciones
-                    </span>
-                    <h1 className="text-4xl font-semibold leading-tight text-slate-900 dark:text-white md:text-[3.25rem] md:leading-[1.05]">
-                        Interactúa con nuestras{' '}
-                        <span className="bg-gradient-to-r from-[#67e1ff] via-[#8fd3ff] to-[#9e8aff] bg-clip-text text-transparent">
-                            experiencias digitales
-                        </span>
-                    </h1>
-                    <p className="text-lg leading-relaxed text-slate-600 dark:text-white/85">
-                        Cada tarjeta revela cómo la automatización, los datos y la nube pueden impulsar tu empresa. Haz hover o toca para descubrir el impacto de cada servicio.
-                    </p>
-                </div>
+      {/* VALUE CARDS */}
+      <section className="mx-auto w-full max-w-6xl px-4 pb-10 md:pb-16 lg:px-6">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {values.map((v) => (
+            <ValueCard key={v.title} {...v} />
+          ))}
+        </div>
+      </section>
 
-                <HeroServiceGrid />
+      {/* SERVICES PREVIEW */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 lg:px-6">
+        <SectionHeading
+          eyebrow="Servicios"
+          title={<>Soluciones tecnológicas <span className="text-gradient-brand">de extremo a extremo</span></>}
+          description="Te acompañamos desde el diagnóstico hasta el soporte continuo, con servicios que se combinan según lo que tu negocio necesita."
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <ServiceCard key={s.slug} service={s} />
+          ))}
+        </div>
+      </section>
 
-            </section>
+      {/* WHY TECHBOX */}
+      <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:px-6">
+          <div className="flex flex-col gap-6">
+            <span className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+              ¿Por qué TechBox?
+            </span>
+            <h2 className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
+              Entendemos las{' '}
+              <span className="text-gradient-brand">trabas reales</span> de las pymes
+            </h2>
+            <p className="text-base leading-relaxed text-[var(--text-muted)]">
+              Las empresas pequeñas y medianas suelen cargar con procesos manuales,
+              sistemas desconectados y poca visibilidad. Sin un equipo técnico interno,
+              cada decisión tecnológica se siente arriesgada. Nosotros hacemos ese
+              trabajo contigo.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="card flex flex-col gap-3 p-6">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                <AlertTriangle className="h-4 w-4 text-[var(--brand-navy)] dark:text-[var(--brand-teal)]" />
+                Lo que vemos
+              </div>
+              <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
+                {painPoints.map((p) => (
+                  <li key={p} className="flex items-start gap-2">
+                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-navy-300)]" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="card flex flex-col gap-3 p-6">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
+                <CheckCircle2 className="h-4 w-4 text-[var(--brand-teal)]" />
+                Lo que resolvemos
+              </div>
+              <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
+                {solutions.map((s) => (
+                  <li key={s} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal)]" />
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Narrativa */}
-            <section className="relative border-y border-slate-200/80 bg-white/80 py-20 backdrop-blur-sm dark:border-white/12 dark:bg-[rgba(7,11,30,0.72)]">
-                <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:items-center">
-                    <div>
-                        <h2 className="text-3xl font-semibold leading-tight text-slate-900 dark:text-white md:text-4xl">
-                            Descubre cómo podemos <span className="text-[var(--accent-ice)]">ayudar</span> a tu negocio
-                        </h2>
-                        <p className="mt-6 text-lg leading-relaxed text-slate-600 dark:text-white/85">
-                            Impulsamos el crecimiento, la eficiencia y la competitividad de tu empresa a través de soluciones tecnológicas innovadoras. Con automatizaciones, tableros y equipos enfocados, transformamos la forma en que las personas interactúan con tu negocio.
-                        </p>
-                        <Link
-                            href="/Blog"
-                            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-ice)] transition hover:text-slate-900 dark:hover:text-white"
-                        >
-                            Mira más
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </Link>
-                    </div>
-                    <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-indigo-50/70 p-8 shadow-[0_24px_48px_rgba(15,23,42,0.12)] dark:border-white/12 dark:bg-gradient-to-br dark:from-[rgba(12,19,48,0.55)] dark:to-[rgba(8,13,34,0.92)] dark:shadow-[0_32px_60px_rgba(2,6,23,0.5)]">
-                        <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Lo que obtienes</h3>
-                        <ul className="mt-6 space-y-4 text-slate-600 dark:text-white/85">
-                            <li className="flex items-start gap-3">
-                                <span className="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--accent-ice)]" />
-                                <span>Equipos senior que hablan negocio y tecnología, sin intermediarios.</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--accent-ice)]" />
-                                <span>Integraciones, automatizaciones y analítica construidas para escalar.</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--accent-ice)]" />
-                                <span>KPIs y tableros en vivo para tomar decisiones con confianza.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+      {/* USE CASES */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-20 lg:px-6">
+        <SectionHeading
+          eyebrow="Casos de uso"
+          title={<>Tecnología aplicada a <span className="text-gradient-brand">negocios reales</span></>}
+          description="Ejemplos basados en empresas como la tuya. Cada caso combina varios de nuestros servicios según el problema a resolver."
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {useCases.slice(0, 3).map((u) => (
+            <UseCaseCard key={u.id} useCase={u} />
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href="/casos-de-uso"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
+          >
+            Ver todos los casos <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
 
-            {/* Servicios destacados */}
-            <section className="mx-auto w-full max-w-6xl px-4 py-24 lg:px-6">
-                <div className="mx-auto max-w-3xl text-center">
-                    <h2 className="text-3xl font-semibold leading-tight text-slate-900 dark:text-white md:text-[2.7rem]">
-                        Desbloquea el poder de la <span className="text-transparent bg-gradient-to-r from-[#67e1ff] via-[#53b6ff] to-[#9e8aff] bg-clip-text">tecnología</span>
-                    </h2>
-                    <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-white/82">
-                        Diseñamos y ejecutamos soluciones adaptadas a cada etapa de tu empresa, manteniendo foco en valor y velocidad.
-                    </p>
-                </div>
-                <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                    {solutionCards.map((card) => (
-                        <article
-                            key={card.title}
-                            className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_24px_48px_rgba(15,23,42,0.12)] transition hover:-translate-y-2 hover:border-slate-300 hover:shadow-[0_30px_60px_rgba(15,23,42,0.16)] dark:border-white/15 dark:bg-[rgba(12,19,48,0.68)] dark:shadow-[0_28px_54px_rgba(2,6,23,0.52)] dark:hover:border-white/35 dark:hover:shadow-[0_36px_68px_rgba(2,6,23,0.65)]"
-                        >
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white">
-                                <span className="h-3 w-3 rounded-full bg-[var(--accent-ice)]" />
-                            </span>
-                            <h3 className="mt-6 text-xl font-semibold text-slate-900 dark:text-white">{card.title}</h3>
-                            <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-white/85">{card.desc}</p>
-                        </article>
-                    ))}
-                </div>
-            </section>
+      {/* PROCESS */}
+      <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
+        <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
+          <SectionHeading
+            eyebrow="Cómo trabajamos"
+            title={<>Un proceso claro, <span className="text-gradient-brand">sin sorpresas</span></>}
+            description="Pocas fases, objetivos medibles y comunicación constante. Así evitamos los proyectos que se alargan sin entregar valor."
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+            {processSteps.map((step, idx) => (
+              <ProcessStep key={step.title} step={idx + 1} {...step} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <section className="pb-24">
-                <WhyTechbox />
-
-                <div className="mx-auto mt-16 w-full max-w-6xl px-4">
-                    <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                        <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-indigo-50/70 p-10 shadow-[0_28px_54px_rgba(15,23,42,0.12)] dark:border-white/15 dark:bg-gradient-to-br dark:from-[rgba(8,14,36,0.92)] dark:to-[rgba(10,18,44,0.74)] dark:shadow-[0_34px_64px_rgba(2,6,23,0.56)]">
-                            <h3 className="text-[1.9rem] font-semibold leading-tight text-slate-900 dark:text-white">
-                                Da un paso al <span className="text-[var(--accent-ice)]">futuro</span> con nosotros
-                            </h3>
-                            <p className="mt-4 text-slate-600 dark:text-white/88">
-                                Agenda una sesión estratégica de 30 minutos para mapear oportunidades de automatización, data y productos digitales en tu empresa.
-                            </p>
-                            <Link
-                                href="/Contacto"
-                                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--accent-ice)] to-[var(--accent-teal)] px-6 py-3 font-semibold text-slate-900 shadow-[0_18px_46px_rgba(64,194,255,0.38)] transition hover:translate-y-[-1px] hover:shadow-[0_24px_54px_rgba(64,194,255,0.48)]"
-                            >
-                                Agendar una cita
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                    <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </Link>
-                        </div>
-
-                        <div className="grid gap-8 rounded-3xl border border-slate-200 bg-white/90 p-10 text-sm text-slate-600 shadow-[0_24px_48px_rgba(15,23,42,0.12)] dark:border-white/15 dark:bg-[rgba(7,11,30,0.72)] dark:text-white/85 dark:shadow-none">
-                            <div>
-                                <h4 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-600 dark:text-white/75">TechBox</h4>
-                                <p className="mt-3 text-lg font-semibold text-slate-900 dark:text-white">2025 Heredia, Costa Rica</p>
-                                <p className="mt-1">gerencia@techbox.cr</p>
-                                <p className="mt-1">+506 7016-5606</p>
-                            </div>
-                            <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
-                                <div>
-                                    <h5 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-white/72">Links rápidos</h5>
-                                    <ul className="mt-3 space-y-2 text-slate-600 dark:text-white/82">
-                                        <li><Link href="/Servicios" className="transition hover:text-slate-900 dark:hover:text-white">Servicios</Link></li>
-                                        <li><Link href="/Contacto" className="transition hover:text-slate-900 dark:hover:text-white">Agenda una cita</Link></li>
-                                        <li><Link href="/Blog" className="transition hover:text-slate-900 dark:hover:text-white">Blog</Link></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-white/72">Legal</h5>
-                                    <ul className="mt-3 space-y-2 text-slate-600 dark:text-white/82">
-                                        <li><span>Términos de servicio</span></li>
-                                        <li><span>Política de privacidad</span></li>
-                                        <li><span>Uso de cookies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+      {/* CTA */}
+      <section className="pb-24 pt-20">
+        <CTASection />
+      </section>
+    </>
+  );
 }
