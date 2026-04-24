@@ -43,8 +43,10 @@ export default function Header() {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    document.body.dataset.mobileMenuOpen = 'true';
     return () => {
       document.body.style.overflow = prev;
+      delete document.body.dataset.mobileMenuOpen;
     };
   }, [open]);
 
