@@ -64,16 +64,16 @@ export default function Header() {
             : 'border-[var(--border)] bg-[var(--surface)]/70 backdrop-blur-md',
         ].join(' ')}
       >
-        <Link href="/" aria-label="TechBox — Inicio" className="flex items-center gap-2">
+        <Link href="/" aria-label="TechBox — Inicio" className="flex items-center gap-2.5">
           <Image
             src="/brand/techbox-mark.png"
             alt="TechBox"
-            width={40}
-            height={40}
+            width={56}
+            height={56}
             priority
-            className="h-9 w-9 rounded-md object-contain"
+            className="h-11 w-11 rounded-lg object-contain md:h-12 md:w-12"
           />
-          <span className="hidden text-lg font-semibold tracking-tight text-[var(--text)] sm:block">
+          <span className="hidden text-xl font-semibold tracking-tight text-[var(--text)] sm:block">
             Tech<span className="text-[var(--brand-teal)]">Box</span>
           </span>
         </Link>
@@ -133,15 +133,15 @@ export default function Header() {
           />
           <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col gap-6 overflow-y-auto border-l border-[var(--border-strong)] bg-[var(--surface)] px-6 py-6 shadow-2xl">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+              <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
                 <Image
                   src="/brand/techbox-mark.png"
                   alt="TechBox"
-                  width={36}
-                  height={36}
-                  className="h-9 w-9 rounded-md object-contain"
+                  width={48}
+                  height={48}
+                  className="h-11 w-11 rounded-lg object-contain"
                 />
-                <span className="text-lg font-semibold text-[var(--text)]">
+                <span className="text-xl font-semibold text-[var(--text)]">
                   Tech<span className="text-[var(--brand-teal)]">Box</span>
                 </span>
               </Link>
