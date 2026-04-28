@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFloating from '@/components/WhatsAppFloating';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { SiteChromeGate } from '@/components/SiteChrome';
 
 const siteUrl = 'https://techbox.cr';
 
@@ -53,10 +54,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Header />
+          <SiteChromeGate>
+            <Header />
+          </SiteChromeGate>
           <main className="site-main">{children}</main>
-          <Footer />
-          <WhatsAppFloating />
+          <SiteChromeGate>
+            <Footer />
+            <WhatsAppFloating />
+          </SiteChromeGate>
         </ThemeProvider>
       </body>
     </html>
