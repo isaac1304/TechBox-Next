@@ -17,7 +17,7 @@ export default function ContactoPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Contacto"
-          title={<>Hablemos de <span className="text-gradient-brand">tu empresa</span></>}
+          title={<><span className="text-gradient-brand">Hablemos</span> de tu próximo proyecto</>}
           description="Cuéntanos qué quieres resolver o mejorar. Te respondemos en 1 a 2 días hábiles con próximos pasos claros."
         />
       </section>
@@ -44,7 +44,7 @@ export default function ContactoPage() {
             </ul>
             <div className="mt-2 flex flex-col gap-2">
               <LinkButton href={site.calendly} external variant="primary">
-                <CalendarCheck className="h-4 w-4" /> Agendar consulta
+                <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
                 <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}

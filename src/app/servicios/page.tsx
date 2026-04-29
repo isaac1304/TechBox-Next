@@ -16,7 +16,7 @@ export default function ServiciosPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Servicios"
-          title={<>Servicios tecnológicos <span className="text-gradient-brand">para pymes</span></>}
+          title={<>Servicios tecnológicos <span className="text-gradient-brand">para pymes sin equipo técnico</span></>}
           description="Combinamos ingeniería, datos y estrategia para resolver los problemas reales que frenan el crecimiento de tu empresa. Te acompañamos desde el diagnóstico hasta el soporte continuo."
         />
       </section>

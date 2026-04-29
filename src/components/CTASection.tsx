@@ -9,8 +9,8 @@ type Props = {
 };
 
 export default function CTASection({
-  title = 'Convirtamos tus ideas en soluciones tecnológicas reales',
-  description = 'Agenda una llamada de 30 minutos. Sin tecnicismos, sin compromisos: hablemos de tu negocio y cómo la tecnología puede ayudarte.',
+  title = 'Cuéntanos qué quieres resolver',
+  description = '30 minutos por videollamada. Salimos con una primera idea concreta de cómo abordarlo, no con una propuesta de venta.',
   className = '',
 }: Props) {
   return (
@@ -44,7 +44,7 @@ export default function CTASection({
               variant="secondary"
               className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
             >
-              <CalendarCheck className="h-4 w-4" /> Agendar consulta
+              <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
             </LinkButton>
           </div>
         </div>

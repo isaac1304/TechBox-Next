@@ -105,7 +105,7 @@ export default function Header() {
             variant="primary"
             className="hidden md:inline-flex"
           >
-            <CalendarCheck className="h-4 w-4" /> Agendar consulta
+            <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
           </LinkButton>
           <button
             type="button"
@@ -175,7 +175,7 @@ export default function Header() {
 
             <div className="mt-auto flex flex-col gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                <CalendarCheck className="h-4 w-4" /> Agendar consulta
+                <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
                 Escribir por WhatsApp
