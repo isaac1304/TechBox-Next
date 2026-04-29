@@ -22,9 +22,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="max-w-md text-sm leading-relaxed text-[var(--text-muted)]">
-            Tecnología práctica para pymes en Costa Rica y Latinoamérica.
-            Software, cloud, automatización, ciberseguridad y datos al
-            alcance de tu negocio.
+            Tecnología práctica para pymes. Costa Rica y LatAm.
           </p>
           <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
             <li className="inline-flex items-center gap-2">

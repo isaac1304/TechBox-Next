@@ -82,17 +82,16 @@ export default function HomePage() {
               Consultoría tecnológica · Costa Rica
             </span>
             <h1 className="text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-[var(--text)] md:text-[3.25rem]">
-              Tecnología práctica para{' '}
-              <span className="text-gradient-brand">hacer crecer tu negocio</span>
+              Software, nube y automatización{' '}
+              <span className="text-gradient-brand">para pymes sin equipo técnico</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
-              En TechBox ayudamos a pequeñas y medianas empresas a crear software,
-              automatizar procesos, proteger su información y aprovechar la nube
-              sin complicaciones.
+              Diagnosticamos qué frena tu operación y lo resolvemos con
+              tecnología que sí se usa. Sin tecnicismos, sin proyectos eternos.
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                Agendar consulta <ArrowRight className="h-4 w-4" />
+                Agendar diagnóstico <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <LinkButton href="/servicios" variant="secondary">
                 Ver servicios
@@ -101,7 +100,7 @@ export default function HomePage() {
             <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-[var(--text-soft)]">
               <span>✓ Diagnóstico sin costo</span>
               <span>✓ Propuesta en 5 días hábiles</span>
-              <span>✓ Equipo senior</span>
+              <span>✓ Sin permanencia mínima</span>
             </div>
           </div>
           <div className="relative">

@@ -18,7 +18,7 @@ export default function BlogPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Blog"
-          title={<>Ideas prácticas para <span className="text-gradient-brand">equipos que crecen</span></>}
+          title={<>Ideas prácticas para <span className="text-gradient-brand">operaciones que escalan</span></>}
           description="Escribimos sobre automatización, cloud, ciberseguridad y datos desde la práctica. Sin humo y sin lenguaje técnico innecesario."
         />
       </section>
