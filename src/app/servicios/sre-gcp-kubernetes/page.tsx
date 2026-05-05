@@ -161,6 +161,7 @@ const stackItems = [
   'Terraform',
   'HashiCorp Vault',
   'Jenkins',
+  'GitHub Actions',
   'Argo CD',
   'Docker',
   'Python',
@@ -467,7 +468,7 @@ export default function SREServicePage() {
             <p className="text-sm text-[var(--text-muted)]">
               Click en cada badge para verificar el credencial en Credly.
             </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2">
               {certifications.map((cert) => (
                 <div
                   key={cert.badgeId}
@@ -475,8 +476,8 @@ export default function SREServicePage() {
                   aria-label={cert.label}
                 >
                   <div
-                    data-iframe-width="150"
-                    data-iframe-height="270"
+                    data-iframe-width="380"
+                    data-iframe-height="340"
                     data-share-badge-id={cert.badgeId}
                     data-share-badge-host="https://www.credly.com"
                   />
