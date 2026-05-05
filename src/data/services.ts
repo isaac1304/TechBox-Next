@@ -11,13 +11,21 @@ export type Service = {
     | 'workflow'
     | 'shield'
     | 'chart'
-    | 'compass';
+    | 'compass'
+    | 'server-cog';
   features: string[];
   benefits: { title: string; description: string }[];
   useCases: string[];
   problem: string;
   solution: string;
   relatedServices: string[];
+  nextStep?: {
+    title: string;
+    description: string;
+    link: { href: string; label: string };
+  };
+  /** Si es true, el detalle se renderiza desde una ruta estática propia y se omite del template [slug]. */
+  hasCustomPage?: boolean;
 };
 
 export const services: Service[] = [
@@ -72,16 +80,16 @@ export const services: Service[] = [
     slug: 'infraestructura-cloud',
     title: 'Infraestructura cloud',
     shortTitle: 'Infraestructura cloud',
-    tagline: 'Nube confiable y con costos bajo control',
+    tagline: 'Tu primer paso a la nube, sin complicaciones',
     description:
-      'Configuramos, desplegamos y gestionamos infraestructura en la nube para que tu empresa opere de forma estable, segura y escalable.',
+      'Migramos y configuramos infraestructura cloud para empresas que están dando sus primeros pasos en la nube. Estable, segura y con costos bajo control desde el día uno.',
     longDescription:
-      'La nube no tiene que ser complicada ni costosa. Diseñamos arquitecturas sobre Google Cloud y AWS pensadas para pymes, con despliegues automatizados, monitoreo y optimización de costos desde el inicio. Migramos sistemas existentes, configuramos contenedores y preparamos tu operación para crecer sin sustos.',
+      'Pensado para empresas que recién migran de servidores locales o que necesitan ordenar una nube heredada. Diseñamos arquitecturas sobre Google Cloud y AWS pensadas para pymes, con despliegues automatizados, monitoreo y optimización de costos desde el inicio. Si tu producto ya está operando en producción a escala — con Kubernetes, microservicios o requerimientos de compliance — conocé también nuestra línea de SRE y Cloud Engineering.',
     icon: 'cloud',
     features: [
       'Arquitectura cloud (GCP y AWS)',
       'Migraciones desde servidores locales',
-      'Contenedores y Kubernetes',
+      'Contenedores básicos',
       'Pipelines de CI/CD',
       'Monitoreo y alertas',
       'Optimización de costos cloud',
@@ -112,8 +120,17 @@ export const services: Service[] = [
     problem:
       'Servidores viejos, backups manuales y despliegues frágiles son un riesgo silencioso. Una caída puede costar ventas y confianza.',
     solution:
-      'Llevamos tus sistemas a una nube gestionada con seguridad, backups automáticos, monitoreo y un plan de costos claro.',
-    relatedServices: ['ciberseguridad-pymes', 'desarrollo-software', 'consultoria-tecnologica'],
+      'Llevamos tus sistemas a una nube gestionada con seguridad, backups automáticos, monitoreo y un plan de costos claro. Para etapas más avanzadas (Kubernetes, Istio, compliance), te llevamos al siguiente nivel con nuestra línea de SRE.',
+    relatedServices: ['sre-gcp-kubernetes', 'ciberseguridad-pymes', 'consultoria-tecnologica'],
+    nextStep: {
+      title: '¿Tu producto ya está en producción?',
+      description:
+        'Si necesitás reliability avanzada — Kubernetes, Istio, observabilidad, compliance SOC2/PCI — el siguiente paso es nuestra línea de SRE y Cloud Engineering, especializada en operar producto digital a escala.',
+      link: {
+        href: '/servicios/sre-gcp-kubernetes',
+        label: 'Conocer SRE y Cloud Engineering',
+      },
+    },
   },
   {
     slug: 'automatizacion-procesos',
@@ -302,6 +319,54 @@ export const services: Service[] = [
     solution:
       'Un diagnóstico claro, decisiones priorizadas y un plan que tu equipo puede ejecutar con o sin nosotros.',
     relatedServices: ['desarrollo-software', 'infraestructura-cloud', 'analisis-datos-reportes'],
+  },
+  {
+    slug: 'sre-gcp-kubernetes',
+    title: 'SRE y Cloud Engineering en GCP y Kubernetes',
+    shortTitle: 'SRE y Cloud Engineering',
+    tagline: 'Confiabilidad enterprise para producto digital',
+    description:
+      'SRE fraccional especializado en GCP, Kubernetes e Istio. Para SaaS, fintechs y empresas escalando microservicios.',
+    longDescription:
+      'Confiabilidad de nivel enterprise para tu producto digital, sin contratar un equipo completo. SRE fraccional con 11+ años de experiencia operando producción a escala en entornos regulados.',
+    icon: 'server-cog',
+    features: [
+      'Especialización en GCP y GKE',
+      'Service mesh con Istio',
+      'Infraestructura como código (Terraform)',
+      'Hardening y compliance (SOC2, PCI)',
+      'Observabilidad y SLOs',
+      'Modelo fraccional por horas',
+    ],
+    benefits: [
+      {
+        title: 'Especialista, no generalista',
+        description:
+          'GCP, GKE e Istio son nuestro foco. No tocamos un poco de todo — operamos producción a escala.',
+      },
+      {
+        title: 'Costo de un fraccional',
+        description:
+          'Pagás solo las horas que necesitás. Sin headcount, sin onboarding largo, sin cargas sociales.',
+      },
+      {
+        title: 'Compliance hands-on',
+        description:
+          'Experiencia operando en entorno enterprise regulado SOC2/PCI. No es teoría — es día a día.',
+      },
+    ],
+    useCases: [
+      'Migración a Terraform para una empresa con infra manual',
+      'Implementación de Istio + observabilidad en cluster GKE',
+      'Setup GKE producción-ready con multi-tenant',
+      'Auditoría de costos y reliability en cuenta GCP existente',
+    ],
+    problem:
+      'Cuando tu producto crece — microservicios, Kubernetes, múltiples regiones, compliance — un cloud generalista se queda corto y contratar un SRE senior cuesta más de USD 100k/año.',
+    solution:
+      'Un SRE certificado (CKA, ICA) operando tu infra como fraccional. Sin headcount, con la experiencia de quien ya operó producción a escala en una Fortune 500 financiera.',
+    relatedServices: ['infraestructura-cloud', 'ciberseguridad-pymes', 'consultoria-tecnologica'],
+    hasCustomPage: true,
   },
 ];
 
