@@ -77,7 +77,7 @@ const differentiators = [
 const plans = [
   {
     name: 'Esencial',
-    price: '{{PRECIO_ESENCIAL}}',
+    price: '$1,200',
     cadence: '/mes',
     hours: '~8 horas mensuales',
     popular: false,
@@ -94,7 +94,7 @@ const plans = [
   },
   {
     name: 'Estándar',
-    price: '{{PRECIO_ESTANDAR}}',
+    price: '$2,200',
     cadence: '/mes',
     hours: '~16 horas mensuales',
     popular: true,
@@ -141,7 +141,7 @@ const oneOffs = [
     icon: Network,
     title: 'Service Mesh Readiness Assessment',
     duration: '1–2 semanas',
-    price: 'Desde {{PRECIO_ASSESSMENT}}',
+    price: 'Desde $2,000',
     description:
       'Evaluación para empresas considerando Istio o Linkerd. Análisis del stack actual y roadmap de implementación.',
     cta: { label: 'Solicitar info', href: site.whatsapp, external: true },
@@ -149,9 +149,9 @@ const oneOffs = [
 ];
 
 const turnkeyImplementations = [
-  { title: 'Migración a Terraform', price: 'Desde {{PRECIO_TERRAFORM}}' },
-  { title: 'Implementación Istio + observabilidad', price: 'Desde {{PRECIO_ISTIO}}' },
-  { title: 'Setup GKE producción-ready', price: 'Desde {{PRECIO_GKE}}' },
+  { title: 'Migración a Terraform', price: 'Desde $5,000' },
+  { title: 'Implementación Istio + observabilidad', price: 'Desde $9,000' },
+  { title: 'Setup GKE producción-ready', price: 'Desde $6,000' },
 ];
 
 const stackItems = [
