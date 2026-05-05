@@ -1,11 +1,8 @@
-import { existsSync } from 'node:fs';
-import path from 'node:path';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import {
   ArrowRight,
-  Award,
   CheckCircle2,
   Clock,
   Cloud,
@@ -171,37 +168,24 @@ const stackItems = [
   'Linux',
 ];
 
-const certificationsRaw = [
+const certifications = [
   {
-    image: '/brand/badges/cka.png',
-    name: 'Certified Kubernetes Administrator',
-    short: 'CKA',
-    issuer: 'CNCF · The Linux Foundation',
+    badgeId: 'c120126b-dc33-445a-a4f8-182200dfe425',
+    label: 'Certified Kubernetes Administrator',
   },
   {
-    image: '/brand/badges/ica.png',
-    name: 'Istio Certified Associate',
-    short: 'ICA',
-    issuer: 'CNCF · The Linux Foundation',
+    badgeId: '8f5e3a3a-e21f-4e42-b7f4-42409d431f33',
+    label: 'Istio Certified Associate',
   },
   {
-    image: '/brand/badges/terraform.png',
-    name: 'HashiCorp Certified: Terraform Associate',
-    short: 'Terraform Associate',
-    issuer: 'HashiCorp',
+    badgeId: '96c63672-58a8-494c-98cf-0f11ff492b46',
+    label: 'Google Cloud Digital Leader',
   },
   {
-    image: '/brand/badges/scrum.png',
-    name: 'Scrum Fundamentals Certified',
-    short: 'SFC',
-    issuer: 'SCRUMstudy',
+    badgeId: 'b1dc57b5-52d7-4eb1-a685-c09094343ccc',
+    label: 'HashiCorp Certified: Terraform Associate',
   },
 ];
-
-const certifications = certificationsRaw.map((cert) => ({
-  ...cert,
-  hasImage: existsSync(path.join(process.cwd(), 'public', cert.image)),
-}));
 
 const fitYes = [
   'SaaS B2B con producto en producción',
@@ -480,45 +464,29 @@ export default function SREServicePage() {
             <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--text-soft)]">
               Certificaciones verificables
             </h3>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <p className="text-sm text-[var(--text-muted)]">
+              Click en cada badge para verificar el credencial en Credly.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {certifications.map((cert) => (
-                <article
-                  key={cert.short}
-                  className="card flex flex-col items-center gap-3 p-6 text-center"
+                <div
+                  key={cert.badgeId}
+                  className="card flex flex-col items-center justify-center gap-3 p-5"
+                  aria-label={cert.label}
                 >
-                  {cert.hasImage ? (
-                    <div className="relative h-24 w-24 shrink-0">
-                      <Image
-                        src={cert.image}
-                        alt={`${cert.name} badge`}
-                        fill
-                        sizes="96px"
-                        className="object-contain"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      aria-hidden
-                      className="relative flex h-24 w-24 shrink-0 items-center justify-center rounded-full text-white shadow-[0_12px_28px_-12px_rgba(42,47,115,0.55)]"
-                      style={{ background: 'var(--gradient-brand)' }}
-                    >
-                      <Award className="absolute -right-1 -top-1 h-6 w-6 rounded-full bg-[var(--brand-teal)] p-1 text-white shadow-[0_6px_16px_-6px_rgba(46,196,182,0.7)]" />
-                      <span className="text-base font-bold tracking-wide">{cert.short}</span>
-                    </div>
-                  )}
-                  <div className="flex flex-col gap-1">
-                    <span className="inline-flex items-center justify-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)]">
-                      <Award className="h-3.5 w-3.5" />
-                      {cert.short}
-                    </span>
-                    <h4 className="text-sm font-semibold leading-snug text-[var(--text)]">
-                      {cert.name}
-                    </h4>
-                    <span className="text-xs text-[var(--text-soft)]">{cert.issuer}</span>
-                  </div>
-                </article>
+                  <div
+                    data-iframe-width="150"
+                    data-iframe-height="270"
+                    data-share-badge-id={cert.badgeId}
+                    data-share-badge-host="https://www.credly.com"
+                  />
+                </div>
               ))}
             </div>
+            <Script
+              src="https://cdn.credly.com/assets/utilities/embed.js"
+              strategy="afterInteractive"
+            />
           </div>
         </div>
       </section>
