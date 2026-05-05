@@ -5,6 +5,7 @@ import {
   ShieldCheck,
   BarChart3,
   Compass,
+  ServerCog,
 } from 'lucide-react';
 import type { Service } from '@/data/services';
 
@@ -15,6 +16,7 @@ const map = {
   shield: ShieldCheck,
   chart: BarChart3,
   compass: Compass,
+  'server-cog': ServerCog,
 } as const;
 
 export default function ServiceIcon({

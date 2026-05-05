@@ -11,7 +11,9 @@ import CTASection from '@/components/CTASection';
 import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return services
+    .filter((s) => !s.hasCustomPage)
+    .map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -35,7 +37,7 @@ export default async function ServicioDetallePage({
 }) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  if (!service) return notFound();
+  if (!service || service.hasCustomPage) return notFound();
 
   const related = service.relatedServices
     .map((s) => getServiceBySlug(s))
@@ -160,6 +162,34 @@ export default async function ServicioDetallePage({
           ))}
         </div>
       </section>
+
+      {/* Next step (e.g. cross-sell to a more advanced service) */}
+      {service.nextStep && (
+        <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+          <div className="card relative overflow-hidden p-8 md:p-10">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[var(--brand-teal)]/15 blur-3xl"
+            />
+            <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
+              <div className="flex flex-col gap-2 md:max-w-2xl">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                  Siguiente nivel
+                </span>
+                <h3 className="text-xl font-semibold text-[var(--text)] md:text-2xl">
+                  {service.nextStep.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--text-muted)] md:text-base">
+                  {service.nextStep.description}
+                </p>
+              </div>
+              <LinkButton href={service.nextStep.link.href} variant="primary">
+                {service.nextStep.link.label} <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related */}
       {related.length > 0 && (
