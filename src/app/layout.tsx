@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     siteName: 'Techbox',
     title: 'Techbox | Software, nube y automatización para pymes',
     description:
-      'Tecnología práctica para hacer crecer tu negocio. Software, nube, automatización, ciberseguridad y datos para pymes en Costa Rica y Latinoamérica.',
+      'Software, nube, automatización, ciberseguridad y datos para pymes. Precios accesibles, sin amarres.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Techbox',
     description:
-      'Tecnología práctica para hacer crecer tu negocio en Costa Rica y Latinoamérica.',
+      'Software, nube y automatización para pymes. Precios accesibles, sin amarres.',
   },
 };
 

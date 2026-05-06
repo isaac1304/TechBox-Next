@@ -100,7 +100,8 @@ export default function HomePage() {
             <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-[var(--text-soft)]">
               <span>✓ Diagnóstico sin costo</span>
               <span>✓ Propuesta en 5 días hábiles</span>
-              <span>✓ Sin amarres ni permanencia mínima</span>
+              <span>✓ Precios accesibles para pymes</span>
+              <span>✓ Sin permanencia mínima</span>
             </div>
           </div>
           <div className="relative">
