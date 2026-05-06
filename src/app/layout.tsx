@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     siteName: 'Techbox',
     title: 'Techbox | Software, nube y automatización para pymes',
     description:
-      'Software, nube, automatización, ciberseguridad y datos para pymes. Precios accesibles, sin amarres.',
+      'Software, nube, automatización, ciberseguridad y datos para pymes. Precios accesibles y diagnóstico sin costo.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Techbox',
     description:
-      'Software, nube y automatización para pymes. Precios accesibles, sin amarres.',
+      'Software, nube y automatización para pymes. Precios accesibles y diagnóstico sin costo.',
   },
 };
 
