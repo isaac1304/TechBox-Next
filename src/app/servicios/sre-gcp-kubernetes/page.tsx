@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 import {
   ArrowRight,
   CheckCircle2,
@@ -173,18 +173,27 @@ const certifications = [
   {
     badgeId: 'c120126b-dc33-445a-a4f8-182200dfe425',
     label: 'Certified Kubernetes Administrator',
+    issuer: 'The Linux Foundation',
+    image: '/badges/cka.png',
   },
   {
     badgeId: '8f5e3a3a-e21f-4e42-b7f4-42409d431f33',
     label: 'Istio Certified Associate',
+    issuer: 'The Linux Foundation',
+    image: '/badges/istio-ica.png',
   },
   {
     badgeId: '96c63672-58a8-494c-98cf-0f11ff492b46',
-    label: 'Google Cloud Digital Leader',
+    label: 'Cloud Digital Leader',
+    issuer: 'Google Cloud',
+    image: '/badges/gcp-digital-leader.png',
   },
   {
     badgeId: 'b1dc57b5-52d7-4eb1-a685-c09094343ccc',
-    label: 'HashiCorp Certified: Terraform Associate',
+    label: 'HashiCorp Certified: Terraform Associate (003)',
+    issuer: 'HashiCorp',
+    image: '/badges/terraform-associate.png',
+    expired: true,
   },
 ];
 
@@ -468,26 +477,37 @@ export default function SREServicePage() {
             <p className="text-sm text-[var(--text-muted)]">
               Click en cada badge para verificar el credencial en Credly.
             </p>
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               {certifications.map((cert) => (
-                <div
+                <a
                   key={cert.badgeId}
-                  className="card flex flex-col items-center justify-center gap-3 p-5"
-                  aria-label={cert.label}
+                  href={`https://www.credly.com/badges/${cert.badgeId}/public_url`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Verificar ${cert.label} en Credly`}
+                  className="card group flex flex-col items-center gap-4 p-6 text-center transition-transform hover:-translate-y-0.5 hover:border-[var(--brand-teal)]"
                 >
-                  <div
-                    data-iframe-width="380"
-                    data-iframe-height="340"
-                    data-share-badge-id={cert.badgeId}
-                    data-share-badge-host="https://www.credly.com"
-                  />
-                </div>
+                  <div className="relative h-32 w-32 shrink-0">
+                    <Image
+                      src={cert.image}
+                      alt={cert.label}
+                      fill
+                      sizes="128px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm font-semibold text-[var(--text)]">{cert.label}</p>
+                    <p className="text-xs text-[var(--text-muted)]">{cert.issuer}</p>
+                    {cert.expired && (
+                      <span className="mt-1 inline-flex w-fit self-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+                        Expirada
+                      </span>
+                    )}
+                  </div>
+                </a>
               ))}
             </div>
-            <Script
-              src="https://cdn.credly.com/assets/utilities/embed.js"
-              strategy="afterInteractive"
-            />
           </div>
         </div>
       </section>
