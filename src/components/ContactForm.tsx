@@ -32,9 +32,9 @@ export default function ContactForm() {
           Mensaje recibido
         </h3>
         <p className="max-w-sm text-sm leading-relaxed text-[var(--text-muted)]">
-          Te respondemos en 1–2 días hábiles desde{' '}
+          Te respondemos en 1 o 2 días hábiles desde{' '}
           <span className="font-medium text-[var(--text)]">{site.email}</span>.
-          Si es urgente, escríbenos por WhatsApp.
+          Si la cosa urge, escribinos por WhatsApp.
         </p>
         <LinkButton href={site.whatsapp} external variant="whatsapp">
           <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}
@@ -108,7 +108,7 @@ export default function ContactForm() {
           </div>
           <div className="md:col-span-2">
             <label className={labelClass} htmlFor="message">
-              ¿Qué quieres resolver?
+              ¿Qué querés resolver?
             </label>
             <textarea
               id="message"
@@ -116,7 +116,7 @@ export default function ContactForm() {
               required
               rows={5}
               className={inputClass}
-              placeholder="Ej.: queremos automatizar el seguimiento post-venta. Hoy lo hacemos en Excel y se nos olvidan clientes."
+              placeholder="Ej.: queremos automatizar el seguimiento post-venta. Hoy lo hacemos en Excel y se nos pasan clientes."
             />
           </div>
         </div>
@@ -126,9 +126,9 @@ export default function ContactForm() {
         <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>
-            No pudimos enviar el mensaje. Vuelve a intentarlo o{' '}
+            No pudimos enviar el mensaje. Probá de nuevo o{' '}
             <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="underline">
-              escríbenos por WhatsApp
+              escribinos por WhatsApp
             </a>
             .
           </span>
@@ -139,7 +139,7 @@ export default function ContactForm() {
         <Send className="h-4 w-4" /> {submitting ? 'Enviando…' : 'Enviar mensaje'}
       </button>
       <p className="text-xs text-[var(--text-soft)]">
-        Solo usamos estos datos para responderte. No te vamos a meter en una lista de mailing.
+        Solo usamos tus datos para responderte. No te metemos en ninguna lista de mailing.
       </p>
     </form>
   );

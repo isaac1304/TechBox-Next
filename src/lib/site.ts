@@ -1,10 +1,10 @@
 export const site = {
-  name: 'TechBox',
+  name: 'Techbox',
   domain: 'techbox.cr',
   email: 'gerencia@techbox.cr',
   phone: '+506 7016-5606',
   whatsapp: 'https://wa.me/message/D56BK4UPJ5IDJ1',
-  whatsappLabel: 'Escribir por WhatsApp',
+  whatsappLabel: 'Escribinos por WhatsApp',
   calendly: 'https://calendly.com/isaacxdd/30min',
   location: 'Heredia, Costa Rica',
   nav: [

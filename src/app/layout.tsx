@@ -10,16 +10,18 @@ const siteUrl = 'https://techbox.cr';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'TechBox | Software, cloud y automatización para pymes',
-    template: '%s | TechBox',
+    default: 'Techbox | Software, nube y automatización para pymes',
+    template: '%s | Techbox',
   },
   description:
-    'TechBox ayuda a pequeñas y medianas empresas en Costa Rica a crear software, automatizar procesos, implementar infraestructura cloud, mejorar su ciberseguridad y tomar mejores decisiones con datos.',
+    'Consultora tecnológica que acompaña a pymes de Costa Rica y Latinoamérica a crear software, automatizar procesos, ordenar la nube, reforzar la ciberseguridad y tomar mejores decisiones con datos.',
   keywords: [
-    'TechBox',
+    'Techbox',
     'Costa Rica',
+    'Latinoamérica',
     'software pymes',
     'automatización',
+    'nube',
     'cloud',
     'ciberseguridad',
     'Power BI',
@@ -29,18 +31,17 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_CR',
     url: siteUrl,
-    siteName: 'TechBox',
-    title: 'TechBox | Software, cloud y automatización para pymes',
+    siteName: 'Techbox',
+    title: 'Techbox | Software, nube y automatización para pymes',
     description:
-      'Tecnología práctica para hacer crecer tu negocio. Software, cloud, automatización, ciberseguridad y datos para pymes en Costa Rica.',
+      'Tecnología práctica para hacer crecer tu negocio. Software, nube, automatización, ciberseguridad y datos para pymes en Costa Rica y Latinoamérica.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TechBox',
+    title: 'Techbox',
     description:
-      'Tecnología práctica para hacer crecer tu negocio en Costa Rica y LatAm.',
+      'Tecnología práctica para hacer crecer tu negocio en Costa Rica y Latinoamérica.',
   },
-  icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
