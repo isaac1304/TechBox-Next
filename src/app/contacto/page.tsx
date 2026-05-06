@@ -8,7 +8,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Contacto',
   description:
-    'Contáctanos para agendar una consulta sin compromiso. Te respondemos en 1 a 2 días hábiles.',
+    'Escribinos y agendá una consulta sin compromiso. Te respondemos en 1 o 2 días hábiles.',
 };
 
 export default function ContactoPage() {
@@ -17,8 +17,8 @@ export default function ContactoPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Contacto"
-          title={<><span className="text-gradient-brand">Hablemos</span> de tu próximo proyecto</>}
-          description="Cuéntanos qué quieres resolver o mejorar. Te respondemos en 1 a 2 días hábiles con próximos pasos claros."
+          title={<><span className="text-gradient-brand">Conversemos</span> de tu próximo proyecto</>}
+          description="Contános qué querés resolver o mejorar. Te respondemos en 1 o 2 días hábiles con próximos pasos claros."
         />
       </section>
 
@@ -26,7 +26,7 @@ export default function ContactoPage() {
         <div className="flex flex-col gap-6">
           <div className="card flex flex-col gap-4 p-7">
             <h3 className="text-lg font-semibold text-[var(--text)]">
-              ¿Qué puedes esperar?
+              ¿Qué podés esperar?
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[var(--text-muted)]">
               <li className="flex items-start gap-2">
@@ -35,16 +35,16 @@ export default function ContactoPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)]" />
-                Revisión de tu caso y propuesta de próximos pasos
+                Revisamos tu caso y te proponemos próximos pasos
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)]" />
-                Sin compromisos, 100% consultiva
+                Sin compromiso, 100% consultiva
               </li>
             </ul>
             <div className="mt-2 flex flex-col gap-2">
               <LinkButton href={site.calendly} external variant="primary">
-                <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
+                <CalendarCheck className="h-4 w-4" /> Agendá tu diagnóstico
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
                 <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}

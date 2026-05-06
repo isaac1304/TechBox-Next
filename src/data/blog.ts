@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-03-10',
     category: 'Automatización',
     readingTime: '5 min',
-    author: 'Equipo TechBox',
+    author: 'Equipo Techbox',
     content: [
       'En muchas pymes, una sola persona termina haciendo el trabajo de tres: atender al cliente, cuadrar ventas, enviar recordatorios y preparar reportes. La tecnología no puede reemplazar ese criterio humano, pero sí puede quitarle de encima el trabajo repetitivo.',
       'Automatizar no significa comprar un software caro. A veces empieza con conectar tu formulario web a una hoja de cálculo, enviar un correo automático cuando entra un pedido o recordarle al cliente su próxima cita por WhatsApp.',
@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-02-21',
     category: 'Cloud',
     readingTime: '6 min',
-    author: 'Equipo TechBox',
+    author: 'Equipo Techbox',
     content: [
       'Durante años, la nube sonó a algo costoso y reservado para empresas grandes. Hoy, una pyme en Costa Rica puede operar con la misma infraestructura confiable que usan bancos y retailers internacionales, pagando solo por lo que consume.',
       'Los beneficios concretos son tres: continuidad (si tu oficina se queda sin luz, tu sistema sigue arriba), respaldo (tus datos no dependen de un disco físico) y escalabilidad (si creces, la infraestructura crece contigo).',
@@ -50,7 +50,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-02-05',
     category: 'Ciberseguridad',
     readingTime: '7 min',
-    author: 'Equipo TechBox',
+    author: 'Equipo Techbox',
     content: [
       'Los incidentes de ciberseguridad en pymes rara vez vienen de un ataque sofisticado. Casi siempre empiezan por un correo con una liga falsa, una contraseña reutilizada o un respaldo que nunca se probó.',
       'Cinco prácticas básicas marcan una diferencia enorme: usar un administrador de contraseñas, activar segundo factor en correo y banca, mantener respaldos automáticos en la nube, separar accesos por rol y capacitar al equipo en reconocer correos sospechosos.',
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-01-18',
     category: 'Datos',
     readingTime: '6 min',
-    author: 'Equipo TechBox',
+    author: 'Equipo Techbox',
     content: [
       'La mayoría de pymes no tiene un problema de datos, tiene un problema de lectura de datos. Las ventas, los gastos, la asistencia y los clientes están registrados, pero dispersos entre hojas de cálculo, sistemas y correos.',
       'Un buen tablero de datos responde tres preguntas simples: qué está pasando, por qué está pasando y qué hacer al respecto. Si un reporte no ayuda a decidir, sobra.',

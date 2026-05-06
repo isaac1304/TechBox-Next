@@ -7,7 +7,7 @@ import { useCases } from '@/data/useCases';
 export const metadata: Metadata = {
   title: 'Casos de uso',
   description:
-    'Escenarios reales donde TechBox aplica software, cloud, automatización, ciberseguridad y datos para resolver problemas concretos en pymes.',
+    'Escenarios reales donde Techbox aplica software, nube, automatización, ciberseguridad y datos para resolver problemas concretos en pymes.',
 };
 
 export default function CasosDeUsoPage() {
@@ -16,8 +16,8 @@ export default function CasosDeUsoPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Casos de uso"
-          title={<>Soluciones aplicadas a <span className="text-gradient-brand">negocios reales</span></>}
-          description="Cada caso combina varios de nuestros servicios según el problema. No son promesas: son el tipo de proyectos que hacemos."
+          title={<>Soluciones aplicadas a <span className="text-gradient-brand">negocios de carne y hueso</span></>}
+          description="Cada caso mezcla varios de nuestros servicios según el problema. No son promesas: son el tipo de proyectos que hacemos."
         />
       </section>
 
@@ -32,7 +32,7 @@ export default function CasosDeUsoPage() {
       <section className="pb-24">
         <CTASection
           title="¿Tu caso no está aquí?"
-          description="Agenda una llamada y conversemos. Probablemente ya resolvimos algo parecido, o podemos diseñarlo contigo desde cero."
+          description="Agendá una llamada y conversemos. Lo más seguro es que ya resolvimos algo parecido, o lo diseñamos juntos desde cero."
         />
       </section>
     </>

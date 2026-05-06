@@ -8,11 +8,11 @@ export default function NotFound() {
         Error 404
       </span>
       <h1 className="text-[2rem] font-semibold leading-tight text-[var(--text)] md:text-[2.75rem]">
-        No encontramos esa página
+        Esa página se nos perdió
       </h1>
       <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)]">
         Puede que el enlace esté roto o que hayamos movido el contenido. Desde
-        aquí puedes volver al inicio o ver todos nuestros servicios.
+        aquí podés volver al inicio o pasar a ver todos nuestros servicios.
       </p>
       <div className="mt-2 flex flex-wrap justify-center gap-3">
         <LinkButton href="/servicios" variant="primary">

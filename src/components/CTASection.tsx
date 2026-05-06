@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function CTASection({
-  title = 'Cuéntanos qué quieres resolver',
+  title = 'Contános qué querés resolver',
   description = '30 minutos por videollamada. Salimos con una primera idea concreta de cómo abordarlo, no con una propuesta de venta.',
   className = '',
 }: Props) {
@@ -44,7 +44,7 @@ export default function CTASection({
               variant="secondary"
               className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
             >
-              <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
+              <CalendarCheck className="h-4 w-4" /> Agendá tu diagnóstico
             </LinkButton>
           </div>
         </div>

@@ -64,17 +64,17 @@ export default function Header() {
             : 'border-[var(--border)] bg-[var(--surface)]/70 backdrop-blur-md',
         ].join(' ')}
       >
-        <Link href="/" aria-label="TechBox — Inicio" className="flex items-center gap-3">
+        <Link href="/" aria-label="Techbox — Inicio" className="flex items-center gap-3">
           <Image
             src="/brand/techbox-mark.png"
-            alt="TechBox"
+            alt="Techbox"
             width={80}
             height={80}
             priority
             className="h-14 w-14 rounded-xl object-contain md:h-16 md:w-16"
           />
           <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem]">
-            Tech<span className="text-[var(--brand-teal)]">Box</span>
+            Tech<span className="text-[var(--brand-teal)]">box</span>
           </span>
         </Link>
 
@@ -136,13 +136,13 @@ export default function Header() {
               <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
                 <Image
                   src="/brand/techbox-mark.png"
-                  alt="TechBox"
+                  alt="Techbox"
                   width={72}
                   height={72}
                   className="h-14 w-14 rounded-xl object-contain"
                 />
                 <span className="text-2xl font-semibold text-[var(--text)]">
-                  Tech<span className="text-[var(--brand-teal)]">Box</span>
+                  Tech<span className="text-[var(--brand-teal)]">box</span>
                 </span>
               </Link>
               <button

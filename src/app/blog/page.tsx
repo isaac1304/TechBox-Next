@@ -7,7 +7,7 @@ import { blogPosts } from '@/data/blog';
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Artículos prácticos sobre automatización, cloud, ciberseguridad y datos para pymes. Publicados por el equipo de TechBox.',
+    'Artículos prácticos sobre automatización, nube, ciberseguridad y datos para pymes. Escritos por el equipo de Techbox.',
 };
 
 export default function BlogPage() {
@@ -18,8 +18,8 @@ export default function BlogPage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
           eyebrow="Blog"
-          title={<>Ideas prácticas para <span className="text-gradient-brand">operaciones que escalan</span></>}
-          description="Escribimos sobre automatización, cloud, ciberseguridad y datos desde la práctica. Sin humo y sin lenguaje técnico innecesario."
+          title={<>Ideas prácticas para <span className="text-gradient-brand">operaciones que sí escalan</span></>}
+          description="Escribimos sobre automatización, nube, ciberseguridad y datos desde la trinchera. Sin humo y sin tecnicismos innecesarios."
         />
       </section>
 
@@ -33,8 +33,8 @@ export default function BlogPage() {
 
       <section className="pb-24">
         <CTASection
-          title="¿Quieres ver un tema específico?"
-          description="Escríbenos y lo ponemos en la lista. Respondemos consultas reales que llegan desde pymes."
+          title="¿Querés ver un tema en específico?"
+          description="Escribinos y lo metemos en la lista. Respondemos consultas reales que nos llegan de las pymes."
         />
       </section>
     </>

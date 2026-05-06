@@ -12,17 +12,17 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/brand/techbox-mark.png"
-              alt="TechBox"
+              alt="Techbox"
               width={40}
               height={40}
               className="h-10 w-10 rounded-md object-contain"
             />
             <span className="text-lg font-semibold text-[var(--text)]">
-              Tech<span className="text-[var(--brand-teal)]">Box</span>
+              Tech<span className="text-[var(--brand-teal)]">box</span>
             </span>
           </Link>
           <p className="max-w-md text-sm leading-relaxed text-[var(--text-muted)]">
-            Tecnología práctica para pymes. Costa Rica y LatAm.
+            Tecnología práctica para pymes. Costa Rica y toda la región.
           </p>
           <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
             <li className="inline-flex items-center gap-2">
@@ -75,7 +75,7 @@ export default function Footer() {
       <div className="border-t border-[var(--border)]">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-3 px-4 py-5 text-xs text-[var(--text-soft)] md:flex-row md:items-center md:px-6">
           <p>© {new Date().getFullYear()} TechBox S.R.L. — {site.domain}</p>
-          <p>Hecho en Costa Rica.</p>
+          <p>Hecho con cariño en Costa Rica.</p>
         </div>
       </div>
     </footer>

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   alternates: { canonical: canonicalPath },
   openGraph: {
     type: 'website',
-    title: 'SRE y Cloud Engineering en GCP y Kubernetes | TechBox',
+    title: 'SRE y Cloud Engineering en GCP y Kubernetes | Techbox',
     description:
       'SRE fraccional con CKA e ICA. Especialización en GCP, GKE e Istio para SaaS, fintechs y empresas escalando microservicios.',
     url: canonicalPath,
