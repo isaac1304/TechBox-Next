@@ -1,47 +1,69 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { ArrowRight, CheckCircle2, AlertTriangle, Sparkles } from 'lucide-react';
-import { services, getServiceBySlug } from '@/data/services';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { services, getServiceBySlug, getServiceById } from '@/data/services';
 import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
 import ServiceIcon from '@/components/ServiceIcon';
 import CTASection from '@/components/CTASection';
+import { Link } from '@/i18n/navigation';
+import { routing, type Locale } from '@/i18n/routing';
 import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
-  return services
-    .filter((s) => !s.hasCustomPage)
-    .map((s) => ({ slug: s.slug }));
+  return routing.locales.flatMap((locale) =>
+    services
+      .filter((s) => !s.hasCustomPage)
+      .map((s) => ({ locale, slug: s.slug[locale] })),
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const service = getServiceBySlug(slug);
-  if (!service) return { title: 'Servicio no encontrado' };
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: 'ServiceDetail' });
+  const service = getServiceBySlug(slug, locale);
+  if (!service) return { title: t('notFound') };
   return {
-    title: service.title,
-    description: service.description,
+    title: service.title[locale],
+    description: service.description[locale],
   };
 }
 
-export default async function ServicioDetallePage({
+export default async function ServiceDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 }) {
-  const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+
+  const service = getServiceBySlug(slug, locale);
   if (!service || service.hasCustomPage) return notFound();
 
+  const t = await getTranslations('ServiceDetail');
+  const tCommon = await getTranslations('Common');
+
   const related = service.relatedServices
-    .map((s) => getServiceBySlug(s))
+    .map((id) => getServiceById(id))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+  const nextStepHref = service.nextStep
+    ? service.nextStep.link.targetId === 'sre-gcp-kubernetes'
+      ? ('/services/sre-gcp-kubernetes' as const)
+      : ({
+          pathname: '/services/[slug]' as const,
+          params: {
+            slug:
+              getServiceById(service.nextStep.link.targetId)?.slug[locale] ?? '',
+          },
+        } as const)
+    : null;
 
   return (
     <>
@@ -50,27 +72,27 @@ export default async function ServicioDetallePage({
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:px-6">
           <div className="flex flex-col gap-5">
             <Link
-              href="/servicios"
+              href="/services"
               className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
             >
-              ← Servicios
+              {t('backLink')}
             </Link>
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
               <ServiceIcon name={service.icon} className="h-3.5 w-3.5" />
-              {service.tagline}
+              {service.tagline[locale]}
             </span>
             <h1 className="text-[2.25rem] font-semibold leading-tight text-[var(--text)] md:text-[3rem]">
-              {service.title}
+              {service.title[locale]}
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
-              {service.longDescription}
+              {service.longDescription[locale]}
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                Agendar diagnóstico <ArrowRight className="h-4 w-4" />
+                {tCommon('scheduleDiagnosis')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
-                Escribir por WhatsApp
+                {site.whatsappLabel[locale]}
               </LinkButton>
             </div>
           </div>
@@ -80,10 +102,10 @@ export default async function ServicioDetallePage({
                 <ServiceIcon name={service.icon} className="h-7 w-7" />
               </span>
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                Qué incluye
+                {t('includesHeading')}
               </h2>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {service.features.map((f) => (
+                {service.features[locale].map((f) => (
                   <li
                     key={f}
                     className="flex items-start gap-2 text-sm text-[var(--text-muted)]"
@@ -103,19 +125,19 @@ export default async function ServicioDetallePage({
         <div className="card flex flex-col gap-4 p-7">
           <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
             <AlertTriangle className="h-4 w-4 text-[var(--brand-navy)] dark:text-[var(--brand-teal)]" />
-            El problema
+            {t('problemHeading')}
           </div>
           <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-            {service.problem}
+            {service.problem[locale]}
           </p>
         </div>
         <div className="card flex flex-col gap-4 p-7">
           <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
             <Sparkles className="h-4 w-4 text-[var(--brand-teal)]" />
-            Cómo lo resolvemos
+            {t('solutionHeading')}
           </div>
           <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-            {service.solution}
+            {service.solution[locale]}
           </p>
         </div>
       </section>
@@ -124,11 +146,16 @@ export default async function ServicioDetallePage({
       <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
         <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
           <SectionHeading
-            eyebrow="Beneficios"
-            title={<>Lo que <span className="text-gradient-brand">gana tu negocio</span></>}
+            eyebrow={t('benefitsEyebrow')}
+            title={
+              <>
+                {t('benefitsTitleStart')}{' '}
+                <span className="text-gradient-brand">{t('benefitsTitleAccent')}</span>
+              </>
+            }
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {service.benefits.map((b) => (
+            {service.benefits[locale].map((b) => (
               <article key={b.title} className="card flex flex-col gap-3 p-7">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <CheckCircle2 className="h-5 w-5" />
@@ -146,12 +173,12 @@ export default async function ServicioDetallePage({
       {/* Use cases */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 lg:px-6">
         <SectionHeading
-          eyebrow="Ejemplos"
-          title="Cómo se ve en la práctica"
-          description="Escenarios reales donde este servicio entrega valor desde las primeras semanas."
+          eyebrow={t('examplesEyebrow')}
+          title={t('examplesTitle')}
+          description={t('examplesDescription')}
         />
         <div className="mt-10 grid gap-3 md:grid-cols-2">
-          {service.useCases.map((u) => (
+          {service.useCases[locale].map((u) => (
             <div
               key={u}
               className="card flex items-start gap-3 p-5 text-sm text-[var(--text-muted)]"
@@ -163,8 +190,8 @@ export default async function ServicioDetallePage({
         </div>
       </section>
 
-      {/* Next step (e.g. cross-sell to a more advanced service) */}
-      {service.nextStep && (
+      {/* Next step */}
+      {service.nextStep && nextStepHref && (
         <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
           <div className="card relative overflow-hidden p-8 md:p-10">
             <div
@@ -174,17 +201,17 @@ export default async function ServicioDetallePage({
             <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
               <div className="flex flex-col gap-2 md:max-w-2xl">
                 <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
-                  Siguiente nivel
+                  {t('nextStepLabel')}
                 </span>
                 <h3 className="text-xl font-semibold text-[var(--text)] md:text-2xl">
-                  {service.nextStep.title}
+                  {service.nextStep.title[locale]}
                 </h3>
                 <p className="text-sm leading-relaxed text-[var(--text-muted)] md:text-base">
-                  {service.nextStep.description}
+                  {service.nextStep.description[locale]}
                 </p>
               </div>
-              <LinkButton href={service.nextStep.link.href} variant="primary">
-                {service.nextStep.link.label} <ArrowRight className="h-4 w-4" />
+              <LinkButton href={nextStepHref} variant="primary">
+                {service.nextStep.link.label[locale]} <ArrowRight className="h-4 w-4" />
               </LinkButton>
             </div>
           </div>
@@ -195,12 +222,12 @@ export default async function ServicioDetallePage({
       {related.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
           <SectionHeading
-            eyebrow="Continúa"
-            title="Servicios que suelen ir de la mano"
+            eyebrow={t('relatedEyebrow')}
+            title={t('relatedTitle')}
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {related.map((r) => (
-              <ServiceCard key={r.slug} service={r} />
+              <ServiceCard key={r.id} service={r} locale={locale} />
             ))}
           </div>
         </section>

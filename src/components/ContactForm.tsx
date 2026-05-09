@@ -1,15 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Send, CheckCircle2, AlertCircle, MessageCircle } from 'lucide-react';
 import { services } from '@/data/services';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 import { LinkButton } from './Button';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
+  const t = useTranslations('ContactForm');
+  const locale = useLocale() as Locale;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,15 +33,17 @@ export default function ContactForm() {
       <div className="card flex flex-col items-center gap-4 p-10 text-center">
         <CheckCircle2 className="h-12 w-12 text-[var(--brand-teal)]" />
         <h3 className="text-xl font-semibold text-[var(--text)]">
-          Mensaje recibido
+          {t('successTitle')}
         </h3>
         <p className="max-w-sm text-sm leading-relaxed text-[var(--text-muted)]">
-          Te respondemos en 1 o 2 días hábiles desde{' '}
-          <span className="font-medium text-[var(--text)]">{site.email}</span>.
-          Si la cosa urge, escribinos por WhatsApp.
+          {t.rich('successBody', {
+            email: () => (
+              <span className="font-medium text-[var(--text)]">{site.email}</span>
+            ),
+          })}
         </p>
         <LinkButton href={site.whatsapp} external variant="whatsapp">
-          <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}
+          <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
         </LinkButton>
       </div>
     );
@@ -49,7 +55,7 @@ export default function ContactForm() {
     'mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]';
   const optionalLabel = (
     <span className="ml-1 text-[10px] font-normal normal-case tracking-normal text-[var(--text-soft)]">
-      (opcional)
+      {t('optional')}
     </span>
   );
 
@@ -61,13 +67,13 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className={labelClass} htmlFor="name">
-              Nombre
+              {t('labelName')}
             </label>
-            <input id="name" name="name" required className={inputClass} placeholder="Tu nombre" />
+            <input id="name" name="name" required className={inputClass} placeholder={t('placeholderName')} />
           </div>
           <div>
             <label className={labelClass} htmlFor="email">
-              Correo
+              {t('labelEmail')}
             </label>
             <input
               id="email"
@@ -75,40 +81,43 @@ export default function ContactForm() {
               name="email"
               required
               className={inputClass}
-              placeholder="tu@empresa.com"
+              placeholder={t('placeholderEmail')}
             />
           </div>
           <div>
             <label className={labelClass} htmlFor="company">
-              Empresa{optionalLabel}
+              {t('labelCompany')}
+              {optionalLabel}
             </label>
-            <input id="company" name="company" className={inputClass} placeholder="Nombre de tu empresa" />
+            <input id="company" name="company" className={inputClass} placeholder={t('placeholderCompany')} />
           </div>
           <div>
             <label className={labelClass} htmlFor="phone">
-              Teléfono{optionalLabel}
+              {t('labelPhone')}
+              {optionalLabel}
             </label>
-            <input id="phone" type="tel" name="phone" className={inputClass} placeholder="+506 8888 8888" />
+            <input id="phone" type="tel" name="phone" className={inputClass} placeholder={t('placeholderPhone')} />
           </div>
           <div className="md:col-span-2">
             <label className={labelClass} htmlFor="service">
-              Servicio de interés{optionalLabel}
+              {t('labelService')}
+              {optionalLabel}
             </label>
             <select id="service" name="service" className={inputClass} defaultValue="">
               <option value="" disabled>
-                Selecciona un servicio…
+                {t('selectService')}
               </option>
               {services.map((s) => (
-                <option key={s.slug} value={s.slug}>
-                  {s.shortTitle}
+                <option key={s.id} value={s.id}>
+                  {s.shortTitle[locale]}
                 </option>
               ))}
-              <option value="otro">Otro / no estoy seguro</option>
+              <option value="other">{t('serviceOther')}</option>
             </select>
           </div>
           <div className="md:col-span-2">
             <label className={labelClass} htmlFor="message">
-              ¿Qué querés resolver?
+              {t('labelMessage')}
             </label>
             <textarea
               id="message"
@@ -116,7 +125,7 @@ export default function ContactForm() {
               required
               rows={5}
               className={inputClass}
-              placeholder="Ej.: queremos automatizar el seguimiento post-venta. Hoy lo hacemos en Excel y se nos pasan clientes."
+              placeholder={t('placeholderMessage')}
             />
           </div>
         </div>
@@ -126,21 +135,26 @@ export default function ContactForm() {
         <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>
-            No pudimos enviar el mensaje. Probá de nuevo o{' '}
-            <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="underline">
-              escribinos por WhatsApp
-            </a>
-            .
+            {t.rich('errorBody', {
+              whatsappLink: () => (
+                <a
+                  href={site.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {t('errorWhatsapp')}
+                </a>
+              ),
+            })}
           </span>
         </div>
       )}
 
       <button type="submit" disabled={submitting} className="btn btn-primary self-start disabled:opacity-70">
-        <Send className="h-4 w-4" /> {submitting ? 'Enviando…' : 'Enviar mensaje'}
+        <Send className="h-4 w-4" /> {submitting ? t('submitting') : t('submit')}
       </button>
-      <p className="text-xs text-[var(--text-soft)]">
-        Solo usamos tus datos para responderte. No te metemos en ninguna lista de mailing.
-      </p>
+      <p className="text-xs text-[var(--text-soft)]">{t('privacy')}</p>
     </form>
   );
 }

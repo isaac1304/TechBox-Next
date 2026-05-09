@@ -1,24 +1,44 @@
 import type { Metadata } from 'next';
 import { Mail, MapPin, Phone, MessageCircle, CalendarCheck } from 'lucide-react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SectionHeading from '@/components/SectionHeading';
 import ContactForm from '@/components/ContactForm';
 import { LinkButton } from '@/components/Button';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 
-export const metadata: Metadata = {
-  title: 'Contacto',
-  description:
-    'Escribinos y agendá una consulta sin compromiso. Te respondemos en 1 o 2 días hábiles.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Contact' });
+  return { title: t('metaTitle'), description: t('metaDescription') };
+}
 
-export default function ContactoPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('Contact');
+  const tCommon = await getTranslations('Common');
+
   return (
     <>
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
-          eyebrow="Contacto"
-          title={<><span className="text-gradient-brand">Conversemos</span> de tu próximo proyecto</>}
-          description="Contános qué querés resolver o mejorar. Te respondemos en 1 o 2 días hábiles con próximos pasos claros."
+          eyebrow={t('eyebrow')}
+          title={
+            <>
+              <span className="text-gradient-brand">{t('titleAccent')}</span>{' '}
+              {t('titleEnd')}
+            </>
+          }
+          description={t('description')}
         />
       </section>
 
@@ -26,34 +46,34 @@ export default function ContactoPage() {
         <div className="flex flex-col gap-6">
           <div className="card flex flex-col gap-4 p-7">
             <h3 className="text-lg font-semibold text-[var(--text)]">
-              ¿Qué podés esperar?
+              {t('expectHeading')}
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[var(--text-muted)]">
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)]" />
-                Reunión de 30 minutos por videollamada
+                {t('expect1')}
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)]" />
-                Revisamos tu caso y te proponemos próximos pasos
+                {t('expect2')}
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)]" />
-                Sin compromiso, 100% consultiva
+                {t('expect3')}
               </li>
             </ul>
             <div className="mt-2 flex flex-col gap-2">
               <LinkButton href={site.calendly} external variant="primary">
-                <CalendarCheck className="h-4 w-4" /> Agendá tu diagnóstico
+                <CalendarCheck className="h-4 w-4" /> {tCommon('scheduleDiagnosisCta')}
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
-                <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}
+                <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
               </LinkButton>
             </div>
           </div>
           <div className="card flex flex-col gap-4 p-7">
             <h3 className="text-lg font-semibold text-[var(--text)]">
-              Información de contacto
+              {t('infoHeading')}
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[var(--text-muted)]">
               <li className="inline-flex items-center gap-3">
@@ -74,7 +94,7 @@ export default function ContactoPage() {
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <MapPin className="h-4 w-4" />
                 </span>
-                {site.location}
+                {site.location[locale]}
               </li>
             </ul>
           </div>

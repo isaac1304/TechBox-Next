@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   Layers,
   TrendingUp,
@@ -8,6 +7,7 @@ import {
   AlertTriangle,
   CheckCircle2,
 } from 'lucide-react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
@@ -16,62 +16,54 @@ import UseCaseCard from '@/components/UseCaseCard';
 import ProcessStep from '@/components/ProcessStep';
 import CTASection from '@/components/CTASection';
 import PixelMosaic from '@/components/PixelMosaic';
+import { Link } from '@/i18n/navigation';
 import { services } from '@/data/services';
 import { useCases } from '@/data/useCases';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 
-const values = [
-  {
-    title: 'Soluciones a la medida',
-    description:
-      'Nada de plantillas genéricas. Armamos cada proyecto según cómo trabaja tu negocio en la vida real.',
-    icon: <Layers className="h-5 w-5" />,
-  },
-  {
-    title: 'Tecnología que crece con vos',
-    description:
-      'Construimos sobre bases modernas para que el software acompañe a tu empresa cuando le toque crecer.',
-    icon: <TrendingUp className="h-5 w-5" />,
-  },
-  {
-    title: 'Acompañamiento cercano',
-    description:
-      'Hablamos claro, sin tecnicismos raros. Directo al grano y con foco en resultados de verdad.',
-    icon: <HandshakeIcon className="h-5 w-5" />,
-  },
-  {
-    title: 'Enfoque en resultados',
-    description:
-      'Medimos el impacto en horas ahorradas, errores reducidos y decisiones, no solo en entregables.',
-    icon: <Target className="h-5 w-5" />,
-  },
-];
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-const painPoints = [
-  'Procesos a mano que se llevan horas cada semana',
-  'Sistemas que no se hablan entre ventas, operación y finanzas',
-  'Poca visibilidad sobre lo que de verdad pasa en el negocio',
-  'Riesgos de ciberseguridad sin un plan claro',
-  'Sin un equipo técnico de planta que lidere el cambio',
-];
+  const t = await getTranslations('Home');
+  const tCommon = await getTranslations('Common');
 
-const solutions = [
-  'Automatizaciones que te devuelven tiempo desde la primera semana',
-  'Sistemas y datos en una sola vista, sin saltar entre pantallas',
-  'Tableros claros para gerencia y para quien opera el día a día',
-  'Controles de seguridad básicos que sí se cumplen',
-  'Un equipo externo que se acopla como si fuera tuyo',
-];
+  const values = [
+    { icon: <Layers className="h-5 w-5" />, title: t('valuesTitle1'), description: t('valuesDesc1') },
+    { icon: <TrendingUp className="h-5 w-5" />, title: t('valuesTitle2'), description: t('valuesDesc2') },
+    { icon: <HandshakeIcon className="h-5 w-5" />, title: t('valuesTitle3'), description: t('valuesDesc3') },
+    { icon: <Target className="h-5 w-5" />, title: t('valuesTitle4'), description: t('valuesDesc4') },
+  ];
 
-const processSteps = [
-  { title: 'Diagnóstico inicial', description: 'Te escuchamos y miramos juntos cómo opera tu negocio hoy.' },
-  { title: 'Propuesta clara', description: 'Te dejamos por escrito alcance, plazos e inversión antes de arrancar.' },
-  { title: 'Diseño y desarrollo', description: 'Iteramos con vos, con entregas cortas que podés ver y probar.' },
-  { title: 'Implementación', description: 'Desplegamos, migramos los datos y capacitamos a tu equipo.' },
-  { title: 'Soporte continuo', description: 'Te acompañamos cuando el sistema empieza a vivir y a evolucionar.' },
-];
+  const painPoints = [
+    t('painPoint1'),
+    t('painPoint2'),
+    t('painPoint3'),
+    t('painPoint4'),
+    t('painPoint5'),
+  ];
 
-export default function HomePage() {
+  const solutions = [
+    t('solution1'),
+    t('solution2'),
+    t('solution3'),
+    t('solution4'),
+    t('solution5'),
+  ];
+
+  const processSteps = [
+    { title: t('step1Title'), description: t('step1Desc') },
+    { title: t('step2Title'), description: t('step2Desc') },
+    { title: t('step3Title'), description: t('step3Desc') },
+    { title: t('step4Title'), description: t('step4Desc') },
+    { title: t('step5Title'), description: t('step5Desc') },
+  ];
+
   return (
     <>
       {/* HERO */}
@@ -79,29 +71,28 @@ export default function HomePage() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 md:py-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:px-6">
           <div className="flex flex-col gap-6">
             <span className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
-              Consultoría tecnológica · Costa Rica
+              {t('heroBadge')}
             </span>
             <h1 className="text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-[var(--text)] md:text-[3.25rem]">
-              Software, nube y automatización{' '}
-              <span className="text-gradient-brand">para pymes sin equipo técnico de planta</span>
+              {t('heroTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('heroTitleAccent')}</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
-              Encontramos qué te está frenando la operación y lo resolvemos con
-              tecnología que sí se usa. Sin tecnicismos, sin proyectos que no terminan nunca.
+              {t('heroLead')}
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                Agendá tu diagnóstico <ArrowRight className="h-4 w-4" />
+                {tCommon('scheduleDiagnosisCta')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <LinkButton href="/servicios" variant="secondary">
-                Ver servicios
+              <LinkButton href="/services" variant="secondary">
+                {tCommon('viewServices')}
               </LinkButton>
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-[var(--text-soft)]">
-              <span>✓ Diagnóstico sin costo</span>
-              <span>✓ Propuesta en 5 días hábiles</span>
-              <span>✓ Precios accesibles para pymes</span>
-              <span>✓ Sin permanencia mínima</span>
+              <span>{t('trust1')}</span>
+              <span>{t('trust2')}</span>
+              <span>{t('trust3')}</span>
+              <span>{t('trust4')}</span>
             </div>
           </div>
           <div className="relative">
@@ -122,13 +113,18 @@ export default function HomePage() {
       {/* SERVICES PREVIEW */}
       <section className="mx-auto w-full max-w-6xl px-4 py-16 lg:px-6">
         <SectionHeading
-          eyebrow="Servicios"
-          title={<>Soluciones tecnológicas <span className="text-gradient-brand">de punta a punta</span></>}
-          description="Te acompañamos desde el diagnóstico hasta el soporte continuo, con servicios que se combinan a la medida de lo que tu negocio necesita."
+          eyebrow={t('servicesEyebrow')}
+          title={
+            <>
+              {t('servicesTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('servicesTitleAccent')}</span>
+            </>
+          }
+          description={t('servicesDescription')}
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <ServiceCard key={s.slug} service={s} />
+            <ServiceCard key={s.id} service={s} locale={locale} />
           ))}
         </div>
       </section>
@@ -138,23 +134,22 @@ export default function HomePage() {
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:px-6">
           <div className="flex flex-col gap-6">
             <span className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
-              ¿Por qué Techbox?
+              {t('whyEyebrow')}
             </span>
             <h2 className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
-              Conocemos las{' '}
-              <span className="text-gradient-brand">trabas de a de veras</span> de las pymes
+              {t('whyTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('whyTitleAccent')}</span>{' '}
+              {t('whyTitleEnd')}
             </h2>
             <p className="text-base leading-relaxed text-[var(--text-muted)]">
-              Las pymes suelen cargar con procesos a mano, sistemas que no se hablan entre
-              sí y poca visibilidad. Sin un equipo técnico de planta, cada decisión
-              tecnológica se siente arriesgada. Ese trabajo lo hacemos con vos.
+              {t('whyLead')}
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             <div className="card flex flex-col gap-3 p-6">
               <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
                 <AlertTriangle className="h-4 w-4 text-[var(--brand-navy)] dark:text-[var(--brand-teal)]" />
-                Lo que vemos
+                {t('whatWeSeeHeading')}
               </div>
               <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
                 {painPoints.map((p) => (
@@ -168,7 +163,7 @@ export default function HomePage() {
             <div className="card flex flex-col gap-3 p-6">
               <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
                 <CheckCircle2 className="h-4 w-4 text-[var(--brand-teal)]" />
-                Lo que resolvemos
+                {t('whatWeSolveHeading')}
               </div>
               <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
                 {solutions.map((s) => (
@@ -186,21 +181,26 @@ export default function HomePage() {
       {/* USE CASES */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 lg:px-6">
         <SectionHeading
-          eyebrow="Casos de uso"
-          title={<>Tecnología aplicada a <span className="text-gradient-brand">negocios de carne y hueso</span></>}
-          description="Ejemplos inspirados en empresas como la tuya. Cada caso mezcla varios de nuestros servicios según el problema a resolver."
+          eyebrow={t('useCasesEyebrow')}
+          title={
+            <>
+              {t('useCasesTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('useCasesTitleAccent')}</span>
+            </>
+          }
+          description={t('useCasesDescription')}
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {useCases.slice(0, 3).map((u) => (
-            <UseCaseCard key={u.id} useCase={u} />
+            <UseCaseCard key={u.id} useCase={u} locale={locale} />
           ))}
         </div>
         <div className="mt-10 text-center">
           <Link
-            href="/casos-de-uso"
+            href="/use-cases"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
           >
-            Ver todos los casos <ArrowRight className="h-4 w-4" />
+            {tCommon('viewAllCases')} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
@@ -209,9 +209,14 @@ export default function HomePage() {
       <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
         <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
           <SectionHeading
-            eyebrow="Cómo trabajamos"
-            title={<>Un proceso claro, <span className="text-gradient-brand">sin sorpresas a medio camino</span></>}
-            description="Pocas fases, objetivos medibles y comunicación constante. Así nos ahorramos los proyectos eternos que nunca entregan nada."
+            eyebrow={t('processEyebrow')}
+            title={
+              <>
+                {t('processTitleStart')}{' '}
+                <span className="text-gradient-brand">{t('processTitleAccent')}</span>
+              </>
+            }
+            description={t('processDescription')}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
             {processSteps.map((step, idx) => (

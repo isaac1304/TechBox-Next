@@ -1,11 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import { Menu, X, CalendarCheck } from 'lucide-react';
+import { Link, usePathname } from '@/i18n/navigation';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 import ThemeToggle from './ThemeToggle';
 import { LinkButton } from './Button';
 
@@ -13,6 +14,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale() as Locale;
+  const t = useTranslations('Header');
   const barRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -64,7 +67,7 @@ export default function Header() {
             : 'border-[var(--border)] bg-[var(--surface)]/70 backdrop-blur-md',
         ].join(' ')}
       >
-        <Link href="/" aria-label="Techbox — Inicio" className="flex items-center gap-3">
+        <Link href="/" aria-label={t('logoAlt')} className="flex items-center gap-3">
           <Image
             src="/brand/techbox-mark.png"
             alt="Techbox"
@@ -90,7 +93,7 @@ export default function Header() {
                   : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
               ].join(' ')}
             >
-              {item.label}
+              {item.label[locale]}
             </Link>
           ))}
         </nav>
@@ -105,11 +108,11 @@ export default function Header() {
             variant="primary"
             className="hidden md:inline-flex"
           >
-            <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
+            <CalendarCheck className="h-4 w-4" /> {t('scheduleDiagnosis')}
           </LinkButton>
           <button
             type="button"
-            aria-label="Abrir menú"
+            aria-label={t('openMenu')}
             onClick={() => setOpen(true)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text)] lg:hidden"
           >
@@ -122,12 +125,12 @@ export default function Header() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Menú principal"
+          aria-label={t('menuLabel')}
           className="fixed inset-0 z-50 lg:hidden"
         >
           <button
             type="button"
-            aria-label="Cerrar menú"
+            aria-label={t('closeMenu')}
             onClick={() => setOpen(false)}
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           />
@@ -147,7 +150,7 @@ export default function Header() {
               </Link>
               <button
                 type="button"
-                aria-label="Cerrar menú"
+                aria-label={t('closeMenu')}
                 onClick={() => setOpen(false)}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text)]"
               >
@@ -168,20 +171,20 @@ export default function Header() {
                       : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
                   ].join(' ')}
                 >
-                  {item.label}
+                  {item.label[locale]}
                 </Link>
               ))}
             </nav>
 
             <div className="mt-auto flex flex-col gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                <CalendarCheck className="h-4 w-4" /> Agendar diagnóstico
+                <CalendarCheck className="h-4 w-4" /> {t('scheduleDiagnosis')}
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
-                Escribir por WhatsApp
+                {t('writeWhatsapp')}
               </LinkButton>
               <div className="flex items-center justify-between border-t border-[var(--border)] pt-4">
-                <span className="text-xs text-[var(--text-soft)]">Tema</span>
+                <span className="text-xs text-[var(--text-soft)]">{t('theme')}</span>
                 <ThemeToggle />
               </div>
             </div>

@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
+import type { ComponentProps, ReactNode, ButtonHTMLAttributes } from 'react';
+import { Link } from '@/i18n/navigation';
 
 type Variant = 'primary' | 'secondary' | 'whatsapp' | 'ghost';
 
@@ -9,10 +9,17 @@ type BaseProps = {
   className?: string;
 };
 
-type LinkButtonProps = BaseProps & {
-  href: string;
-  external?: boolean;
+type InternalLinkButtonProps = BaseProps & {
+  href: ComponentProps<typeof Link>['href'];
+  external?: false;
 };
+
+type ExternalLinkButtonProps = BaseProps & {
+  href: string;
+  external: true;
+};
+
+type LinkButtonProps = InternalLinkButtonProps | ExternalLinkButtonProps;
 
 type NativeButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -23,23 +30,18 @@ const variantClass: Record<Variant, string> = {
   ghost: 'btn-ghost',
 };
 
-export function LinkButton({
-  variant = 'primary',
-  href,
-  external,
-  children,
-  className = '',
-}: LinkButtonProps) {
+export function LinkButton(props: LinkButtonProps) {
+  const { variant = 'primary', children, className = '' } = props;
   const classes = `btn ${variantClass[variant]} ${className}`.trim();
-  if (external) {
+  if (props.external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+      <a href={props.href} target="_blank" rel="noopener noreferrer" className={classes}>
         {children}
       </a>
     );
   }
   return (
-    <Link href={href} className={classes}>
+    <Link href={props.href} className={classes}>
       {children}
     </Link>
   );
