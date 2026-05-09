@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   ArrowRight,
   CheckCircle2,
@@ -14,198 +13,203 @@ import {
   Sparkles,
   XCircle,
 } from 'lucide-react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
+import { Link, getPathname } from '@/i18n/navigation';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 
-const canonicalPath = '/servicios/sre-gcp-kubernetes';
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'ServiceSRE' });
+  const canonicalPath = getPathname({
+    locale,
+    href: '/services/sre-gcp-kubernetes',
+  });
 
-export const metadata: Metadata = {
-  title: 'SRE y Cloud Engineering en GCP y Kubernetes',
-  description:
-    'SRE fraccional especializado en GCP, Kubernetes e Istio para empresas con producto digital. 11+ años de experiencia, certificaciones CKA e ICA. Costa Rica y LatAm.',
-  keywords: [
-    'SRE Costa Rica',
-    'Cloud Engineer GCP',
-    'consultor Kubernetes',
-    'Istio LatAm',
-    'DevOps fraccional',
-    'GKE Costa Rica',
-    'SRE LatAm',
-  ],
-  alternates: { canonical: canonicalPath },
-  openGraph: {
-    type: 'website',
-    title: 'SRE y Cloud Engineering en GCP y Kubernetes | Techbox',
-    description:
-      'SRE fraccional con CKA e ICA. Especialización en GCP, GKE e Istio para SaaS, fintechs y empresas escalando microservicios.',
-    url: canonicalPath,
-  },
-};
-
-const trustItems = [
-  '11+ años de experiencia',
-  'CKA',
-  'ICA',
-  'Terraform Associate',
-  'SOC2 / PCI hands-on',
-];
-
-const differentiators = [
-  {
-    icon: Cloud,
-    title: 'Especialización en GCP y GKE',
-    description: 'No generalistas que tocan todo. Operamos GCP y Google Kubernetes Engine como foco principal.',
-  },
-  {
-    icon: Network,
-    title: 'Certificación Istio (ICA)',
-    description: 'Uno de los pocos profesionales en LatAm con la credencial Istio Certified Associate de la CNCF.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Experiencia en entorno regulado',
-    description: 'SOC2 y PCI hands-on operando producción para una Fortune 500 financiera. No es teoría.',
-  },
-  {
-    icon: Clock,
-    title: 'Modelo fraccional',
-    description: 'Pagás solo las horas que necesitás. Sin headcount, sin onboarding largo, sin cargas sociales.',
-  },
-];
-
-const plans = [
-  {
-    name: 'Esencial',
-    price: '$1,200',
-    cadence: '/mes',
-    hours: '~8 horas mensuales',
-    popular: false,
-    description: 'Supervisión profesional para infra que ya está estable.',
-    features: [
-      'Monitoreo y alertas',
-      'Revisión mensual de costos cloud',
-      'Parches y mantenimiento de rutina',
-      '1 cambio menor por mes',
-      'Soporte L–V horario laboral CR',
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    keywords: [
+      'SRE Costa Rica',
+      'Cloud Engineer GCP',
+      'consultor Kubernetes',
+      'Istio LatAm',
+      'DevOps fraccional',
+      'GKE Costa Rica',
+      'SRE LatAm',
     ],
-    idealFor: 'Equipos con infra estable que necesitan supervisión profesional.',
-    cta: { label: 'Agendar llamada', variant: 'secondary' as const },
-  },
-  {
-    name: 'Estándar',
-    price: '$2,200',
-    cadence: '/mes',
-    hours: '~16 horas mensuales',
-    popular: true,
-    description: 'Confiabilidad activa para producto en producción.',
-    features: [
-      'Todo lo de Esencial',
-      'Infraestructura como código (Terraform)',
-      'Hardening de seguridad continuo',
-      'On-call horario laboral',
-      'Revisiones de arquitectura trimestrales',
-    ],
-    idealFor: 'SaaS y startups con producto en producción.',
-    cta: { label: 'Agendar llamada', variant: 'primary' as const },
-  },
-  {
-    name: 'Pro',
-    price: 'Cotización a medida',
-    cadence: '',
-    hours: '24+ horas mensuales',
-    popular: false,
-    description: 'Acompañamiento profundo para escalar microservicios.',
-    features: [
-      'Todo lo de Estándar',
-      'Proyectos pequeños incluidos',
-      'SLA personalizado',
-      'On-call extendido (opcional)',
-    ],
-    idealFor: 'Empresas escalando microservicios o con compliance estricto.',
-    cta: { label: 'Solicitar cotización', variant: 'secondary' as const },
-  },
-];
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: 'website',
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      url: canonicalPath,
+    },
+  };
+}
 
-const oneOffs = [
-  {
-    icon: Sparkles,
-    title: 'Auditoría GCP gratuita',
-    duration: '90 minutos',
-    price: 'Sin costo',
-    description:
-      'Revisión de costos, confiabilidad y seguridad de tu cuenta GCP. Entrega un PDF con hallazgos priorizados y un plan de 90 días. Sin compromiso.',
-    cta: { label: 'Agendar auditoría', href: site.calendly, external: true },
-  },
-  {
-    icon: Network,
-    title: 'Service Mesh Readiness Assessment',
-    duration: '1–2 semanas',
-    price: 'Desde $2,000',
-    description:
-      'Evaluación para empresas considerando Istio o Linkerd. Análisis del stack actual y roadmap de implementación.',
-    cta: { label: 'Solicitar info', href: site.whatsapp, external: true },
-  },
-];
+export default async function SREServicePage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('ServiceSRE');
+  const tCommon = await getTranslations('Common');
 
-const turnkeyImplementations = [
-  { title: 'Migración a Terraform', price: 'Desde $5,000' },
-  { title: 'Implementación Istio + observabilidad', price: 'Desde $9,000' },
-  { title: 'Setup GKE producción-ready', price: 'Desde $6,000' },
-];
+  const trustItems = [t('trust1'), t('trust2'), t('trust3'), t('trust4'), t('trust5')];
+  const dailyItems = [
+    t('daily1'),
+    t('daily2'),
+    t('daily3'),
+    t('daily4'),
+    t('daily5'),
+    t('daily6'),
+  ];
 
-const stackItems = [
-  'GCP',
-  'Kubernetes',
-  'Istio',
-  'Terraform',
-  'HashiCorp Vault',
-  'Jenkins',
-  'GitHub Actions',
-  'Argo CD',
-  'Docker',
-  'Python',
-  'Bash',
-  'Linux',
-];
+  const differentiators = [
+    { icon: Cloud, title: t('diff1Title'), description: t('diff1Desc') },
+    { icon: Network, title: t('diff2Title'), description: t('diff2Desc') },
+    { icon: ShieldCheck, title: t('diff3Title'), description: t('diff3Desc') },
+    { icon: Clock, title: t('diff4Title'), description: t('diff4Desc') },
+  ];
 
-const certifications = [
-  {
-    badgeId: 'c120126b-dc33-445a-a4f8-182200dfe425',
-    label: 'Certified Kubernetes Administrator',
-    issuer: 'The Linux Foundation',
-    image: '/badges/cka.png',
-  },
-  {
-    badgeId: '8f5e3a3a-e21f-4e42-b7f4-42409d431f33',
-    label: 'Istio Certified Associate',
-    issuer: 'The Linux Foundation',
-    image: '/badges/istio-ica.png',
-  },
-  {
-    badgeId: '96c63672-58a8-494c-98cf-0f11ff492b46',
-    label: 'Cloud Digital Leader',
-    issuer: 'Google Cloud',
-    image: '/badges/gcp-digital-leader.png',
-  },
-  {
-    badgeId: 'b1dc57b5-52d7-4eb1-a685-c09094343ccc',
-    label: 'HashiCorp Certified: Terraform Associate (003)',
-    issuer: 'HashiCorp',
-    image: '/badges/terraform-associate.png',
-    expired: true,
-  },
-];
+  const plans = [
+    {
+      name: t('planEssentialName'),
+      price: t('planEssentialPrice'),
+      cadence: t('planEssentialCadence'),
+      hours: t('planEssentialHours'),
+      popular: false,
+      description: t('planEssentialDesc'),
+      features: [
+        t('planEssentialF1'),
+        t('planEssentialF2'),
+        t('planEssentialF3'),
+        t('planEssentialF4'),
+        t('planEssentialF5'),
+      ],
+      idealFor: t('planEssentialIdeal'),
+      cta: { label: t('scheduleCallCta'), variant: 'secondary' as const },
+    },
+    {
+      name: t('planStandardName'),
+      price: t('planStandardPrice'),
+      cadence: t('planStandardCadence'),
+      hours: t('planStandardHours'),
+      popular: true,
+      description: t('planStandardDesc'),
+      features: [
+        t('planStandardF1'),
+        t('planStandardF2'),
+        t('planStandardF3'),
+        t('planStandardF4'),
+        t('planStandardF5'),
+      ],
+      idealFor: t('planStandardIdeal'),
+      cta: { label: t('scheduleCallCta'), variant: 'primary' as const },
+    },
+    {
+      name: t('planProName'),
+      price: t('planProPrice'),
+      cadence: t('planProCadence'),
+      hours: t('planProHours'),
+      popular: false,
+      description: t('planProDesc'),
+      features: [
+        t('planProF1'),
+        t('planProF2'),
+        t('planProF3'),
+        t('planProF4'),
+      ],
+      idealFor: t('planProIdeal'),
+      cta: { label: t('requestQuoteCta'), variant: 'secondary' as const },
+    },
+  ];
 
-const fitYes = [
-  'SaaS B2B con producto en producción',
-  'Empresas con microservicios en Kubernetes',
-  'Startups que migraron a GCP y necesitan governance',
-  'Software houses que necesitan especialista de cloud para sus proyectos',
-  'Empresas con requerimientos de compliance (SOC2, PCI, regulación local)',
-];
+  const oneOffs = [
+    {
+      icon: Sparkles,
+      title: t('auditTitle'),
+      duration: t('auditDuration'),
+      price: t('auditPrice'),
+      description: t('auditDesc'),
+      cta: { label: t('auditCta'), href: site.calendly, external: true as const },
+    },
+    {
+      icon: Network,
+      title: t('meshTitle'),
+      duration: t('meshDuration'),
+      price: t('meshPrice'),
+      description: t('meshDesc'),
+      cta: { label: t('meshCta'), href: site.whatsapp, external: true as const },
+    },
+  ];
 
-export default function SREServicePage() {
+  const turnkeyImplementations = [
+    { title: t('turnkey1Title'), price: t('turnkey1Price') },
+    { title: t('turnkey2Title'), price: t('turnkey2Price') },
+    { title: t('turnkey3Title'), price: t('turnkey3Price') },
+  ];
+
+  const stackItems = [
+    'GCP',
+    'Kubernetes',
+    'Istio',
+    'Terraform',
+    'HashiCorp Vault',
+    'Jenkins',
+    'GitHub Actions',
+    'Argo CD',
+    'Docker',
+    'Python',
+    'Bash',
+    'Linux',
+  ];
+
+  const certifications = [
+    {
+      badgeId: 'c120126b-dc33-445a-a4f8-182200dfe425',
+      label: 'Certified Kubernetes Administrator',
+      issuer: 'The Linux Foundation',
+      image: '/badges/cka.png',
+    },
+    {
+      badgeId: '8f5e3a3a-e21f-4e42-b7f4-42409d431f33',
+      label: 'Istio Certified Associate',
+      issuer: 'The Linux Foundation',
+      image: '/badges/istio-ica.png',
+    },
+    {
+      badgeId: '96c63672-58a8-494c-98cf-0f11ff492b46',
+      label: 'Cloud Digital Leader',
+      issuer: 'Google Cloud',
+      image: '/badges/gcp-digital-leader.png',
+    },
+    {
+      badgeId: 'b1dc57b5-52d7-4eb1-a685-c09094343ccc',
+      label: 'HashiCorp Certified: Terraform Associate (003)',
+      issuer: 'HashiCorp',
+      image: '/badges/terraform-associate.png',
+      expired: true,
+    },
+  ];
+
+  const fitYes = [
+    t('fitYes1'),
+    t('fitYes2'),
+    t('fitYes3'),
+    t('fitYes4'),
+    t('fitYes5'),
+  ];
+
   return (
     <>
       {/* HERO */}
@@ -213,30 +217,29 @@ export default function SREServicePage() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-6">
           <div className="flex flex-col gap-5">
             <Link
-              href="/servicios"
+              href="/services"
               className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
             >
-              ← Servicios
+              {t('backLink')}
             </Link>
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
               <ServerCog className="h-3.5 w-3.5" />
-              SRE / Cloud Engineering
+              {t('heroBadge')}
             </span>
             <h1 className="text-[2.25rem] font-semibold leading-tight text-[var(--text)] md:text-[3rem]">
-              SRE y Cloud Engineering en{' '}
-              <span className="text-gradient-brand">GCP y Kubernetes</span>
+              {t('heroTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('heroTitleAccent')}</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
-              Confiabilidad de nivel enterprise para tu producto digital, sin contratar un equipo
-              completo. SRE fraccional especializado en GCP, GKE e Istio.
+              {t('heroLead')}
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href={site.calendly} external variant="primary">
-                Agendá una auditoría gratuita <ArrowRight className="h-4 w-4" />
+                {t('ctaAudit')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <LinkButton href="#planes" variant="secondary">
-                Ver planes
-              </LinkButton>
+              <a href="#plans" className="btn btn-secondary">
+                {t('ctaPlans')}
+              </a>
             </div>
             <ul className="mt-2 flex flex-wrap gap-2">
               {trustItems.map((item) => (
@@ -256,17 +259,10 @@ export default function SREServicePage() {
                 <ServerCog className="h-7 w-7" />
               </span>
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                Lo que opero a diario
+                {t('dailyHeading')}
               </h2>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {[
-                  'GCP / GKE en producción',
-                  'Service mesh con Istio',
-                  'Terraform e IaC',
-                  'CI/CD con Jenkins y Argo CD',
-                  'Observabilidad y SLOs',
-                  'Compliance SOC2 / PCI',
-                ].map((f) => (
+                {dailyItems.map((f) => (
                   <li
                     key={f}
                     className="flex items-start gap-2 text-sm text-[var(--text-muted)]"
@@ -281,13 +277,18 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* DIFERENCIADORES */}
+      {/* DIFFERENTIATORS */}
       <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
         <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
           <SectionHeading
-            eyebrow="Diferenciadores"
-            title={<>Por qué un <span className="text-gradient-brand">SRE especializado</span></>}
-            description="Cloud genérico es para empezar. Cuando tu producto crece — microservicios, Kubernetes, múltiples regiones, compliance — necesitás a alguien con experiencia real operando producción a escala. No un generalista, un especialista."
+            eyebrow={t('diffsEyebrow')}
+            title={
+              <>
+                {t('diffsTitleStart')}{' '}
+                <span className="text-gradient-brand">{t('diffsTitleAccent')}</span>
+              </>
+            }
+            description={t('diffsDescription')}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {differentiators.map((d) => {
@@ -308,12 +309,17 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* PLANES */}
-      <section id="planes" className="mx-auto w-full max-w-6xl scroll-mt-24 px-4 py-20 lg:px-6">
+      {/* PLANS */}
+      <section id="plans" className="mx-auto w-full max-w-6xl scroll-mt-24 px-4 py-20 lg:px-6">
         <SectionHeading
-          eyebrow="Planes"
-          title={<>Modelo fraccional, <span className="text-gradient-brand">pagás por horas</span></>}
-          description="Tres niveles de acompañamiento mensual. Si necesitás algo distinto, vemos un esquema a medida."
+          eyebrow={t('plansEyebrow')}
+          title={
+            <>
+              {t('plansTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('plansTitleAccent')}</span>
+            </>
+          }
+          description={t('plansDescription')}
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {plans.map((plan) => (
@@ -331,7 +337,7 @@ export default function SREServicePage() {
               {plan.popular && (
                 <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-[var(--brand-teal)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_8px_20px_-8px_rgba(46,196,182,0.7)]">
                   <Sparkles className="h-3 w-3" />
-                  Más popular
+                  {t('popularBadge')}
                 </span>
               )}
               <div className="flex flex-col gap-1">
@@ -340,7 +346,7 @@ export default function SREServicePage() {
               </div>
               <div className="flex flex-col gap-1">
                 <p className="text-2xl font-semibold text-[var(--text)] md:text-[1.75rem]">
-                  {plan.cadence ? `Desde ${plan.price}` : plan.price}
+                  {plan.cadence ? `${t('fromPrefix')} ${plan.price}` : plan.price}
                   {plan.cadence && (
                     <span className="text-base font-medium text-[var(--text-muted)]">
                       {plan.cadence}
@@ -363,7 +369,7 @@ export default function SREServicePage() {
                 ))}
               </ul>
               <p className="text-xs italic leading-relaxed text-[var(--text-soft)]">
-                Ideal para: {plan.idealFor}
+                {t('idealForPrefix')} {plan.idealFor}
               </p>
               <LinkButton
                 href={site.calendly}
@@ -378,13 +384,18 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* SERVICIOS PUNTUALES */}
+      {/* ONE-OFFS */}
       <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
         <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
           <SectionHeading
-            eyebrow="Sin retainer"
-            title={<>Servicios <span className="text-gradient-brand">puntuales</span></>}
-            description="¿Aún no estás listo para un acompañamiento mensual? Estos servicios son por proyecto."
+            eyebrow={t('oneOffsEyebrow')}
+            title={
+              <>
+                {t('oneOffsTitleStart')}{' '}
+                <span className="text-gradient-brand">{t('oneOffsTitleAccent')}</span>
+              </>
+            }
+            description={t('oneOffsDescription')}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {oneOffs.map((s) => {
@@ -421,11 +432,11 @@ export default function SREServicePage() {
             <div className="flex items-center gap-2">
               <Server className="h-5 w-5 text-[var(--brand-teal)]" />
               <h3 className="text-base font-semibold text-[var(--text)]">
-                Implementaciones llave en mano
+                {t('turnkeyHeading')}
               </h3>
             </div>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
-              Proyectos cerrados con alcance, plazo y entregables definidos.
+              {t('turnkeyDescription')}
             </p>
             <ul className="mt-5 grid gap-3 md:grid-cols-3">
               {turnkeyImplementations.map((p) => (
@@ -444,18 +455,23 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* STACK Y CERTIFICACIONES */}
+      {/* STACK & CERTS */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 lg:px-6">
         <SectionHeading
-          eyebrow="Stack & credenciales"
-          title={<>Especialización <span className="text-gradient-brand">certificada</span></>}
-          description="Herramientas que opero en producción y certificaciones verificables que respaldan la práctica."
+          eyebrow={t('stackEyebrow')}
+          title={
+            <>
+              {t('stackTitleStart')}{' '}
+              <span className="text-gradient-brand">{t('stackTitleAccent')}</span>
+            </>
+          }
+          description={t('stackDescription')}
         />
 
         <div className="mt-12 flex flex-col gap-12">
           <div className="flex flex-col gap-5">
             <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--text-soft)]">
-              Stack
+              {t('stackHeading')}
             </h3>
             <ul className="flex flex-wrap gap-2.5">
               {stackItems.map((tool) => (
@@ -472,10 +488,10 @@ export default function SREServicePage() {
 
           <div className="flex flex-col gap-5">
             <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--text-soft)]">
-              Certificaciones verificables
+              {t('certsHeading')}
             </h3>
             <p className="text-sm text-[var(--text-muted)]">
-              Click en cada badge para verificar el credencial en Credly.
+              {t('certsHelp')}
             </p>
             <div className="grid gap-5 sm:grid-cols-2">
               {certifications.map((cert) => (
@@ -484,7 +500,7 @@ export default function SREServicePage() {
                   href={`https://www.credly.com/badges/${cert.badgeId}/public_url`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Verificar ${cert.label} en Credly`}
+                  aria-label={t('certVerifyAria', { name: cert.label })}
                   className="card group flex flex-col items-center gap-4 p-6 text-center transition-transform hover:-translate-y-0.5 hover:border-[var(--brand-teal)]"
                 >
                   <div className="relative h-32 w-32 shrink-0">
@@ -501,7 +517,7 @@ export default function SREServicePage() {
                     <p className="text-xs text-[var(--text-muted)]">{cert.issuer}</p>
                     {cert.expired && (
                       <span className="mt-1 inline-flex w-fit self-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-                        Expirada
+                        {t('certExpired')}
                       </span>
                     )}
                   </div>
@@ -512,19 +528,26 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* PARA QUIÉN ES / NO ES */}
+      {/* FIT */}
       <section className="relative border-y border-[var(--border)] bg-[var(--surface-muted)]/60 py-20">
         <div className="mx-auto w-full max-w-6xl px-4 lg:px-6">
           <SectionHeading
-            eyebrow="Filtro honesto"
-            title={<>Para quién <span className="text-gradient-brand">sí</span> y para quién <span className="text-gradient-brand">no</span></>}
-            description="Preferimos perder un cliente al inicio que entregar algo fuera de nuestra especialidad."
+            eyebrow={t('fitEyebrow')}
+            title={
+              <>
+                {t('fitTitleStart')}{' '}
+                <span className="text-gradient-brand">{t('fitTitleYes')}</span>{' '}
+                {t('fitTitleAnd')}{' '}
+                <span className="text-gradient-brand">{t('fitTitleNo')}</span>
+              </>
+            }
+            description={t('fitDescription')}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <article className="card flex flex-col gap-4 p-7">
               <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
                 <CheckCircle2 className="h-5 w-5 text-[var(--brand-teal)]" />
-                Para quién es
+                {t('fitYesHeading')}
               </div>
               <ul className="flex flex-col gap-2.5">
                 {fitYes.map((item) => (
@@ -541,36 +564,35 @@ export default function SREServicePage() {
             <article className="card flex flex-col gap-4 p-7">
               <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)]">
                 <XCircle className="h-5 w-5 text-[var(--brand-navy)] dark:text-[var(--text-muted)]" />
-                Para quién NO es
+                {t('fitNoHeading')}
               </div>
               <ul className="flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
                 <li className="flex items-start gap-2">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--text-soft)]" />
                   <span>
-                    Empresas que aún no están en la nube → recomendamos empezar con nuestro
-                    servicio de{' '}
+                    {t('fitNoCloudBefore')}{' '}
                     <Link
-                      href="/servicios/infraestructura-cloud"
+                      href={{
+                        pathname: '/services/[slug]',
+                        params: {
+                          slug:
+                            locale === 'es' ? 'infraestructura-cloud' : 'cloud-infrastructure',
+                        },
+                      }}
                       className="font-semibold text-[var(--brand-navy)] underline-offset-4 hover:underline dark:text-[var(--brand-teal)]"
                     >
-                      Infraestructura Cloud
+                      {t('fitNoCloudLink')}
                     </Link>
-                    .
+                    {t('fitNoCloudAfter')}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--text-soft)]" />
-                  <span>
-                    Operaciones que requieren on-call 24/7 dedicado → necesitás un equipo interno o
-                    un MSP.
-                  </span>
+                  <span>{t('fitNo24x7')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--text-soft)]" />
-                  <span>
-                    Stacks fuera de nuestra especialidad: Azure como principal, AWS profundo o
-                    on-premise puro.
-                  </span>
+                  <span>{t('fitNoStack')}</span>
                 </li>
               </ul>
             </article>
@@ -578,7 +600,7 @@ export default function SREServicePage() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
+      {/* FINAL CTA */}
       <section className="py-20">
         <div className="mx-auto w-full max-w-6xl px-4">
           <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
@@ -594,11 +616,10 @@ export default function SREServicePage() {
             />
             <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">
               <h2 className="text-3xl font-semibold leading-tight text-white md:text-[2.5rem]">
-                ¿Tu infraestructura ya se siente grande para una sola persona? Hablemos.
+                {t('finalCtaTitle')}
               </h2>
               <p className="text-base leading-relaxed text-white/90 md:text-lg">
-                90 minutos por videollamada. Salimos con un PDF de hallazgos priorizados y un plan
-                de 90 días, sin compromiso.
+                {t('finalCtaDescription')}
               </p>
               <div className="flex flex-wrap gap-3">
                 <LinkButton
@@ -607,10 +628,10 @@ export default function SREServicePage() {
                   variant="secondary"
                   className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
                 >
-                  Agendar auditoría gratuita <ArrowRight className="h-4 w-4" />
+                  {t('finalCtaSchedule')} <ArrowRight className="h-4 w-4" />
                 </LinkButton>
                 <LinkButton variant="whatsapp" href={site.whatsapp} external>
-                  <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}
+                  <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
                 </LinkButton>
               </div>
             </div>

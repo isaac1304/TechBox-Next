@@ -1,5 +1,7 @@
+import { useTranslations, useLocale } from 'next-intl';
 import { LinkButton } from './Button';
 import { site } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 import { MessageCircle, CalendarCheck } from 'lucide-react';
 
 type Props = {
@@ -8,11 +10,11 @@ type Props = {
   className?: string;
 };
 
-export default function CTASection({
-  title = 'Contános qué querés resolver',
-  description = '30 minutos por videollamada. Salimos con una primera idea concreta de cómo abordarlo, no con una propuesta de venta.',
-  className = '',
-}: Props) {
+export default function CTASection({ title, description, className = '' }: Props) {
+  const t = useTranslations('Cta');
+  const tCommon = useTranslations('Common');
+  const locale = useLocale() as Locale;
+
   return (
     <section className={`mx-auto w-full max-w-6xl px-4 ${className}`.trim()}>
       <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
@@ -31,12 +33,14 @@ export default function CTASection({
         />
         <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">
           <h2 className="text-3xl font-semibold leading-tight text-white md:text-[2.5rem]">
-            {title}
+            {title ?? t('defaultTitle')}
           </h2>
-          <p className="text-base leading-relaxed text-white/90 md:text-lg">{description}</p>
+          <p className="text-base leading-relaxed text-white/90 md:text-lg">
+            {description ?? t('defaultDescription')}
+          </p>
           <div className="flex flex-wrap gap-3">
             <LinkButton variant="whatsapp" href={site.whatsapp} external>
-              <MessageCircle className="h-4 w-4" /> {site.whatsappLabel}
+              <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
             </LinkButton>
             <LinkButton
               href={site.calendly}
@@ -44,7 +48,7 @@ export default function CTASection({
               variant="secondary"
               className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
             >
-              <CalendarCheck className="h-4 w-4" /> Agendá tu diagnóstico
+              <CalendarCheck className="h-4 w-4" /> {tCommon('scheduleDiagnosisCta')}
             </LinkButton>
           </div>
         </div>
