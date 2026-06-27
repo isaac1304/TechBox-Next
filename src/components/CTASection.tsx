@@ -43,7 +43,7 @@ export default function CTASection({ title, description, className = '' }: Props
               <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
             </LinkButton>
             <LinkButton
-              href={site.calendly}
+              href={site.booking}
               external
               variant="secondary"
               className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"

@@ -103,7 +103,7 @@ export default function Header() {
             <ThemeToggle />
           </div>
           <LinkButton
-            href={site.calendly}
+            href={site.booking}
             external
             variant="primary"
             className="hidden md:inline-flex"
@@ -177,7 +177,7 @@ export default function Header() {
             </nav>
 
             <div className="mt-auto flex flex-col gap-3">
-              <LinkButton href={site.calendly} external variant="primary">
+              <LinkButton href={site.booking} external variant="primary">
                 <CalendarCheck className="h-4 w-4" /> {t('scheduleDiagnosis')}
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">

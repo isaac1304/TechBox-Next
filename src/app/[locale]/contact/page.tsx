@@ -63,7 +63,7 @@ export default async function ContactPage({
               </li>
             </ul>
             <div className="mt-2 flex flex-col gap-2">
-              <LinkButton href={site.calendly} external variant="primary">
+              <LinkButton href={site.booking} external variant="primary">
                 <CalendarCheck className="h-4 w-4" /> {tCommon('scheduleDiagnosisCta')}
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">

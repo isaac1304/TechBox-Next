@@ -18,7 +18,7 @@ export const site = {
     es: 'Escribinos por WhatsApp',
     en: 'Message us on WhatsApp',
   } as LocalizedString,
-  calendly: 'https://calendly.com/isaacxdd/30min',
+  booking: 'https://cal.com/techbox',
   location: {
     es: 'Heredia, Costa Rica',
     en: 'Heredia, Costa Rica',

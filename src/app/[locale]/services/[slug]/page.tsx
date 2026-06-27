@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({
               {service.longDescription[locale]}
             </p>
             <div className="flex flex-wrap gap-3">
-              <LinkButton href={site.calendly} external variant="primary">
+              <LinkButton href={site.booking} external variant="primary">
                 {tCommon('scheduleDiagnosis')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <LinkButton href={site.whatsapp} external variant="whatsapp">
