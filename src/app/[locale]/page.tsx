@@ -81,7 +81,7 @@ export default async function HomePage({
               {t('heroLead')}
             </p>
             <div className="flex flex-wrap gap-3">
-              <LinkButton href={site.calendly} external variant="primary">
+              <LinkButton href={site.booking} external variant="primary">
                 {tCommon('scheduleDiagnosisCta')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <LinkButton href="/services" variant="secondary">

@@ -141,7 +141,7 @@ export default async function SREServicePage({
       duration: t('auditDuration'),
       price: t('auditPrice'),
       description: t('auditDesc'),
-      cta: { label: t('auditCta'), href: site.calendly, external: true as const },
+      cta: { label: t('auditCta'), href: site.booking, external: true as const },
     },
     {
       icon: Network,
@@ -234,7 +234,7 @@ export default async function SREServicePage({
               {t('heroLead')}
             </p>
             <div className="flex flex-wrap gap-3">
-              <LinkButton href={site.calendly} external variant="primary">
+              <LinkButton href={site.booking} external variant="primary">
                 {t('ctaAudit')} <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <a href="#plans" className="btn btn-secondary">
@@ -372,7 +372,7 @@ export default async function SREServicePage({
                 {t('idealForPrefix')} {plan.idealFor}
               </p>
               <LinkButton
-                href={site.calendly}
+                href={site.booking}
                 external
                 variant={plan.cta.variant}
                 className="mt-auto justify-center"
@@ -623,7 +623,7 @@ export default async function SREServicePage({
               </p>
               <div className="flex flex-wrap gap-3">
                 <LinkButton
-                  href={site.calendly}
+                  href={site.booking}
                   external
                   variant="secondary"
                   className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
