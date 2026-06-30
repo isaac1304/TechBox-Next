@@ -17,7 +17,7 @@ export default function CTASection({ title, description, className = '' }: Props
 
   return (
     <section className={`mx-auto w-full max-w-6xl px-4 ${className}`.trim()}>
-      <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
+      <div className="relative isolate overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -42,12 +42,7 @@ export default function CTASection({ title, description, className = '' }: Props
             <LinkButton variant="whatsapp" href={site.whatsapp} external>
               <MessageCircle className="h-4 w-4" /> {site.whatsappLabel[locale]}
             </LinkButton>
-            <LinkButton
-              href={site.booking}
-              external
-              variant="secondary"
-              className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
-            >
+            <LinkButton href={site.booking} external variant="light">
               <CalendarCheck className="h-4 w-4" /> {tCommon('scheduleDiagnosisCta')}
             </LinkButton>
           </div>

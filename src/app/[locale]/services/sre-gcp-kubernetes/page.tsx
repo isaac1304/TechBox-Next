@@ -603,7 +603,7 @@ export default async function SREServicePage({
       {/* FINAL CTA */}
       <section className="py-20">
         <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
+          <div className="relative isolate overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
             <div
               aria-hidden
               className="absolute inset-0 -z-10"
@@ -622,12 +622,7 @@ export default async function SREServicePage({
                 {t('finalCtaDescription')}
               </p>
               <div className="flex flex-wrap gap-3">
-                <LinkButton
-                  href={site.booking}
-                  external
-                  variant="secondary"
-                  className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
-                >
+                <LinkButton href={site.booking} external variant="light">
                   {t('finalCtaSchedule')} <ArrowRight className="h-4 w-4" />
                 </LinkButton>
                 <LinkButton variant="whatsapp" href={site.whatsapp} external>
