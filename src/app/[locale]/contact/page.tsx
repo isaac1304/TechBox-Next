@@ -77,7 +77,7 @@ export default async function ContactPage({
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[var(--text-muted)]">
               <li className="inline-flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <Mail className="h-4 w-4" />
                 </span>
                 <a href={`mailto:${site.email}`} className="hover:text-[var(--text)]">
@@ -85,13 +85,13 @@ export default async function ContactPage({
                 </a>
               </li>
               <li className="inline-flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <Phone className="h-4 w-4" />
                 </span>
                 {site.phone}
               </li>
               <li className="inline-flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <MapPin className="h-4 w-4" />
                 </span>
                 {site.location[locale]}

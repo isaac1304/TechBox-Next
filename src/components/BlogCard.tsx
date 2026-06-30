@@ -19,7 +19,7 @@ export default function BlogCard({
       className="group card flex h-full flex-col gap-5 p-7"
     >
       <div className="flex items-center gap-3 text-xs">
-        <span className="inline-flex items-center rounded-full bg-[var(--gradient-brand-soft)] px-3 py-1 font-semibold uppercase tracking-[0.18em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+        <span className="inline-flex items-center rounded-full bg-[image:var(--gradient-brand-soft)] px-3 py-1 font-semibold uppercase tracking-[0.18em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
           {categoryLabels[post.category][locale]}
         </span>
         <span className="inline-flex items-center gap-1 text-[var(--text-soft)]">

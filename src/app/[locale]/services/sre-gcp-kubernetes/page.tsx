@@ -255,7 +255,7 @@ export default async function SREServicePage({
           </div>
           <div className="relative">
             <div className="card flex flex-col gap-4 p-7">
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gradient-brand)] text-white shadow-[0_12px_30px_-12px_rgba(42,47,115,0.6)]">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[image:var(--gradient-brand)] text-white shadow-[0_12px_30px_-12px_rgba(42,47,115,0.6)]">
                 <ServerCog className="h-7 w-7" />
               </span>
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
@@ -295,7 +295,7 @@ export default async function SREServicePage({
               const Icon = d.icon;
               return (
                 <article key={d.title} className="card flex flex-col gap-3 p-7">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                     <Icon className="h-5 w-5" />
                   </span>
                   <h3 className="text-base font-semibold text-[var(--text)]">{d.title}</h3>
@@ -403,7 +403,7 @@ export default async function SREServicePage({
               return (
                 <article key={s.title} className="card flex flex-col gap-4 p-7">
                   <div className="flex items-start justify-between gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
