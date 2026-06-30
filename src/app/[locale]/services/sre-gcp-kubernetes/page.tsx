@@ -603,7 +603,7 @@ export default async function SREServicePage({
       {/* FINAL CTA */}
       <section className="py-20">
         <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
+          <div className="relative isolate overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
             <div
               aria-hidden
               className="absolute inset-0 -z-10"

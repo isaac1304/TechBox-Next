@@ -17,7 +17,7 @@ export default function CTASection({ title, description, className = '' }: Props
 
   return (
     <section className={`mx-auto w-full max-w-6xl px-4 ${className}`.trim()}>
-      <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
+      <div className="relative isolate overflow-hidden rounded-[2rem] border border-[var(--border-strong)] p-10 md:p-14">
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
