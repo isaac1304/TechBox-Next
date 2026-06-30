@@ -194,6 +194,17 @@ body::after {
   color: var(--brand-teal);
 }
 
+.btn-light {
+  background: #ffffff;
+  color: var(--brand-navy);
+  box-shadow: 0 14px 30px -12px rgba(7, 10, 31, 0.35);
+}
+
+.btn-light:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(-1px);
+}
+
 .btn-whatsapp {
   background: #25D366;
   color: #fff;

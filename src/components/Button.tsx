@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode, ButtonHTMLAttributes } from 'react';
 import { Link } from '@/i18n/navigation';
 
-type Variant = 'primary' | 'secondary' | 'whatsapp' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'whatsapp' | 'ghost' | 'light';
 
 type BaseProps = {
   variant?: Variant;
@@ -28,6 +28,7 @@ const variantClass: Record<Variant, string> = {
   secondary: 'btn-secondary',
   whatsapp: 'btn-whatsapp',
   ghost: 'btn-ghost',
+  light: 'btn-light',
 };
 
 export function LinkButton(props: LinkButtonProps) {

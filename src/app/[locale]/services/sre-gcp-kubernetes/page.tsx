@@ -622,12 +622,7 @@ export default async function SREServicePage({
                 {t('finalCtaDescription')}
               </p>
               <div className="flex flex-wrap gap-3">
-                <LinkButton
-                  href={site.booking}
-                  external
-                  variant="secondary"
-                  className="border-white/30 bg-white text-[var(--brand-navy)] hover:border-white hover:bg-white/90 hover:text-[var(--brand-navy)]"
-                >
+                <LinkButton href={site.booking} external variant="light">
                   {t('finalCtaSchedule')} <ArrowRight className="h-4 w-4" />
                 </LinkButton>
                 <LinkButton variant="whatsapp" href={site.whatsapp} external>
