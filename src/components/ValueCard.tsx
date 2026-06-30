@@ -9,7 +9,7 @@ type Props = {
 export default function ValueCard({ icon, title, description }: Props) {
   return (
     <article className="card flex flex-col gap-4 p-6">
-      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
         {icon}
       </span>
       <h3 className="text-base font-semibold text-[var(--text)]">{title}</h3>

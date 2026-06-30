@@ -98,7 +98,7 @@ export default async function ServiceDetailPage({
           </div>
           <div className="relative">
             <div className="card flex flex-col gap-4 p-7">
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gradient-brand)] text-white shadow-[0_12px_30px_-12px_rgba(42,47,115,0.6)]">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[image:var(--gradient-brand)] text-white shadow-[0_12px_30px_-12px_rgba(42,47,115,0.6)]">
                 <ServiceIcon name={service.icon} className="h-7 w-7" />
               </span>
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
@@ -157,7 +157,7 @@ export default async function ServiceDetailPage({
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {service.benefits[locale].map((b) => (
               <article key={b.title} className="card flex flex-col gap-3 p-7">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
                   <CheckCircle2 className="h-5 w-5" />
                 </span>
                 <h3 className="text-base font-semibold text-[var(--text)]">{b.title}</h3>

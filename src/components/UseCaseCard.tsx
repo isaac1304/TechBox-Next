@@ -17,7 +17,7 @@ export default function UseCaseCard({
 
   return (
     <article className="card flex h-full flex-col gap-5 p-7">
-      <span className="inline-flex w-fit items-center rounded-full bg-[var(--gradient-brand-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
+      <span className="inline-flex w-fit items-center rounded-full bg-[image:var(--gradient-brand-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
         {useCase.industry[locale]}
       </span>
       <h3 className="text-lg font-semibold text-[var(--text)]">{useCase.title[locale]}</h3>

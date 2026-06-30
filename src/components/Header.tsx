@@ -89,7 +89,7 @@ export default function Header() {
               className={[
                 'rounded-full px-3.5 py-2 text-sm font-medium transition',
                 isActive(item.href)
-                  ? 'bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
+                  ? 'bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
                   : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
               ].join(' ')}
             >
@@ -167,7 +167,7 @@ export default function Header() {
                   className={[
                     'rounded-xl px-4 py-3 text-base font-medium transition',
                     isActive(item.href)
-                      ? 'bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
+                      ? 'bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
                       : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
                   ].join(' ')}
                 >

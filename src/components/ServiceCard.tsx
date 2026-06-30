@@ -23,7 +23,7 @@ export default function ServiceCard({ service, locale }: Props) {
       className="group card relative flex h-full flex-col gap-5 overflow-hidden p-7"
     >
       <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[1.25rem] bg-gradient-to-r from-[var(--brand-navy)] via-[var(--brand-navy-500)] to-[var(--brand-teal)] opacity-70 transition group-hover:opacity-100" />
-      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gradient-brand-soft)] text-[var(--brand-navy)] transition group-hover:scale-105 dark:text-[var(--brand-teal)]">
+      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] transition group-hover:scale-105 dark:text-[var(--brand-teal)]">
         <ServiceIcon name={service.icon} className="h-6 w-6" />
       </span>
       <div className="flex flex-col gap-2">
