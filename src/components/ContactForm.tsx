@@ -19,9 +19,24 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('submitting');
 
+    const formData = new FormData(e.currentTarget);
+    const payload = Object.fromEntries(formData.entries());
+
     try {
-      // Placeholder: no backend wired. Replace with fetch to your endpoint.
-      await new Promise((r) => setTimeout(r, 800));
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error('request_failed');
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'contact_form_submit',
+        service: typeof payload.service === 'string' && payload.service ? payload.service : 'not_specified',
+      });
+
       setStatus('success');
     } catch {
       setStatus('error');
@@ -63,6 +78,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="card flex flex-col gap-5 p-7">
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-px w-px opacity-0"
+      />
       <fieldset disabled={submitting} className="contents">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
