@@ -30,6 +30,13 @@ export default function ContactForm() {
       });
 
       if (!res.ok) throw new Error('request_failed');
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'contact_form_submit',
+        service: typeof payload.service === 'string' && payload.service ? payload.service : 'not_specified',
+      });
+
       setStatus('success');
     } catch {
       setStatus('error');
