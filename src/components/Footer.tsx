@@ -4,7 +4,6 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { site } from '@/lib/site';
 import { services } from '@/data/services';
-import LocaleSwitcher from './LocaleSwitcher';
 import type { Locale } from '@/i18n/routing';
 
 export default async function Footer() {
@@ -112,7 +111,6 @@ export default async function Footer() {
             © {new Date().getFullYear()} {t('rightsHolder')} — {site.domain}
           </p>
           <p>{t('madeWith')}</p>
-          <LocaleSwitcher />
         </div>
       </div>
     </footer>

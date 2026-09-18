@@ -8,6 +8,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import ThemeToggle from './ThemeToggle';
+import LocaleSwitcher from './LocaleSwitcher';
 import { LinkButton } from './Button';
 
 export default function Header() {
@@ -99,7 +100,8 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 border-r border-[var(--border)] pr-3 lg:flex">
+            <LocaleSwitcher compact />
             <ThemeToggle />
           </div>
           <LinkButton
@@ -184,8 +186,11 @@ export default function Header() {
                 {t('writeWhatsapp')}
               </LinkButton>
               <div className="flex items-center justify-between border-t border-[var(--border)] pt-4">
-                <span className="text-xs text-[var(--text-soft)]">{t('theme')}</span>
-                <ThemeToggle />
+                <LocaleSwitcher />
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-[var(--text-soft)]">{t('theme')}</span>
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>
