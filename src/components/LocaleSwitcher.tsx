@@ -86,7 +86,7 @@ function buildAlternateUrl(
     : '/' + targetLocale + pathForCurrentLocale;
 }
 
-export default function LocaleSwitcher() {
+export default function LocaleSwitcher({ compact = false }: { compact?: boolean }) {
   const t = useTranslations('LocaleSwitcher');
   const current = useLocale() as Locale;
   const rawPath = useNextPathname();
@@ -104,13 +104,20 @@ export default function LocaleSwitcher() {
     es: t('spanish'),
     en: t('english'),
   };
+  const shortLabels: Record<Locale, string> = { es: 'ES', en: 'EN' };
 
   return (
-    <nav aria-label={t('label')} className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+    <nav
+      aria-label={t('label')}
+      className={[
+        'flex items-center text-sm',
+        compact ? 'gap-x-1.5 whitespace-nowrap' : 'flex-wrap gap-x-3 gap-y-1',
+      ].join(' ')}
+    >
       {routing.locales.map((loc, idx) => {
         const isCurrent = loc === current;
         return (
-          <span key={loc} className="inline-flex items-center gap-3">
+          <span key={loc} className="inline-flex items-center gap-1.5">
             {idx > 0 && (
               <span aria-hidden className="text-[var(--text-soft)]">
                 |
@@ -121,17 +128,18 @@ export default function LocaleSwitcher() {
               onClick={() => change(loc)}
               disabled={isPending || isCurrent}
               aria-current={isCurrent ? 'true' : undefined}
+              title={labels[loc]}
               className={[
-                'inline-flex items-center gap-1.5 rounded-full px-1 py-0.5 transition disabled:cursor-default',
+                'inline-flex items-center gap-1 rounded-full px-1 py-0.5 transition disabled:cursor-default',
                 isCurrent
                   ? 'font-semibold text-[var(--text)]'
                   : 'text-[var(--text-muted)] hover:text-[var(--text)]',
               ].join(' ')}
             >
-              {isCurrent && (
+              {isCurrent && !compact && (
                 <Check className="h-3.5 w-3.5 text-[var(--brand-teal)]" aria-hidden />
               )}
-              {labels[loc]}
+              {compact ? shortLabels[loc] : labels[loc]}
             </button>
           </span>
         );
