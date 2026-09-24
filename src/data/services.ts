@@ -277,16 +277,17 @@ export const services: Service[] = [
       en: 'Fewer manual tasks, more time to grow',
     },
     description: {
-      es: 'Automatizamos tareas repetitivas para reducir errores, ahorrar tiempo y conectar tus herramientas entre sí.',
-      en: 'We automate repetitive tasks to cut errors, save time, and connect your tools to each other.',
+      es: 'Automatizamos tareas repetitivas con IA y agentes inteligentes para reducir errores, ahorrar tiempo y conectar tus herramientas entre sí.',
+      en: 'We automate repetitive tasks with AI and intelligent agents to cut errors, save time, and connect your tools to each other.',
     },
     longDescription: {
-      es: 'Si alguien en tu equipo se la pasa copiando y pegando datos, mandando los mismos correos varias veces al día o armando reportes a mano cada semana, es candidato a automatizar. Conectamos tus sistemas, limpiamos los flujos y dejamos que la tecnología se encargue del trabajo repetitivo.',
-      en: 'If someone on your team spends their day copy-pasting data, sending the same emails over and over, or building weekly reports by hand, that work is a prime candidate for automation. We connect your systems, clean up the flows, and let technology handle the repetitive work.',
+      es: 'Si alguien en tu equipo se la pasa copiando y pegando datos, mandando los mismos correos varias veces al día o armando reportes a mano cada semana, es candidato a automatizar. Conectamos tus sistemas, limpiamos los flujos y usamos IA y agentes de automatización para que la tecnología se encargue del trabajo repetitivo.',
+      en: 'If someone on your team spends their day copy-pasting data, sending the same emails over and over, or building weekly reports by hand, that work is a prime candidate for automation. We connect your systems, clean up the flows, and use AI and automation agents to let technology handle the repetitive work.',
     },
     icon: 'workflow',
     features: {
       es: [
+        'Agentes de IA para tareas repetitivas',
         'Flujos de trabajo automatizados',
         'Integraciones entre sistemas (APIs)',
         'Reportes automáticos por correo o Slack',
@@ -295,6 +296,7 @@ export const services: Service[] = [
         'Herramientas internas a la medida',
       ],
       en: [
+        'AI agents for repetitive tasks',
         'Automated workflows',
         'Integrations between systems (APIs)',
         'Automated reports via email or Slack',
@@ -358,8 +360,8 @@ export const services: Service[] = [
       en: 'Manual tasks eat up time, introduce errors, and become hard to scale once the business starts growing.',
     },
     solution: {
-      es: 'Identificamos los procesos que se repiten, los documentamos y diseñamos automatizaciones que le devuelven tiempo a tu equipo.',
-      en: 'We identify the repetitive processes, document them, and design automations that give your team time back.',
+      es: 'Identificamos los procesos que se repiten, los documentamos y diseñamos automatizaciones con IA y agentes que le devuelven tiempo a tu equipo.',
+      en: 'We identify the repetitive processes, document them, and design AI-powered automations and agents that give your team time back.',
     },
     relatedServices: ['software-development', 'data-analytics', 'cloud-infrastructure'],
   },
