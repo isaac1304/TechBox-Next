@@ -21,7 +21,7 @@ export default function CTASection({ title, description, className = '' }: Props
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
-          style={{ background: 'var(--gradient-brand)' }}
+          style={{ background: 'var(--gradient-cta)' }}
         />
         <div
           aria-hidden

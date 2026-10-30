@@ -21,6 +21,7 @@
   --brand-teal-300: #7FE0D5;
   --brand-teal-500: #2EC4B6;
   --brand-teal-700: #1E8D84;
+  --brand-teal-800: #167A72;
 
   --surface: #ffffff;
   --surface-muted: #F7F8FC;
@@ -36,6 +37,7 @@
 
   --gradient-brand: linear-gradient(135deg, #2A2F73 0%, #3B4AA8 45%, #2EC4B6 100%);
   --gradient-brand-soft: linear-gradient(135deg, rgba(42,47,115,0.08) 0%, rgba(46,196,182,0.10) 100%);
+  --gradient-cta: linear-gradient(135deg, #2A2F73 0%, #3B4AA8 45%, var(--brand-teal-800) 100%);
   --shadow-card: 0 10px 30px -12px rgba(17, 24, 61, 0.18);
   --shadow-card-hover: 0 20px 44px -16px rgba(17, 24, 61, 0.28);
 }
@@ -57,6 +59,7 @@
 
   --gradient-brand: linear-gradient(135deg, #2A2F73 0%, #465AD5 45%, #2EC4B6 100%);
   --gradient-brand-soft: linear-gradient(135deg, rgba(70,90,213,0.22) 0%, rgba(46,196,182,0.18) 100%);
+  --gradient-cta: linear-gradient(135deg, #2A2F73 0%, #465AD5 45%, var(--brand-teal-800) 100%);
   --shadow-card: 0 12px 34px -14px rgba(0, 0, 0, 0.55);
   --shadow-card-hover: 0 24px 52px -18px rgba(0, 0, 0, 0.70);
 }
@@ -175,7 +178,7 @@ body::after {
   }
 
   .btn-primary {
-    background: var(--gradient-brand);
+    background: var(--gradient-cta);
     color: #ffffff;
     box-shadow: 0 14px 30px -12px rgba(42, 47, 115, 0.55);
   }
@@ -209,7 +212,7 @@ body::after {
 
   .btn-whatsapp {
     background: #25D366;
-    color: #fff;
+    color: var(--brand-navy);
     box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.55);
   }
 

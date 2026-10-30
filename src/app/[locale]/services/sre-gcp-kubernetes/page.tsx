@@ -504,7 +504,7 @@ export default async function SREServicePage({
             <div
               aria-hidden
               className="absolute inset-0 -z-10"
-              style={{ background: 'var(--gradient-brand)' }}
+              style={{ background: 'var(--gradient-cta)' }}
             />
             <div aria-hidden className="absolute inset-0 -z-10 opacity-30 bg-grid-pattern" />
             <div
