@@ -143,95 +143,99 @@ body::after {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
-.card {
-  background: var(--surface-raised);
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  box-shadow: var(--shadow-card);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+/* Van en capas para que las utilidades de Tailwind puedan sobrescribirlos. */
+@layer components {
+  .card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-card);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1.35rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .95rem;
+    line-height: 1;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--gradient-brand);
+    color: #ffffff;
+    box-shadow: 0 14px 30px -12px rgba(42, 47, 115, 0.55);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 38px -12px rgba(46, 196, 182, 0.55);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-teal);
+    color: var(--brand-teal);
+  }
+
+  .btn-light {
+    background: #ffffff;
+    color: var(--brand-navy);
+    box-shadow: 0 14px 30px -12px rgba(7, 10, 31, 0.35);
+  }
+
+  .btn-light:hover {
+    background: rgba(255, 255, 255, 0.92);
+    transform: translateY(-1px);
+  }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: #fff;
+    box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.55);
+  }
+
+  .btn-whatsapp:hover {
+    background: #1fb858;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+  }
+
+  .btn-ghost:hover {
+    color: var(--brand-teal);
+  }
 }
 
-.card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
-}
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: .75rem 1.35rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: .95rem;
-  line-height: 1;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
-  cursor: pointer;
-  white-space: nowrap;
+  a { color: inherit; text-decoration: none; }
 }
-
-.btn-primary {
-  background: var(--gradient-brand);
-  color: #ffffff;
-  box-shadow: 0 14px 30px -12px rgba(42, 47, 115, 0.55);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 38px -12px rgba(46, 196, 182, 0.55);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border-strong);
-}
-
-.btn-secondary:hover {
-  border-color: var(--brand-teal);
-  color: var(--brand-teal);
-}
-
-.btn-light {
-  background: #ffffff;
-  color: var(--brand-navy);
-  box-shadow: 0 14px 30px -12px rgba(7, 10, 31, 0.35);
-}
-
-.btn-light:hover {
-  background: rgba(255, 255, 255, 0.92);
-  transform: translateY(-1px);
-}
-
-.btn-whatsapp {
-  background: #25D366;
-  color: #fff;
-  box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.55);
-}
-
-.btn-whatsapp:hover {
-  background: #1fb858;
-  transform: translateY(-1px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-muted);
-}
-
-.btn-ghost:hover {
-  color: var(--brand-teal);
-}
-
-:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-a { color: inherit; text-decoration: none; }
 
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
