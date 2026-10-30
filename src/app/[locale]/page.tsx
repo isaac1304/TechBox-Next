@@ -16,7 +16,9 @@ import UseCaseCard from '@/components/UseCaseCard';
 import ProcessStep from '@/components/ProcessStep';
 import CTASection from '@/components/CTASection';
 import PixelMosaic from '@/components/PixelMosaic';
+import FounderSection from '@/components/FounderSection';
 import { Link } from '@/i18n/navigation';
+import { expressOffers, formatPrice, fromPrice, planOffers } from '@/data/pricing';
 import { services } from '@/data/services';
 import { useCases } from '@/data/useCases';
 import { site } from '@/lib/site';
@@ -32,6 +34,9 @@ export default async function HomePage({
 
   const t = await getTranslations('Home');
   const tCommon = await getTranslations('Common');
+
+  const expressFrom = formatPrice(fromPrice(expressOffers));
+  const planFrom = formatPrice(fromPrice(planOffers));
 
   const values = [
     { icon: <Layers className="h-5 w-5" />, title: t('valuesTitle1'), description: t('valuesDesc1') },
@@ -91,7 +96,7 @@ export default async function HomePage({
             <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-[var(--text-soft)]">
               <span>{t('trust1')}</span>
               <span>{t('trust2')}</span>
-              <span>{t('trust3')}</span>
+              <span>{t('trust3', { price: expressFrom })}</span>
               <span>{t('trust4')}</span>
             </div>
           </div>
@@ -99,6 +104,53 @@ export default async function HomePage({
             <PixelMosaic size={6} className="max-w-md mx-auto" />
           </div>
         </div>
+      </section>
+
+      {/* OFFERS */}
+      <section className="mx-auto w-full max-w-6xl px-4 pb-16 lg:px-6">
+        <SectionHeading title={t('offersTitle')} />
+        <div className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-2">
+          <article className="card flex flex-col gap-4 p-7">
+            <h3 className="text-lg font-semibold text-[var(--text)]">{t('offerExpressName')}</h3>
+            <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+              {t('offerExpressDesc')}
+            </p>
+            <p className="text-2xl font-semibold text-[var(--text)]">
+              {t('offerFrom', { price: expressFrom })}
+            </p>
+            <LinkButton
+              href={{ pathname: '/pricing', hash: 'express' }}
+              variant="primary"
+              className="mt-auto w-fit"
+            >
+              {t('offerDetail')} <ArrowRight className="h-4 w-4" />
+            </LinkButton>
+          </article>
+          <article className="card flex flex-col gap-4 p-7">
+            <h3 className="text-lg font-semibold text-[var(--text)]">{t('offerPlanName')}</h3>
+            <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+              {t('offerPlanDesc')}
+            </p>
+            <p className="text-2xl font-semibold text-[var(--text)]">
+              {t('offerFromMonthly', { price: planFrom })}
+            </p>
+            <LinkButton
+              href={{ pathname: '/pricing', hash: 'plan' }}
+              variant="secondary"
+              className="mt-auto w-fit"
+            >
+              {t('offerDetail')} <ArrowRight className="h-4 w-4" />
+            </LinkButton>
+          </article>
+        </div>
+        <p className="mt-8 text-center text-sm">
+          <Link
+            href="/services/sre-gcp-kubernetes"
+            className="inline-flex items-center gap-1.5 font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
+          >
+            {t('offerSreLink')} <ArrowRight className="h-4 w-4" />
+          </Link>
+        </p>
       </section>
 
       {/* VALUE CARDS */}
@@ -220,11 +272,23 @@ export default async function HomePage({
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
             {processSteps.map((step, idx) => (
-              <ProcessStep key={step.title} step={idx + 1} {...step} />
+              <ProcessStep key={step.title} step={idx + 1} {...step}>
+                {idx === processSteps.length - 1 && (
+                  <Link
+                    href={{ pathname: '/pricing', hash: 'plan' }}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
+                  >
+                    {t('step5Link')} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
+              </ProcessStep>
             ))}
           </div>
         </div>
       </section>
+
+      {/* FOUNDER */}
+      <FounderSection />
 
       {/* CTA */}
       <section className="pb-24 pt-20">

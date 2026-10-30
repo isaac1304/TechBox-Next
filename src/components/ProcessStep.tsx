@@ -1,10 +1,13 @@
+import type { ReactNode } from 'react';
+
 type Props = {
   step: number;
   title: string;
   description: string;
+  children?: ReactNode;
 };
 
-export default function ProcessStep({ step, title, description }: Props) {
+export default function ProcessStep({ step, title, description, children }: Props) {
   return (
     <article className="card relative flex flex-col gap-3 p-6">
       <div className="flex items-center gap-3">
@@ -14,6 +17,7 @@ export default function ProcessStep({ step, title, description }: Props) {
         <h3 className="text-base font-semibold text-[var(--text)]">{title}</h3>
       </div>
       <p className="text-sm leading-relaxed text-[var(--text-muted)]">{description}</p>
+      {children}
     </article>
   );
 }
