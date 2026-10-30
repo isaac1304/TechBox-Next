@@ -37,6 +37,8 @@ export type Service = {
   };
   /** Si es true, el detalle se renderiza desde una ruta estática propia y se omite del template [slug]. */
   hasCustomPage?: boolean;
+  /** Bloque de precios que muestra el detalle del servicio. */
+  pricingBlock?: 'express' | 'plan' | 'quote';
 };
 
 export const services: Service[] = [
@@ -141,6 +143,7 @@ export const services: Service[] = [
       en: 'We design software that fits your real processes. We start with the essentials and add features as your business actually needs them.',
     },
     relatedServices: ['process-automation', 'cloud-infrastructure', 'tech-consulting'],
+    pricingBlock: 'quote',
   },
   {
     id: 'cloud-infrastructure',
@@ -243,6 +246,7 @@ export const services: Service[] = [
       en: 'We move your systems to a managed cloud with security, automated backups, monitoring, and a clear cost plan. For more advanced stages (Kubernetes, Istio, compliance), our SRE line takes you to the next level.',
     },
     relatedServices: ['sre-gcp-kubernetes', 'cybersecurity', 'tech-consulting'],
+    pricingBlock: 'plan',
     nextStep: {
       title: {
         es: '¿Tu producto ya está en producción?',
@@ -364,6 +368,7 @@ export const services: Service[] = [
       en: 'We identify the repetitive processes, document them, and design AI-powered automations and agents that give your team time back.',
     },
     relatedServices: ['software-development', 'data-analytics', 'cloud-infrastructure'],
+    pricingBlock: 'express',
   },
   {
     id: 'cybersecurity',
@@ -466,6 +471,7 @@ export const services: Service[] = [
       en: 'We apply a practical plan: assess, fix the critical issues first, and coach the team so the good habits stick.',
     },
     relatedServices: ['cloud-infrastructure', 'tech-consulting', 'software-development'],
+    pricingBlock: 'plan',
   },
   {
     id: 'data-analytics',
@@ -568,6 +574,7 @@ export const services: Service[] = [
       en: 'We unify the sources, define KPIs with your team, and deliver dashboards that refresh themselves.',
     },
     relatedServices: ['process-automation', 'cloud-infrastructure', 'tech-consulting'],
+    pricingBlock: 'quote',
   },
   {
     id: 'tech-consulting',
@@ -670,6 +677,7 @@ export const services: Service[] = [
       en: 'A clear assessment, prioritized decisions, and a plan your team can start executing with or without us.',
     },
     relatedServices: ['software-development', 'cloud-infrastructure', 'data-analytics'],
+    pricingBlock: 'plan',
   },
   {
     id: 'sre-gcp-kubernetes',

@@ -16,6 +16,8 @@ import {
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
+import PricingBlock from '@/components/PricingBlock';
+import { formatPrice, sreNotes, sreOffers, sreProjectPrices } from '@/data/pricing';
 import { Link, getPathname } from '@/i18n/navigation';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
@@ -62,7 +64,6 @@ export default async function SREServicePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('ServiceSRE');
-  const tCommon = await getTranslations('Common');
 
   const trustItems = [t('trust1'), t('trust2'), t('trust3'), t('trust4'), t('trust5')];
   const dailyItems = [
@@ -81,59 +82,6 @@ export default async function SREServicePage({
     { icon: Clock, title: t('diff4Title'), description: t('diff4Desc') },
   ];
 
-  const plans = [
-    {
-      name: t('planEssentialName'),
-      price: t('planEssentialPrice'),
-      cadence: t('planEssentialCadence'),
-      hours: t('planEssentialHours'),
-      popular: false,
-      description: t('planEssentialDesc'),
-      features: [
-        t('planEssentialF1'),
-        t('planEssentialF2'),
-        t('planEssentialF3'),
-        t('planEssentialF4'),
-        t('planEssentialF5'),
-      ],
-      idealFor: t('planEssentialIdeal'),
-      cta: { label: t('scheduleCallCta'), variant: 'secondary' as const },
-    },
-    {
-      name: t('planStandardName'),
-      price: t('planStandardPrice'),
-      cadence: t('planStandardCadence'),
-      hours: t('planStandardHours'),
-      popular: true,
-      description: t('planStandardDesc'),
-      features: [
-        t('planStandardF1'),
-        t('planStandardF2'),
-        t('planStandardF3'),
-        t('planStandardF4'),
-        t('planStandardF5'),
-      ],
-      idealFor: t('planStandardIdeal'),
-      cta: { label: t('scheduleCallCta'), variant: 'primary' as const },
-    },
-    {
-      name: t('planProName'),
-      price: t('planProPrice'),
-      cadence: t('planProCadence'),
-      hours: t('planProHours'),
-      popular: false,
-      description: t('planProDesc'),
-      features: [
-        t('planProF1'),
-        t('planProF2'),
-        t('planProF3'),
-        t('planProF4'),
-      ],
-      idealFor: t('planProIdeal'),
-      cta: { label: t('requestQuoteCta'), variant: 'secondary' as const },
-    },
-  ];
-
   const oneOffs = [
     {
       icon: Sparkles,
@@ -147,16 +95,25 @@ export default async function SREServicePage({
       icon: Network,
       title: t('meshTitle'),
       duration: t('meshDuration'),
-      price: t('meshPrice'),
+      price: t('fromPrice', { price: formatPrice(sreProjectPrices.meshAssessment) }),
       description: t('meshDesc'),
       cta: { label: t('meshCta'), href: site.whatsapp, external: true as const },
     },
   ];
 
   const turnkeyImplementations = [
-    { title: t('turnkey1Title'), price: t('turnkey1Price') },
-    { title: t('turnkey2Title'), price: t('turnkey2Price') },
-    { title: t('turnkey3Title'), price: t('turnkey3Price') },
+    {
+      title: t('turnkey1Title'),
+      price: t('fromPrice', { price: formatPrice(sreProjectPrices.terraformMigration) }),
+    },
+    {
+      title: t('turnkey2Title'),
+      price: t('fromPrice', { price: formatPrice(sreProjectPrices.istioObservability) }),
+    },
+    {
+      title: t('turnkey3Title'),
+      price: t('fromPrice', { price: formatPrice(sreProjectPrices.gkeSetup) }),
+    },
   ];
 
   const stackItems = [
@@ -321,67 +278,7 @@ export default async function SREServicePage({
           }
           description={t('plansDescription')}
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {plans.map((plan) => (
-            <article
-              key={plan.name}
-              className={[
-                'card relative flex flex-col gap-5 p-7',
-                plan.popular
-                  ? 'border-[var(--brand-teal)] shadow-[0_24px_60px_-24px_rgba(46,196,182,0.45)]'
-                  : '',
-              ]
-                .join(' ')
-                .trim()}
-            >
-              {plan.popular && (
-                <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-[var(--brand-teal)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_8px_20px_-8px_rgba(46,196,182,0.7)]">
-                  <Sparkles className="h-3 w-3" />
-                  {t('popularBadge')}
-                </span>
-              )}
-              <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-semibold text-[var(--text)]">{plan.name}</h3>
-                <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-2xl font-semibold text-[var(--text)] md:text-[1.75rem]">
-                  {plan.cadence ? `${t('fromPrefix')} ${plan.price}` : plan.price}
-                  {plan.cadence && (
-                    <span className="text-base font-medium text-[var(--text-muted)]">
-                      {plan.cadence}
-                    </span>
-                  )}
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)]">
-                  {plan.hours}
-                </p>
-              </div>
-              <ul className="flex flex-col gap-2.5 border-t border-[var(--border)] pt-5">
-                {plan.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-start gap-2 text-sm text-[var(--text-muted)]"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-teal)]" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs italic leading-relaxed text-[var(--text-soft)]">
-                {t('idealForPrefix')} {plan.idealFor}
-              </p>
-              <LinkButton
-                href={site.booking}
-                external
-                variant={plan.cta.variant}
-                className="mt-auto justify-center"
-              >
-                {plan.cta.label}
-              </LinkButton>
-            </article>
-          ))}
-        </div>
+        <PricingBlock offers={sreOffers} notes={sreNotes[locale]} locale={locale} />
       </section>
 
       {/* ONE-OFFS */}
