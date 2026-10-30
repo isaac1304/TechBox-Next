@@ -8,9 +8,11 @@ import type { Locale } from '@/i18n/routing';
 export default function UseCaseCard({
   useCase,
   locale,
+  as: Heading = 'h3',
 }: {
   useCase: UseCase;
   locale: Locale;
+  as?: 'h2' | 'h3';
 }) {
   const t = useTranslations('UseCases');
   const service = getServiceById(useCase.relatedService);
@@ -25,7 +27,7 @@ export default function UseCaseCard({
           {t('cardIllustrative')}
         </span>
       </div>
-      <h3 className="text-lg font-semibold text-[var(--text)]">{useCase.title[locale]}</h3>
+      <Heading className="text-lg font-semibold text-[var(--text)]">{useCase.title[locale]}</Heading>
       <div className="flex flex-col gap-4 text-sm leading-relaxed">
         <div>
           <p className="font-semibold text-[var(--text)]">{t('cardProblem')}</p>
