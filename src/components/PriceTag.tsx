@@ -21,7 +21,7 @@ export default function PriceTag({ offer }: { offer: Offer }) {
           </span>
           {cadence}
         </p>
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)]">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
           {t('foundersPriceLabel')}
         </p>
       </div>
