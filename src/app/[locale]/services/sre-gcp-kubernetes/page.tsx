@@ -18,7 +18,8 @@ import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import PricingBlock from '@/components/PricingBlock';
 import { formatPrice, sreNotes, sreOffers, sreProjectPrices } from '@/data/pricing';
-import { Link, getPathname } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
+import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
@@ -29,14 +30,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'ServiceSRE' });
-  const canonicalPath = getPathname({
-    locale,
-    href: '/services/sre-gcp-kubernetes',
-  });
-
   return {
-    title: t('metaTitle'),
-    description: t('metaDescription'),
+    ...buildMetadata({
+      locale,
+      href: '/services/sre-gcp-kubernetes',
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+    }),
     keywords: [
       'SRE Costa Rica',
       'Cloud Engineer GCP',
@@ -46,13 +46,6 @@ export async function generateMetadata({
       'GKE Costa Rica',
       'SRE LatAm',
     ],
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      type: 'website',
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      url: canonicalPath,
-    },
   };
 }
 

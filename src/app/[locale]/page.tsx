@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import {
   Layers,
   TrendingUp,
@@ -23,6 +24,22 @@ import { services } from '@/data/services';
 import { useCases } from '@/data/useCases';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+  return buildMetadata({
+    locale,
+    href: '/',
+    title: t('siteTitleDefault'),
+    description: t('siteDescription'),
+  });
+}
 
 export default async function HomePage({
   params,

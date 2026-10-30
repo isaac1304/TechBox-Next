@@ -6,6 +6,7 @@ import ContactForm from '@/components/ContactForm';
 import { LinkButton } from '@/components/Button';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Contact' });
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  return buildMetadata({
+    locale,
+    href: '/contact',
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  });
 }
 
 export default async function ContactPage({

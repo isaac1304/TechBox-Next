@@ -7,10 +7,12 @@ import {
   categoryLabels,
   formatDate,
   getPostBySlug,
+  postLastModified,
 } from '@/data/blog';
 import CTASection from '@/components/CTASection';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -27,7 +29,15 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'BlogPost' });
   const post = getPostBySlug(slug, locale);
   if (!post) return { title: t('notFound') };
-  return { title: post.title[locale], description: post.excerpt[locale] };
+  return buildMetadata({
+    locale,
+    href: (l) => ({ pathname: '/blog/[slug]', params: { slug: post.slug[l] } }),
+    title: post.title[locale],
+    description: post.excerpt[locale],
+    ogType: 'article',
+    publishedTime: post.date,
+    modifiedTime: postLastModified(post),
+  });
 }
 
 export default async function BlogPostPage({

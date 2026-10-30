@@ -1,6 +1,6 @@
 import { currency, currentPrice, expressOffers, planOffers, type Offer } from '@/data/pricing';
 import type { Locale } from '@/i18n/routing';
-import { site } from '@/lib/site';
+import { SITE_URL, site } from '@/lib/site';
 
 function serviceNode(offer: Offer, locale: Locale, url: string) {
   const price = currentPrice(offer);
@@ -8,7 +8,7 @@ function serviceNode(offer: Offer, locale: Locale, url: string) {
     '@type': 'Service',
     name: `Techbox ${offer.name[locale]}`,
     description: offer.tagline[locale],
-    provider: { '@type': 'Organization', name: site.name, url: `https://${site.domain}` },
+    provider: { '@type': 'Organization', name: site.name, url: SITE_URL },
     areaServed: ['Costa Rica', 'Latin America'],
     offers: {
       '@type': 'Offer',

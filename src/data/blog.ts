@@ -25,7 +25,10 @@ export type BlogPost = {
   slug: LocalizedString;
   title: LocalizedString;
   excerpt: LocalizedString;
+  /** Fecha de publicación (YYYY-MM-DD). */
   date: string;
+  /** Fecha de la última edición del contenido, si la hubo (YYYY-MM-DD). */
+  updated?: string;
   category: BlogCategory;
   /** Tiempo de lectura por idioma (puede variar). */
   readingTime: LocalizedString;
@@ -173,6 +176,11 @@ export function getPostBySlug(
   locale: Locale,
 ): BlogPost | undefined {
   return blogPosts.find((p) => p.slug[locale] === slug);
+}
+
+/** Última fecha real de cambio del post: edición o, si no hay, publicación. */
+export function postLastModified(post: BlogPost): string {
+  return post.updated ?? post.date;
 }
 
 export function formatDate(iso: string, locale: Locale): string {

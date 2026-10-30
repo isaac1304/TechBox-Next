@@ -6,6 +6,7 @@ import CTASection from '@/components/CTASection';
 import { isLaunchActive, launchProgram } from '@/data/pricing';
 import { useCases } from '@/data/useCases';
 import type { Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'UseCases' });
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  return buildMetadata({
+    locale,
+    href: '/use-cases',
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  });
 }
 
 export default async function UseCasesPage({

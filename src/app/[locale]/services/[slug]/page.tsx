@@ -12,6 +12,7 @@ import PricingBlock from '@/components/PricingBlock';
 import { expressNotes, expressOffers, formatPrice, fromPrice, planOffers } from '@/data/pricing';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -31,10 +32,12 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'ServiceDetail' });
   const service = getServiceBySlug(slug, locale);
   if (!service) return { title: t('notFound') };
-  return {
+  return buildMetadata({
+    locale,
+    href: (l) => ({ pathname: '/services/[slug]', params: { slug: service.slug[l] } }),
     title: service.title[locale],
     description: service.description[locale],
-  };
+  });
 }
 
 export default async function ServiceDetailPage({

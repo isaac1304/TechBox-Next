@@ -9,8 +9,7 @@ import Footer from '@/components/Footer';
 import WhatsAppFloating from '@/components/WhatsAppFloating';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { routing } from '@/i18n/routing';
-
-const siteUrl = 'https://techbox.cr';
+import { SITE_URL } from '@/lib/site';
 
 // Las páginas son estáticas: revalidar a diario para que el fin del programa
 // de fundadores (launchProgram.endsOn) se refleje sin un deploy nuevo.
@@ -29,7 +28,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t('siteTitleDefault'),
       template: t('siteTitleTemplate'),
@@ -52,17 +51,10 @@ export async function generateMetadata({
       'consultoría tecnológica',
       'tech consulting',
     ],
-    alternates: {
-      languages: {
-        es: '/',
-        en: '/en',
-        'x-default': '/',
-      },
-    },
     openGraph: {
       type: 'website',
       locale: t('ogLocale'),
-      url: locale === 'en' ? `${siteUrl}/en` : siteUrl,
+      url: locale === 'en' ? `${SITE_URL}/en` : SITE_URL,
       siteName: 'Techbox',
       title: t('ogTitle'),
       description: t('ogDescription'),

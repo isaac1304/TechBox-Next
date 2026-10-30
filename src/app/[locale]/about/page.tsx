@@ -7,6 +7,7 @@ import CTASection from '@/components/CTASection';
 import FounderSection from '@/components/FounderSection';
 import ValueCard from '@/components/ValueCard';
 import type { Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -15,7 +16,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'About' });
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  return buildMetadata({
+    locale,
+    href: '/about',
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  });
 }
 
 export default async function AboutPage({
