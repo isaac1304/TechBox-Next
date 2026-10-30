@@ -31,6 +31,7 @@
     "ariaLabel": "Escribir por WhatsApp"
   },
   "Common": {
+    "skipToContent": "Saltar al contenido",
     "scheduleDiagnosisCta": "Agendá tu diagnóstico",
     "viewServices": "Ver servicios",
     "scheduleDiagnosis": "Agendar diagnóstico",

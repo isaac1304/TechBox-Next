@@ -65,7 +65,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    'w-full rounded-xl border border-[var(--border-strong)] bg-[var(--surface-muted)] px-4 py-2.5 text-sm text-[var(--text)] outline-none transition placeholder:text-[var(--text-soft)] focus:border-[var(--brand-teal)] focus:ring-2 focus:ring-[var(--ring)] disabled:opacity-60';
+    'w-full rounded-xl border border-[var(--border-input)] bg-[var(--surface-muted)] px-4 py-2.5 text-sm text-[var(--text)] outline-none transition placeholder:text-[var(--text-soft)] focus:border-[var(--brand-teal)] focus:ring-2 focus:ring-[var(--ring)] disabled:opacity-60';
   const labelClass =
     'mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]';
   const optionalLabel = (

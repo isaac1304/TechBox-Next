@@ -30,6 +30,7 @@ export default async function UseCasesPage({
     <>
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
+          as="h1"
           eyebrow={t('eyebrow')}
           title={
             <>
