@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, MessageCircle, Scale } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import FoundersBanner from '@/components/FoundersBanner';
+import JsonLd from '@/components/JsonLd';
 import PricingBlock from '@/components/PricingBlock';
 import SectionHeading from '@/components/SectionHeading';
 import {
@@ -51,11 +52,10 @@ export default async function PricingPage({
     answer: t(`faq${n}Answer`),
   }));
 
-  const jsonLd = JSON.stringify(buildPricingJsonLd(locale, pageUrl('/pricing', locale))).replace(/</g, '\\u003c');
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <JsonLd data={buildPricingJsonLd(locale, pageUrl('/pricing', locale))} />
 
       {/* HEADER */}
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 pb-12 pt-16 md:pt-20 lg:px-6">

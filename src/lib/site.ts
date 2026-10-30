@@ -34,6 +34,19 @@ export const site = {
     en: 'Message us on WhatsApp',
   } as LocalizedString,
   booking: 'https://cal.com/techbox',
+  legalName: 'TechBox S.R.L.',
+  address: { locality: 'Heredia', region: 'Heredia', country: 'CR' },
+  areaServed: ['Costa Rica', 'Latin America'],
+  /** Perfiles sociales oficiales para schema.org sameAs (vacío hasta tenerlos). */
+  socialProfiles: [] as string[],
+  founder: {
+    name: 'Isaac Andrey Granados Gómez',
+    shortName: 'Isaac Granados',
+    jobTitle: {
+      es: 'Fundador y SRE',
+      en: 'Founder and SRE',
+    } as LocalizedString,
+  },
   location: {
     es: 'Heredia, Costa Rica',
     en: 'Heredia, Costa Rica',

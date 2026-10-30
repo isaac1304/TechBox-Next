@@ -6,6 +6,8 @@ type Props = {
   description?: ReactNode;
   align?: 'left' | 'center';
   className?: string;
+  /** Nivel del título; usar 'h1' cuando es el título principal de la página. */
+  as?: 'h1' | 'h2';
 };
 
 export default function SectionHeading({
@@ -14,6 +16,7 @@ export default function SectionHeading({
   description,
   align = 'center',
   className = '',
+  as: Heading = 'h2',
 }: Props) {
   const alignment =
     align === 'center' ? 'text-center mx-auto items-center' : 'text-left items-start';
@@ -24,9 +27,9 @@ export default function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
+      <Heading className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className="text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
           {description}

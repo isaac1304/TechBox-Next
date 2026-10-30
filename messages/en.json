@@ -2,11 +2,7 @@
   "Metadata": {
     "siteTitleDefault": "Techbox | Software, cloud, and automation for SMBs",
     "siteTitleTemplate": "%s | Techbox",
-    "siteDescription": "Tech consultancy for SMBs in Costa Rica and Latin America, with published prices: process automation with AI and agents, software, cloud, cybersecurity, and data.",
-    "ogTitle": "Techbox | Software, cloud, and automation for SMBs",
-    "ogDescription": "Software, cloud, AI-powered automation, cybersecurity, and data for SMBs. Affordable pricing and free assessment.",
-    "twitterTitle": "Techbox",
-    "twitterDescription": "Software, cloud, and AI-powered automation for SMBs. Affordable pricing and free assessment.",
+    "siteDescription": "Tech consultancy for SMBs in Costa Rica and Latin America with published prices: AI process automation, software, cloud, cybersecurity, and data.",
     "ogLocale": "en_US"
   },
   "Header": {
@@ -137,8 +133,8 @@
     "relatedTitle": "Services that often go hand in hand"
   },
   "About": {
-    "metaTitle": "About",
-    "metaDescription": "Techbox is a Costa Rican tech consultancy that helps SMBs across Latin America with software, cloud, automation, cybersecurity, and data.",
+    "metaTitle": "About us: tech consultancy in Costa Rica",
+    "metaDescription": "Techbox is a Costa Rican tech consultancy that helps SMBs across Latin America with software, cloud, automation, cybersecurity, and data. Meet the team.",
     "heroBadge": "About Techbox",
     "heroTitleStart": "A tech partner",
     "heroTitleAccent": "built for SMBs",
@@ -167,8 +163,8 @@
     "ctaDescription": "Tell us what you want to improve and we’ll propose a concrete first path in a 30-minute call."
   },
   "UseCases": {
-    "metaTitle": "Use cases",
-    "metaDescription": "Illustrative scenarios of how software, cloud, automation, cybersecurity, and data can solve common SMB problems.",
+    "metaTitle": "Technology use cases for SMBs",
+    "metaDescription": "Illustrative scenarios of how software, cloud, automation, cybersecurity, and data can solve common problems for SMBs in Costa Rica and Latin America.",
     "eyebrow": "Use cases",
     "titleStart": "Examples of what",
     "titleAccent": "we can solve",
@@ -184,8 +180,8 @@
     "foundersDescription": "Founding Clients: special pricing for the first {total} clients, in exchange for letting us publish the case (with your approval of the final text). {left, plural, one {# spot left} other {# spots left}}."
   },
   "Contact": {
-    "metaTitle": "Contact",
-    "metaDescription": "Reach out and book a no-strings consultation. We reply within 1 to 2 business days.",
+    "metaTitle": "Contact: book a free tech assessment",
+    "metaDescription": "Reach out or book a free tech assessment for your SMB. We reply within 1 to 2 business days. Tell us what you want to solve first and we’ll take it from there.",
     "eyebrow": "Contact",
     "titleAccent": "Let’s talk",
     "titleEnd": "about your next project",
@@ -220,8 +216,8 @@
     "privacy": "We only use your data to reply. We won’t add you to any mailing list."
   },
   "Blog": {
-    "metaTitle": "Blog",
-    "metaDescription": "Practical articles on automation, cloud, cybersecurity, and data for SMBs. Written by the Techbox team.",
+    "metaTitle": "Tech blog for SMBs in Costa Rica",
+    "metaDescription": "Practical articles on automation, cloud, cybersecurity, and data for SMBs in Costa Rica and Latin America. Written by the Techbox team, no jargon.",
     "eyebrow": "Blog",
     "titleStart": "Practical ideas for",
     "titleAccent": "operations that actually scale",
@@ -258,9 +254,7 @@
   },
   "ServiceSRE": {
     "metaTitle": "SRE and Cloud Engineering on GCP and Kubernetes",
-    "metaDescription": "Fractional SRE specialized in GCP, Kubernetes, and Istio for companies with digital product. 11+ years of experience, CKA and ICA certifications. Costa Rica and LatAm.",
-    "ogTitle": "SRE and Cloud Engineering on GCP and Kubernetes | Techbox",
-    "ogDescription": "Fractional SRE with CKA and ICA. Specialized in GCP, GKE, and Istio for SaaS, fintechs, and companies scaling microservices.",
+    "metaDescription": "Fractional SRE for GCP, Kubernetes, and Istio for companies with a digital product. 11+ years of experience, CKA and ICA certified. Costa Rica and LatAm.",
     "backLink": "← Services",
     "heroBadge": "SRE / Cloud Engineering",
     "heroTitleStart": "SRE and Cloud Engineering on",
@@ -348,7 +342,7 @@
   },
   "Pricing": {
     "metaTitle": "Automation and IT support pricing for SMBs | Techbox",
-    "metaDescription": "Process automation from {express} with a 30-day guarantee. Monthly support and maintenance from {plan}. Costa Rica and Latin America.",
+    "metaDescription": "Process automation from {express} with a 30-day guarantee. Monthly support and maintenance from {plan}. Costa Rica and Latin America. Book a free assessment.",
     "eyebrow": "Pricing",
     "titleStart": "Clear pricing,",
     "titleAccent": "no surprises",

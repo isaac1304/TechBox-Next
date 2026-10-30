@@ -25,6 +25,10 @@ export type BlogPost = {
   slug: LocalizedString;
   title: LocalizedString;
   excerpt: LocalizedString;
+  /** Title SEO por idioma (sin "| Techbox"); si falta se usa `title`. */
+  metaTitle?: Partial<LocalizedString>;
+  /** Meta description SEO (140–160 caracteres). */
+  metaDescription: LocalizedString;
   /** Fecha de publicación (YYYY-MM-DD). */
   date: string;
   /** Fecha de la última edición del contenido, si la hubo (YYYY-MM-DD). */
@@ -50,6 +54,13 @@ export const blogPosts: BlogPost[] = [
     excerpt: {
       es: 'La automatización no es solo para grandes empresas. Te contamos cómo las pymes pueden ahorrar horas cada semana y reducir errores con herramientas accesibles.',
       en: 'Automation isn’t just for big companies. Here’s how SMBs can save hours every week and cut errors with accessible tools.',
+    },
+    metaTitle: {
+      es: 'Por qué una pyme debería automatizar sus procesos',
+    },
+    metaDescription: {
+      es: 'La automatización no es solo para grandes empresas. Cómo una pyme puede ahorrar horas cada semana y reducir errores con herramientas accesibles.',
+      en: 'Automation isn’t just for big companies. Here’s how SMBs can save hours every week and cut errors with accessible tools, starting with one small process.',
     },
     date: '2026-03-10',
     category: 'automation',
@@ -84,6 +95,14 @@ export const blogPosts: BlogPost[] = [
       es: 'La nube dejó de ser cosa de grandes corporaciones. Hoy una pyme puede operar con la misma estabilidad y seguridad, a un costo razonable.',
       en: 'The cloud is no longer just for big corporations. Today an SMB can operate with the same stability and security at a reasonable cost.',
     },
+    metaTitle: {
+      es: 'Cloud para pymes: beneficios sin complicarse',
+      en: 'Cloud for small businesses: benefits made simple',
+    },
+    metaDescription: {
+      es: 'La nube dejó de ser cosa de grandes corporaciones. Hoy una pyme en Costa Rica puede operar con la misma estabilidad y seguridad, a un costo razonable.',
+      en: 'The cloud is no longer just for big corporations. Today an SMB in Costa Rica can operate with the same stability and security at a reasonable cost.',
+    },
     date: '2026-02-21',
     category: 'cloud',
     readingTime: { es: '6 min', en: '6 min' },
@@ -117,6 +136,10 @@ export const blogPosts: BlogPost[] = [
       es: 'No necesitas un equipo de seguridad dedicado para proteger tu negocio. Cinco prácticas realistas que reducen el riesgo de un incidente grave.',
       en: 'You don’t need a dedicated security team to protect your business. Five realistic practices that lower the risk of a serious incident.',
     },
+    metaDescription: {
+      es: 'No necesitás un equipo de seguridad dedicado para proteger tu negocio. Cinco prácticas realistas que reducen el riesgo de un incidente grave en tu pyme.',
+      en: 'You don’t need a dedicated security team to protect your business. Five realistic practices that lower the risk of a serious incident at your SMB.',
+    },
     date: '2026-02-05',
     category: 'cybersecurity',
     readingTime: { es: '7 min', en: '7 min' },
@@ -148,6 +171,13 @@ export const blogPosts: BlogPost[] = [
     },
     excerpt: {
       es: 'Tus datos ya existen. El reto no es generar más información, es convertir la que tienes en reportes que realmente se usen para decidir.',
+      en: 'Your data already exists. The challenge isn’t generating more information, it’s turning what you have into reports that actually drive decisions.',
+    },
+    metaTitle: {
+      es: 'Reportes de datos para tomar mejores decisiones',
+    },
+    metaDescription: {
+      es: 'Tus datos ya existen. El reto no es generar más información, sino convertir la que tenés en reportes que tu pyme realmente use para decidir.',
       en: 'Your data already exists. The challenge isn’t generating more information, it’s turning what you have into reports that actually drive decisions.',
     },
     date: '2026-01-18',

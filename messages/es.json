@@ -2,11 +2,7 @@
   "Metadata": {
     "siteTitleDefault": "Techbox | Software, nube y automatización para pymes",
     "siteTitleTemplate": "%s | Techbox",
-    "siteDescription": "Consultora tecnológica para pymes de Costa Rica y Latinoamérica, con precios publicados: automatización de procesos con IA y agentes, software, nube, ciberseguridad y datos.",
-    "ogTitle": "Techbox | Software, nube y automatización para pymes",
-    "ogDescription": "Software, nube, automatización con IA, ciberseguridad y datos para pymes. Precios accesibles y diagnóstico sin costo.",
-    "twitterTitle": "Techbox",
-    "twitterDescription": "Software, nube y automatización con IA para pymes. Precios accesibles y diagnóstico sin costo.",
+    "siteDescription": "Consultora tecnológica para pymes de Costa Rica y Latinoamérica con precios publicados: automatización con IA, software, nube, ciberseguridad y datos.",
     "ogLocale": "es_CR"
   },
   "Header": {
@@ -137,7 +133,7 @@
     "relatedTitle": "Servicios que suelen ir de la mano"
   },
   "About": {
-    "metaTitle": "Nosotros",
+    "metaTitle": "Nosotros: consultora tecnológica en Costa Rica",
     "metaDescription": "Techbox es una consultora tecnológica costarricense que acompaña a pymes de Latinoamérica con software, nube, automatización, ciberseguridad y datos.",
     "heroBadge": "Sobre Techbox",
     "heroTitleStart": "Un socio tecnológico",
@@ -167,8 +163,8 @@
     "ctaDescription": "Contános qué querés mejorar y te proponemos una primera ruta concreta en una reunión de 30 minutos."
   },
   "UseCases": {
-    "metaTitle": "Casos de uso",
-    "metaDescription": "Escenarios ilustrativos de cómo software, nube, automatización, ciberseguridad y datos pueden resolver problemas comunes de pymes.",
+    "metaTitle": "Casos de uso de tecnología para pymes",
+    "metaDescription": "Escenarios ilustrativos de cómo software, nube, automatización, ciberseguridad y datos pueden resolver problemas comunes de pymes en Costa Rica.",
     "eyebrow": "Casos de uso",
     "titleStart": "Ejemplos de lo que",
     "titleAccent": "podemos resolver",
@@ -184,8 +180,8 @@
     "foundersDescription": "Clientes Fundadores: precio especial para los primeros {total} clientes, a cambio de permitirnos publicar el caso (con tu aprobación del texto final). {left, plural, one {Queda # cupo} other {Quedan # cupos}}."
   },
   "Contact": {
-    "metaTitle": "Contacto",
-    "metaDescription": "Escribinos y agendá una consulta sin compromiso. Te respondemos en 1 o 2 días hábiles.",
+    "metaTitle": "Contacto: diagnóstico tecnológico sin costo",
+    "metaDescription": "Escribinos o agendá un diagnóstico tecnológico sin costo para tu pyme. Te respondemos en 1 o 2 días hábiles. Contanos qué querés resolver primero.",
     "eyebrow": "Contacto",
     "titleAccent": "Conversemos",
     "titleEnd": "de tu próximo proyecto",
@@ -220,8 +216,8 @@
     "privacy": "Solo usamos tus datos para responderte. No te metemos en ninguna lista de mailing."
   },
   "Blog": {
-    "metaTitle": "Blog",
-    "metaDescription": "Artículos prácticos sobre automatización, nube, ciberseguridad y datos para pymes. Escritos por el equipo de Techbox.",
+    "metaTitle": "Blog de tecnología para pymes en Costa Rica",
+    "metaDescription": "Artículos prácticos sobre automatización, nube, ciberseguridad y datos para pymes de Costa Rica y Latinoamérica. Escritos por el equipo de Techbox.",
     "eyebrow": "Blog",
     "titleStart": "Ideas prácticas para",
     "titleAccent": "operaciones que sí escalan",
@@ -258,9 +254,7 @@
   },
   "ServiceSRE": {
     "metaTitle": "SRE y Cloud Engineering en GCP y Kubernetes",
-    "metaDescription": "SRE fraccional especializado en GCP, Kubernetes e Istio para empresas con producto digital. 11+ años de experiencia, certificaciones CKA e ICA. Costa Rica y LatAm.",
-    "ogTitle": "SRE y Cloud Engineering en GCP y Kubernetes | Techbox",
-    "ogDescription": "SRE fraccional con CKA e ICA. Especialización en GCP, GKE e Istio para SaaS, fintechs y empresas escalando microservicios.",
+    "metaDescription": "SRE fraccional en GCP, Kubernetes e Istio para empresas con producto digital. 11+ años de experiencia, certificaciones CKA e ICA. Costa Rica y LatAm.",
     "backLink": "← Servicios",
     "heroBadge": "SRE / Cloud Engineering",
     "heroTitleStart": "SRE y Cloud Engineering en",
@@ -348,7 +342,7 @@
   },
   "Pricing": {
     "metaTitle": "Precios de automatización y soporte TI para pymes | Techbox",
-    "metaDescription": "Automatización de procesos desde {express} con 30 días de garantía. Soporte y mantenimiento mensual desde {plan}. Costa Rica y Latinoamérica.",
+    "metaDescription": "Automatización de procesos desde {express} con 30 días de garantía. Soporte y mantenimiento mensual desde {plan}. Costa Rica y Latinoamérica. Agendá tu diagnóstico.",
     "eyebrow": "Precios",
     "titleStart": "Precios claros,",
     "titleAccent": "sin sorpresas",

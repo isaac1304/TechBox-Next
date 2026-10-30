@@ -6,7 +6,8 @@
     "dev": "NODE_OPTIONS=\"--require ./scripts/disable-node-localstorage.cjs\" next dev",
     "build": "NODE_OPTIONS=\"--require ./scripts/disable-node-localstorage.cjs\" next build",
     "start": "NODE_OPTIONS=\"--require ./scripts/disable-node-localstorage.cjs\" next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seo:check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "@next/font": "^14.2.15",

@@ -12,6 +12,8 @@ import {
 import CTASection from '@/components/CTASection';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import JsonLd from '@/components/JsonLd';
+import { blogPostingJsonLd, breadcrumbJsonLd, navLabel } from '@/lib/jsonLd';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
@@ -32,8 +34,8 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     href: (l) => ({ pathname: '/blog/[slug]', params: { slug: post.slug[l] } }),
-    title: post.title[locale],
-    description: post.excerpt[locale],
+    title: post.metaTitle?.[locale] ?? post.title[locale],
+    description: post.metaDescription[locale],
     ogType: 'article',
     publishedTime: post.date,
     modifiedTime: postLastModified(post),
@@ -53,8 +55,19 @@ export default async function BlogPostPage({
 
   const t = await getTranslations('BlogPost');
 
+  const breadcrumbs = breadcrumbJsonLd(locale, [
+    { name: navLabel('/', locale), href: '/' },
+    { name: navLabel('/blog', locale), href: '/blog' },
+    {
+      name: post.title[locale],
+      href: (l) => ({ pathname: '/blog/[slug]', params: { slug: post.slug[l] } }),
+    },
+  ]);
+
   return (
     <>
+      <JsonLd data={blogPostingJsonLd(post, locale)} />
+      <JsonLd data={breadcrumbs} />
       <article className="mx-auto w-full max-w-3xl px-4 py-16 md:py-20 lg:px-6">
         <Link
           href="/blog"

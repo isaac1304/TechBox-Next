@@ -2,12 +2,7 @@ import Image from 'next/image';
 import { CheckCircle2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/SectionHeading';
-
-const certifications = [
-  { label: 'Certified Kubernetes Administrator (CKA)', image: '/badges/cka.png' },
-  { label: 'Istio Certified Associate (ICA)', image: '/badges/istio-ica.png' },
-  { label: 'HashiCorp Terraform Associate', image: '/badges/terraform-associate.png' },
-];
+import { activeCertifications } from '@/data/certifications';
 
 // TODO(Isaac): confirmar si se mencionan los nombres de empresas anteriores.
 // TODO(Isaac): confirmar nombre completo y foto del fundador.
@@ -35,18 +30,18 @@ export default function FounderSection() {
           </ul>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">
-          {certifications.map((cert) => (
-            <li key={cert.label} className="card flex flex-col items-center gap-3 p-5 text-center">
+          {activeCertifications.map((cert) => (
+            <li key={cert.badgeId} className="card flex flex-col items-center gap-3 p-5 text-center">
               <div className="relative h-24 w-24">
                 <Image
                   src={cert.image}
-                  alt={cert.label}
+                  alt={cert.shortLabel}
                   fill
                   sizes="96px"
                   className="object-contain"
                 />
               </div>
-              <p className="text-xs font-semibold text-[var(--text)]">{cert.label}</p>
+              <p className="text-xs font-semibold text-[var(--text)]">{cert.shortLabel}</p>
             </li>
           ))}
         </ul>
