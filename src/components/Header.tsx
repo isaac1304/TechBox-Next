@@ -78,7 +78,7 @@ export default function Header() {
             className="h-14 w-14 shrink-0 rounded-xl object-contain md:h-16 md:w-16"
           />
           <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem]">
-            Tech<span className="text-[var(--brand-teal)]">box</span>
+            Tech<span className="text-[var(--text-accent)]">box</span>
           </span>
         </Link>
 
@@ -144,7 +144,7 @@ export default function Header() {
                   className="h-14 w-14 rounded-xl object-contain"
                 />
                 <span className="text-2xl font-semibold text-[var(--text)]">
-                  Tech<span className="text-[var(--brand-teal)]">box</span>
+                  Tech<span className="text-[var(--text-accent)]">box</span>
                 </span>
               </Link>
               <button

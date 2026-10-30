@@ -76,7 +76,7 @@ export default async function ServiceDetailPage({
           <div className="flex flex-col gap-5">
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--text-accent)]"
             >
               {t('backLink')}
             </Link>

@@ -32,6 +32,7 @@
   --text: #0E1330;
   --text-muted: #4A5378;
   --text-soft: #6B7495;
+  --text-accent: var(--brand-teal-800);
 
   --ring: rgba(46, 196, 182, 0.45);
 
@@ -54,6 +55,7 @@
   --text: #F5F7FF;
   --text-muted: #B9C1E6;
   --text-soft: #8C95C0;
+  --text-accent: var(--brand-teal);
 
   --ring: rgba(46, 196, 182, 0.55);
 
@@ -120,7 +122,7 @@ body::after {
 }
 
 .text-gradient-brand {
-  background: linear-gradient(90deg, #2A2F73 0%, #3B4AA8 40%, #2EC4B6 100%);
+  background: linear-gradient(90deg, #2A2F73 0%, #3B4AA8 40%, var(--brand-teal-800) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -196,7 +198,7 @@ body::after {
 
   .btn-secondary:hover {
     border-color: var(--brand-teal);
-    color: var(--brand-teal);
+    color: var(--text-accent);
   }
 
   .btn-light {
@@ -227,7 +229,7 @@ body::after {
   }
 
   .btn-ghost:hover {
-    color: var(--brand-teal);
+    color: var(--text-accent);
   }
 }
 
