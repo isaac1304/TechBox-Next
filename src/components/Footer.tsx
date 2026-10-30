@@ -23,7 +23,7 @@ export default async function Footer() {
               className="h-10 w-10 rounded-md object-contain"
             />
             <span className="text-lg font-semibold text-[var(--text)]">
-              Tech<span className="text-[var(--brand-teal)]">box</span>
+              Tech<span className="text-[var(--text-accent)]">box</span>
             </span>
           </Link>
           <p className="max-w-md text-sm leading-relaxed text-[var(--text-muted)]">
@@ -58,7 +58,7 @@ export default async function Footer() {
                       ? '/services/sre-gcp-kubernetes'
                       : { pathname: '/services/[slug]', params: { slug: s.slug[locale] } }
                   }
-                  className="hover:text-[var(--brand-teal)]"
+                  className="hover:text-[var(--text-accent)]"
                 >
                   {s.shortTitle[locale]}
                 </Link>
@@ -73,27 +73,27 @@ export default async function Footer() {
           </h3>
           <ul className="mt-4 flex flex-col gap-2 text-sm text-[var(--text-muted)]">
             <li>
-              <Link href="/pricing" className="hover:text-[var(--brand-teal)]">
+              <Link href="/pricing" className="hover:text-[var(--text-accent)]">
                 {site.nav.find((n) => n.href === '/pricing')!.label[locale]}
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-[var(--brand-teal)]">
+              <Link href="/about" className="hover:text-[var(--text-accent)]">
                 {site.nav.find((n) => n.href === '/about')!.label[locale]}
               </Link>
             </li>
             <li>
-              <Link href="/use-cases" className="hover:text-[var(--brand-teal)]">
+              <Link href="/use-cases" className="hover:text-[var(--text-accent)]">
                 {site.nav.find((n) => n.href === '/use-cases')!.label[locale]}
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="hover:text-[var(--brand-teal)]">
+              <Link href="/blog" className="hover:text-[var(--text-accent)]">
                 {site.nav.find((n) => n.href === '/blog')!.label[locale]}
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-[var(--brand-teal)]">
+              <Link href="/contact" className="hover:text-[var(--text-accent)]">
                 {site.nav.find((n) => n.href === '/contact')!.label[locale]}
               </Link>
             </li>
@@ -102,7 +102,7 @@ export default async function Footer() {
                 href={site.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--brand-teal)]"
+                className="hover:text-[var(--text-accent)]"
               >
                 WhatsApp
               </a>

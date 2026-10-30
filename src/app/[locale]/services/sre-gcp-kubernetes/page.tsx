@@ -175,7 +175,7 @@ export default async function SREServicePage({
           <div className="flex flex-col gap-5">
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--text-accent)]"
             >
               {t('backLink')}
             </Link>
@@ -309,7 +309,7 @@ export default async function SREServicePage({
                   </div>
                   <div className="flex flex-col gap-1">
                     <h3 className="text-lg font-semibold text-[var(--text)]">{s.title}</h3>
-                    <p className="text-sm font-semibold text-[var(--brand-teal)]">{s.price}</p>
+                    <p className="text-sm font-semibold text-[var(--text-accent)]">{s.price}</p>
                   </div>
                   <p className="text-sm leading-relaxed text-[var(--text-muted)]">{s.description}</p>
                   <LinkButton
@@ -342,7 +342,7 @@ export default async function SREServicePage({
                   className="flex flex-col gap-1 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4"
                 >
                   <span className="text-sm font-semibold text-[var(--text)]">{p.title}</span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)]">
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-accent)]">
                     {p.price}
                   </span>
                 </li>
@@ -504,18 +504,18 @@ export default async function SREServicePage({
             <div
               aria-hidden
               className="absolute inset-0 -z-10"
-              style={{ background: 'var(--gradient-brand)' }}
+              style={{ background: 'var(--gradient-cta)' }}
             />
             <div aria-hidden className="absolute inset-0 -z-10 opacity-30 bg-grid-pattern" />
             <div
               aria-hidden
-              className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[var(--brand-teal)]/40 blur-3xl"
+              className="absolute -right-16 -top-16 hidden h-64 w-64 rounded-full bg-[var(--brand-teal)]/40 blur-3xl md:block"
             />
             <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">
               <h2 className="text-3xl font-semibold leading-tight text-white md:text-[2.5rem]">
                 {t('finalCtaTitle')}
               </h2>
-              <p className="text-base leading-relaxed text-white/90 md:text-lg">
+              <p className="text-base leading-relaxed text-white md:text-lg">
                 {t('finalCtaDescription')}
               </p>
               <div className="flex flex-wrap gap-3">

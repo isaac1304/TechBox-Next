@@ -62,27 +62,27 @@ export default function Header() {
       <div
         ref={barRef}
         className={[
-          'mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-all md:px-5',
+          'mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-all md:px-5',
           scrolled
             ? 'border-[var(--border-strong)] bg-[var(--surface)]/85 shadow-[0_14px_40px_-18px_rgba(17,24,61,0.35)] backdrop-blur-lg'
             : 'border-[var(--border)] bg-[var(--surface)]/70 backdrop-blur-md',
         ].join(' ')}
       >
-        <Link href="/" aria-label={t('logoAlt')} className="flex items-center gap-3">
+        <Link href="/" aria-label={t('logoAlt')} className="flex shrink-0 items-center gap-3">
           <Image
             src="/brand/techbox-mark.png"
             alt="Techbox"
             width={80}
             height={80}
             priority
-            className="h-14 w-14 rounded-xl object-contain md:h-16 md:w-16"
+            className="h-14 w-14 shrink-0 rounded-xl object-contain md:h-16 md:w-16"
           />
-          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem] lg:hidden xl:block">
-            Tech<span className="text-[var(--brand-teal)]">box</span>
+          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem]">
+            Tech<span className="text-[var(--text-accent)]">box</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {site.nav.map((item) => (
             <Link
               key={item.href}
@@ -100,23 +100,20 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-2 border-r border-[var(--border)] pr-3 lg:flex">
+          <div className="hidden items-center gap-2 border-r border-[var(--border)] pr-3 xl:flex">
             <LocaleSwitcher compact />
             <ThemeToggle />
           </div>
-          <LinkButton
-            href={site.booking}
-            external
-            variant="primary"
-            className="hidden md:inline-flex"
-          >
-            <CalendarCheck className="h-4 w-4" /> {t('scheduleDiagnosis')}
+          <LinkButton href={site.booking} external variant="primary">
+            <CalendarCheck className="h-4 w-4" />
+            <span className="md:hidden">{t('scheduleShort')}</span>
+            <span className="hidden md:inline">{t('scheduleDiagnosis')}</span>
           </LinkButton>
           <button
             type="button"
             aria-label={t('openMenu')}
             onClick={() => setOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text)] lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] text-[var(--text)] xl:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -128,7 +125,7 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
           aria-label={t('menuLabel')}
-          className="fixed inset-0 z-50 lg:hidden"
+          className="fixed inset-0 z-50 xl:hidden"
         >
           <button
             type="button"
@@ -147,7 +144,7 @@ export default function Header() {
                   className="h-14 w-14 rounded-xl object-contain"
                 />
                 <span className="text-2xl font-semibold text-[var(--text)]">
-                  Tech<span className="text-[var(--brand-teal)]">box</span>
+                  Tech<span className="text-[var(--text-accent)]">box</span>
                 </span>
               </Link>
               <button

@@ -3,6 +3,8 @@ import type { ReactNode } from 'react';
 type Props = {
   eyebrow?: string;
   title: ReactNode;
+  /** Usá 'h1' cuando este encabezado abre la página. */
+  as?: 'h1' | 'h2';
   description?: ReactNode;
   align?: 'left' | 'center';
   className?: string;
@@ -11,6 +13,7 @@ type Props = {
 export default function SectionHeading({
   eyebrow,
   title,
+  as: Heading = 'h2',
   description,
   align = 'center',
   className = '',
@@ -24,9 +27,9 @@ export default function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
+      <Heading className="text-3xl font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className="text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
           {description}

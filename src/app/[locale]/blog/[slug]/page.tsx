@@ -48,7 +48,7 @@ export default async function BlogPostPage({
       <article className="mx-auto w-full max-w-3xl px-4 py-16 md:py-20 lg:px-6">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--brand-teal)]"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] hover:text-[var(--text-accent)]"
         >
           <ArrowLeft className="h-3 w-3" /> {t('backToBlog')}
         </Link>

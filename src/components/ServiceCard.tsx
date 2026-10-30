@@ -27,7 +27,7 @@ export default function ServiceCard({ service, locale }: Props) {
         <ServiceIcon name={service.icon} className="h-6 w-6" />
       </span>
       <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-teal)]">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-accent)]">
           {service.tagline[locale]}
         </span>
         <h3 className="text-lg font-semibold text-[var(--text)]">{service.title[locale]}</h3>

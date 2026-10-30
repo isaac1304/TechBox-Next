@@ -30,6 +30,7 @@ export default async function UseCasesPage({
     <>
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
+          as="h1"
           eyebrow={t('eyebrow')}
           title={
             <>
@@ -44,7 +45,7 @@ export default async function UseCasesPage({
       <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {useCases.map((u) => (
-            <UseCaseCard key={u.id} useCase={u} locale={locale} />
+            <UseCaseCard key={u.id} as="h2" useCase={u} locale={locale} />
           ))}
         </div>
       </section>

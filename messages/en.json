@@ -15,6 +15,7 @@
     "closeMenu": "Close menu",
     "menuLabel": "Main menu",
     "scheduleDiagnosis": "Book a free assessment",
+    "scheduleShort": "Book",
     "writeWhatsapp": "Message us on WhatsApp",
     "theme": "Theme"
   },
@@ -30,6 +31,7 @@
     "ariaLabel": "Message us on WhatsApp"
   },
   "Common": {
+    "skipToContent": "Skip to content",
     "scheduleDiagnosisCta": "Book your free assessment",
     "viewServices": "View services",
     "scheduleDiagnosis": "Book a free assessment",
