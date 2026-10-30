@@ -217,7 +217,7 @@
   },
   "Blog": {
     "metaTitle": "Tech blog for SMBs in Costa Rica",
-    "metaDescription": "Practical articles on automation, cloud, cybersecurity, and data for SMBs in Costa Rica and Latin America. Written by the Techbox team, no jargon.",
+    "metaDescription": "Practical articles on automation, cloud, cybersecurity, and data for SMBs in Costa Rica and Latin America. Written by Techbox founder Isaac Granados.",
     "eyebrow": "Blog",
     "titleStart": "Practical ideas for",
     "titleAccent": "operations that actually scale",
@@ -229,7 +229,10 @@
     "backToBlog": "Blog",
     "notFound": "Article not found",
     "ctaTitle": "Did the article resonate?",
-    "ctaDescription": "Book a 30-minute call and let’s chat about how to apply it to your company."
+    "ctaDescription": "Book a 30-minute call and let’s chat about how to apply it to your company.",
+    "readingTime": "{minutes} min read",
+    "authorBio": "Techbox founder and SRE with 11+ years of experience. Certified CKA (Certified Kubernetes Administrator) and ICA (Istio Certified Associate).",
+    "authorLink": "More about Isaac"
   },
   "Cta": {
     "defaultTitle": "Tell us what you want to solve",
@@ -394,6 +397,11 @@
     "quote": "We bring SMBs the reliability practices big companies use, at an SMB price.",
     "fact1": "More than 11 years as a Site Reliability Engineer at international companies.",
     "fact2": "Experience with AWS, GCP, Kubernetes, Terraform, CI/CD, HashiCorp Vault, and observability.",
-    "fact3": "Systems Engineering, Universidad Fidélitas."
+    "fact3": "Systems Engineering, Universidad Fidélitas.",
+    "name": "Isaac Granados",
+    "role": "Founder and SRE",
+    "bio": "I’m an SRE with 11+ years of experience and CKA and ICA certifications. I founded Techbox to bring big-company reliability practices to SMBs.",
+    "credlyHelp": "Verify each certification on Credly.",
+    "credlyAria": "Verify {name} on Credly"
   }
 }

@@ -217,7 +217,7 @@
   },
   "Blog": {
     "metaTitle": "Blog de tecnología para pymes en Costa Rica",
-    "metaDescription": "Artículos prácticos sobre automatización, nube, ciberseguridad y datos para pymes de Costa Rica y Latinoamérica. Escritos por el equipo de Techbox.",
+    "metaDescription": "Artículos prácticos sobre automatización, nube, ciberseguridad y datos para pymes de Costa Rica y Latinoamérica. Escritos por Isaac Granados, SRE.",
     "eyebrow": "Blog",
     "titleStart": "Ideas prácticas para",
     "titleAccent": "operaciones que sí escalan",
@@ -229,7 +229,10 @@
     "backToBlog": "Blog",
     "notFound": "Artículo no encontrado",
     "ctaTitle": "¿Te resonó el artículo?",
-    "ctaDescription": "Agenda una llamada de 30 minutos y conversemos cómo aplicarlo a tu empresa."
+    "ctaDescription": "Agenda una llamada de 30 minutos y conversemos cómo aplicarlo a tu empresa.",
+    "readingTime": "{minutes} min de lectura",
+    "authorBio": "Fundador de Techbox y SRE con más de 11 años de experiencia. Certificado CKA (Certified Kubernetes Administrator) e ICA (Istio Certified Associate).",
+    "authorLink": "Conocé más sobre Isaac"
   },
   "Cta": {
     "defaultTitle": "Contános qué querés resolver",
@@ -394,6 +397,11 @@
     "quote": "Llevamos a las pymes las prácticas de confiabilidad que usan las empresas grandes, a precio de pyme.",
     "fact1": "Más de 11 años como Site Reliability Engineer en empresas internacionales.",
     "fact2": "Experiencia en AWS, GCP, Kubernetes, Terraform, CI/CD, HashiCorp Vault y observabilidad.",
-    "fact3": "Ingeniería de Sistemas, Universidad Fidélitas."
+    "fact3": "Ingeniería de Sistemas, Universidad Fidélitas.",
+    "name": "Isaac Granados",
+    "role": "Fundador y SRE",
+    "bio": "Soy SRE con más de 11 años de experiencia y certificaciones CKA e ICA. Fundé Techbox para llevarle a las pymes las prácticas de confiabilidad de las empresas grandes.",
+    "credlyHelp": "Verificá cada certificación en Credly.",
+    "credlyAria": "Verificar {name} en Credly"
   }
 }

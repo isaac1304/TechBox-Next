@@ -134,7 +134,7 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <FounderSection />
+      <FounderSection showProfile />
 
       <section className="pb-24 pt-20">
         <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />

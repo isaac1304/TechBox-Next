@@ -34,9 +34,6 @@ export type BlogPost = {
   /** Fecha de la última edición del contenido, si la hubo (YYYY-MM-DD). */
   updated?: string;
   category: BlogCategory;
-  /** Tiempo de lectura por idioma (puede variar). */
-  readingTime: LocalizedString;
-  author: LocalizedString;
   content: LocalizedStringArray;
 };
 
@@ -64,8 +61,6 @@ export const blogPosts: BlogPost[] = [
     },
     date: '2026-03-10',
     category: 'automation',
-    readingTime: { es: '5 min', en: '5 min' },
-    author: { es: 'Equipo Techbox', en: 'Techbox team' },
     content: {
       es: [
         'En muchas pymes, una sola persona termina haciendo el trabajo de tres: atender al cliente, cuadrar ventas, enviar recordatorios y preparar reportes. La tecnología no puede reemplazar ese criterio humano, pero sí puede quitarle de encima el trabajo repetitivo.',
@@ -105,8 +100,6 @@ export const blogPosts: BlogPost[] = [
     },
     date: '2026-02-21',
     category: 'cloud',
-    readingTime: { es: '6 min', en: '6 min' },
-    author: { es: 'Equipo Techbox', en: 'Techbox team' },
     content: {
       es: [
         'Durante años, la nube sonó a algo costoso y reservado para empresas grandes. Hoy, una pyme en Costa Rica puede operar con la misma infraestructura confiable que usan bancos y retailers internacionales, pagando solo por lo que consume.',
@@ -142,8 +135,6 @@ export const blogPosts: BlogPost[] = [
     },
     date: '2026-02-05',
     category: 'cybersecurity',
-    readingTime: { es: '7 min', en: '7 min' },
-    author: { es: 'Equipo Techbox', en: 'Techbox team' },
     content: {
       es: [
         'Los incidentes de ciberseguridad en pymes rara vez vienen de un ataque sofisticado. Casi siempre empiezan por un correo con una liga falsa, una contraseña reutilizada o un respaldo que nunca se probó.',
@@ -182,8 +173,6 @@ export const blogPosts: BlogPost[] = [
     },
     date: '2026-01-18',
     category: 'data',
-    readingTime: { es: '6 min', en: '6 min' },
-    author: { es: 'Equipo Techbox', en: 'Techbox team' },
     content: {
       es: [
         'La mayoría de pymes no tiene un problema de datos, tiene un problema de lectura de datos. Las ventas, los gastos, la asistencia y los clientes están registrados, pero dispersos entre hojas de cálculo, sistemas y correos.',
@@ -206,6 +195,15 @@ export function getPostBySlug(
   locale: Locale,
 ): BlogPost | undefined {
   return blogPosts.find((p) => p.slug[locale] === slug);
+}
+
+const WORDS_PER_MINUTE = 200;
+
+/** Minutos de lectura según el conteo real de palabras (200 por minuto). */
+export function readingMinutes(post: BlogPost, locale: Locale): number {
+  const text = [post.title[locale], post.excerpt[locale], ...post.content[locale]].join(' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
 /** Última fecha real de cambio del post: edición o, si no hay, publicación. */

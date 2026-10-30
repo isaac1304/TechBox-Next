@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import {
   blogPosts,
@@ -8,6 +8,7 @@ import {
   formatDate,
   getPostBySlug,
   postLastModified,
+  readingMinutes,
 } from '@/data/blog';
 import CTASection from '@/components/CTASection';
 import { Link } from '@/i18n/navigation';
@@ -15,6 +16,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import JsonLd from '@/components/JsonLd';
 import { blogPostingJsonLd, breadcrumbJsonLd, navLabel } from '@/lib/jsonLd';
 import { buildMetadata } from '@/lib/seo';
+import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -81,7 +83,7 @@ export default async function BlogPostPage({
           </span>
           <span className="text-[var(--text-soft)]">{formatDate(post.date, locale)}</span>
           <span className="inline-flex items-center gap-1 text-[var(--text-soft)]">
-            <Clock className="h-3.5 w-3.5" /> {post.readingTime[locale]}
+            <Clock className="h-3.5 w-3.5" /> {t('readingTime', { minutes: readingMinutes(post, locale) })}
           </span>
         </div>
         <h1 className="mt-4 text-[2rem] font-semibold leading-tight text-[var(--text)] md:text-[2.5rem]">
@@ -97,7 +99,16 @@ export default async function BlogPostPage({
             </p>
           ))}
         </div>
-        <p className="mt-10 text-sm text-[var(--text-soft)]">— {post.author[locale]}</p>
+        <aside className="mt-10 flex flex-col gap-2 border-t border-[var(--border)] pt-6 text-sm">
+          <p className="font-semibold text-[var(--text)]">— {site.founder.shortName}</p>
+          <p className="leading-relaxed text-[var(--text-muted)]">{t('authorBio')}</p>
+          <Link
+            href={{ pathname: '/about', hash: 'fundador' }}
+            className="inline-flex w-fit items-center gap-1.5 font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
+          >
+            {t('authorLink')} <ArrowRight className="h-4 w-4" />
+          </Link>
+        </aside>
       </article>
       <section className="pb-24">
         <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />

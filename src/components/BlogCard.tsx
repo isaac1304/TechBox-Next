@@ -1,7 +1,7 @@
 import { ArrowRight, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { categoryLabels, formatDate, type BlogPost } from '@/data/blog';
+import { categoryLabels, formatDate, readingMinutes, type BlogPost } from '@/data/blog';
 import type { Locale } from '@/i18n/routing';
 
 export default function BlogCard({
@@ -12,6 +12,7 @@ export default function BlogCard({
   locale: Locale;
 }) {
   const tCommon = useTranslations('Common');
+  const tPost = useTranslations('BlogPost');
 
   return (
     <Link
@@ -23,7 +24,7 @@ export default function BlogCard({
           {categoryLabels[post.category][locale]}
         </span>
         <span className="inline-flex items-center gap-1 text-[var(--text-soft)]">
-          <Clock className="h-3.5 w-3.5" /> {post.readingTime[locale]}
+          <Clock className="h-3.5 w-3.5" /> {tPost('readingTime', { minutes: readingMinutes(post, locale) })}
         </span>
       </div>
       <h3 className="text-lg font-semibold leading-snug text-[var(--text)]">
