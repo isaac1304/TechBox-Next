@@ -509,13 +509,13 @@ export default async function SREServicePage({
             <div aria-hidden className="absolute inset-0 -z-10 opacity-30 bg-grid-pattern" />
             <div
               aria-hidden
-              className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[var(--brand-teal)]/40 blur-3xl"
+              className="absolute -right-16 -top-16 hidden h-64 w-64 rounded-full bg-[var(--brand-teal)]/40 blur-3xl md:block"
             />
             <div className="relative flex flex-col items-start gap-6 md:max-w-2xl">
               <h2 className="text-3xl font-semibold leading-tight text-white md:text-[2.5rem]">
                 {t('finalCtaTitle')}
               </h2>
-              <p className="text-base leading-relaxed text-white/90 md:text-lg">
+              <p className="text-base leading-relaxed text-white md:text-lg">
                 {t('finalCtaDescription')}
               </p>
               <div className="flex flex-wrap gap-3">
