@@ -8,6 +8,8 @@ import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
 import ServiceIcon from '@/components/ServiceIcon';
 import CTASection from '@/components/CTASection';
+import PricingBlock from '@/components/PricingBlock';
+import { expressNotes, expressOffers, formatPrice, fromPrice, planOffers } from '@/data/pricing';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { site } from '@/lib/site';
@@ -48,6 +50,7 @@ export default async function ServiceDetailPage({
 
   const t = await getTranslations('ServiceDetail');
   const tCommon = await getTranslations('Common');
+  const tPricing = await getTranslations('Pricing');
 
   const related = service.relatedServices
     .map((id) => getServiceById(id))
@@ -189,6 +192,51 @@ export default async function ServiceDetailPage({
           ))}
         </div>
       </section>
+
+      {/* Pricing */}
+      {service.pricingBlock === 'express' && (
+        <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+          <SectionHeading
+            eyebrow={tPricing('expressEyebrow')}
+            title={tPricing('expressTitle')}
+            description={tPricing('expressDescription')}
+          />
+          <PricingBlock offers={expressOffers} notes={expressNotes[locale]} locale={locale} />
+          <p className="mt-6 text-center">
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-navy)] transition hover:gap-2.5 dark:text-[var(--brand-teal)]"
+            >
+              {tPricing('viewAllPricing')} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </p>
+        </section>
+      )}
+      {service.pricingBlock === 'plan' && (
+        <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+          <div className="card flex flex-col items-start gap-4 p-7 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-1">
+              <h2 className="text-lg font-semibold text-[var(--text)]">
+                {tPricing('upsellTitle')}
+              </h2>
+              <p className="text-sm text-[var(--text-muted)]">
+                {tPricing('upsellBody', { price: formatPrice(fromPrice(planOffers)) })}
+              </p>
+            </div>
+            <LinkButton href={{ pathname: '/pricing', hash: 'plan' }} variant="secondary">
+              {tPricing('upsellCta')} <ArrowRight className="h-4 w-4" />
+            </LinkButton>
+          </div>
+        </section>
+      )}
+      {service.pricingBlock === 'quote' && (
+        <section className="mx-auto w-full max-w-6xl px-4 pb-20 lg:px-6">
+          <div className="card flex flex-col gap-1 p-7">
+            <h2 className="text-lg font-semibold text-[var(--text)]">{tPricing('quoteTitle')}</h2>
+            <p className="text-sm text-[var(--text-muted)]">{tPricing('quoteBody')}</p>
+          </div>
+        </section>
+      )}
 
       {/* Next step */}
       {service.nextStep && nextStepHref && (

@@ -20,6 +20,7 @@ export const routing = defineRouting({
       es: '/servicios/sre-gcp-kubernetes',
       en: '/services/sre-gcp-kubernetes',
     },
+    '/pricing': { es: '/precios', en: '/pricing' },
     '/about': { es: '/nosotros', en: '/about' },
     '/use-cases': { es: '/casos-de-uso', en: '/use-cases' },
     '/contact': { es: '/contacto', en: '/contact' },

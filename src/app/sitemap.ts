@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticHrefs = [
     { href: '/' as const, freq: 'monthly' as const, priority: 1.0 },
     { href: '/services' as const, freq: 'monthly' as const, priority: 0.9 },
+    { href: '/pricing' as const, freq: 'monthly' as const, priority: 0.9 },
     { href: '/about' as const, freq: 'yearly' as const, priority: 0.5 },
     { href: '/use-cases' as const, freq: 'monthly' as const, priority: 0.6 },
     { href: '/blog' as const, freq: 'weekly' as const, priority: 0.7 },

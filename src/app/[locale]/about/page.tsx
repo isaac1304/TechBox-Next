@@ -4,6 +4,7 @@ import { Compass, Users, Target, Layers } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SectionHeading from '@/components/SectionHeading';
 import CTASection from '@/components/CTASection';
+import FounderSection from '@/components/FounderSection';
 import ValueCard from '@/components/ValueCard';
 import type { Locale } from '@/i18n/routing';
 
@@ -127,7 +128,9 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="pb-24">
+      <FounderSection />
+
+      <section className="pb-24 pt-20">
         <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />
       </section>
     </>

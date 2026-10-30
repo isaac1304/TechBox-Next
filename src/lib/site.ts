@@ -4,7 +4,7 @@ type LocalizedString = Record<Locale, string>;
 
 export type NavItem = {
   /** Pathname canónico interno (next-intl lo traduce al renderizar). */
-  href: '/' | '/services' | '/about' | '/use-cases' | '/blog' | '/contact';
+  href: '/' | '/services' | '/pricing' | '/about' | '/use-cases' | '/blog' | '/contact';
   label: LocalizedString;
 };
 
@@ -26,6 +26,7 @@ export const site = {
   nav: [
     { href: '/', label: { es: 'Inicio', en: 'Home' } },
     { href: '/services', label: { es: 'Servicios', en: 'Services' } },
+    { href: '/pricing', label: { es: 'Precios', en: 'Pricing' } },
     { href: '/about', label: { es: 'Nosotros', en: 'About' } },
     { href: '/use-cases', label: { es: 'Casos de uso', en: 'Use cases' } },
     { href: '/blog', label: { es: 'Blog', en: 'Blog' } },

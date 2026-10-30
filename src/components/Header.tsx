@@ -77,7 +77,7 @@ export default function Header() {
             priority
             className="h-14 w-14 rounded-xl object-contain md:h-16 md:w-16"
           />
-          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem]">
+          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem] lg:hidden xl:block">
             Tech<span className="text-[var(--brand-teal)]">box</span>
           </span>
         </Link>
@@ -88,7 +88,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={[
-                'rounded-full px-3.5 py-2 text-sm font-medium transition',
+                'whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition xl:px-3.5',
                 isActive(item.href)
                   ? 'bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
                   : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',

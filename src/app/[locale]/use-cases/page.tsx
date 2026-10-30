@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SectionHeading from '@/components/SectionHeading';
 import UseCaseCard from '@/components/UseCaseCard';
 import CTASection from '@/components/CTASection';
+import { isLaunchActive, launchProgram } from '@/data/pricing';
 import { useCases } from '@/data/useCases';
 import type { Locale } from '@/i18n/routing';
 
@@ -49,7 +50,17 @@ export default async function UseCasesPage({
       </section>
 
       <section className="pb-24">
-        <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />
+        {isLaunchActive() ? (
+          <CTASection
+            title={t('foundersTitle')}
+            description={t('foundersDescription', {
+              total: launchProgram.spotsTotal,
+              left: launchProgram.spotsLeft,
+            })}
+          />
+        ) : (
+          <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />
+        )}
       </section>
     </>
   );
