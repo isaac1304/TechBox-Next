@@ -73,6 +73,11 @@ export default async function Footer() {
           </h3>
           <ul className="mt-4 flex flex-col gap-2 text-sm text-[var(--text-muted)]">
             <li>
+              <Link href="/pricing" className="hover:text-[var(--brand-teal)]">
+                {site.nav.find((n) => n.href === '/pricing')!.label[locale]}
+              </Link>
+            </li>
+            <li>
               <Link href="/about" className="hover:text-[var(--brand-teal)]">
                 {site.nav.find((n) => n.href === '/about')!.label[locale]}
               </Link>

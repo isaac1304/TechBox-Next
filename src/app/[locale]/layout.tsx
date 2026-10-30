@@ -12,6 +12,10 @@ import { routing } from '@/i18n/routing';
 
 const siteUrl = 'https://techbox.cr';
 
+// Las páginas son estáticas: revalidar a diario para que el fin del programa
+// de fundadores (launchProgram.endsOn) se refleje sin un deploy nuevo.
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
