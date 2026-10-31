@@ -17,8 +17,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import PricingBlock from '@/components/PricingBlock';
+import { certifications, credlyUrl } from '@/data/certifications';
+import { getServiceById } from '@/data/services';
 import { formatPrice, sreNotes, sreOffers, sreProjectPrices } from '@/data/pricing';
-import { Link, getPathname } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbJsonLd, navLabel } from '@/lib/jsonLd';
+import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
@@ -29,31 +34,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'ServiceSRE' });
-  const canonicalPath = getPathname({
+  return buildMetadata({
     locale,
     href: '/services/sre-gcp-kubernetes',
-  });
-
-  return {
     title: t('metaTitle'),
     description: t('metaDescription'),
-    keywords: [
-      'SRE Costa Rica',
-      'Cloud Engineer GCP',
-      'consultor Kubernetes',
-      'Istio LatAm',
-      'DevOps fraccional',
-      'GKE Costa Rica',
-      'SRE LatAm',
-    ],
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      type: 'website',
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      url: canonicalPath,
-    },
-  };
+  });
 }
 
 export default async function SREServicePage({
@@ -131,34 +117,6 @@ export default async function SREServicePage({
     'Linux',
   ];
 
-  const certifications = [
-    {
-      badgeId: 'c120126b-dc33-445a-a4f8-182200dfe425',
-      label: 'Certified Kubernetes Administrator',
-      issuer: 'The Linux Foundation',
-      image: '/badges/cka.png',
-    },
-    {
-      badgeId: '8f5e3a3a-e21f-4e42-b7f4-42409d431f33',
-      label: 'Istio Certified Associate',
-      issuer: 'The Linux Foundation',
-      image: '/badges/istio-ica.png',
-    },
-    {
-      badgeId: '96c63672-58a8-494c-98cf-0f11ff492b46',
-      label: 'Cloud Digital Leader',
-      issuer: 'Google Cloud',
-      image: '/badges/gcp-digital-leader.png',
-    },
-    {
-      badgeId: 'b1dc57b5-52d7-4eb1-a685-c09094343ccc',
-      label: 'HashiCorp Certified: Terraform Associate (003)',
-      issuer: 'HashiCorp',
-      image: '/badges/terraform-associate.png',
-      expired: true,
-    },
-  ];
-
   const fitYes = [
     t('fitYes1'),
     t('fitYes2'),
@@ -167,8 +125,18 @@ export default async function SREServicePage({
     t('fitYes5'),
   ];
 
+  const breadcrumbs = breadcrumbJsonLd(locale, [
+    { name: navLabel('/', locale), href: '/' },
+    { name: navLabel('/services', locale), href: '/services' },
+    {
+      name: getServiceById('sre-gcp-kubernetes')!.shortTitle[locale],
+      href: '/services/sre-gcp-kubernetes',
+    },
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-6">
@@ -394,7 +362,7 @@ export default async function SREServicePage({
               {certifications.map((cert) => (
                 <a
                   key={cert.badgeId}
-                  href={`https://www.credly.com/badges/${cert.badgeId}/public_url`}
+                  href={credlyUrl(cert)}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t('certVerifyAria', { name: cert.label })}

@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Info } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import type { UseCase } from '@/data/useCases';
 import { getServiceById } from '@/data/services';
@@ -21,7 +21,8 @@ export default function UseCaseCard({
         <span className="inline-flex w-fit items-center rounded-full bg-[image:var(--gradient-brand-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]">
           {useCase.industry[locale]}
         </span>
-        <span className="inline-flex w-fit items-center rounded-full border border-[var(--border-strong)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+        <span className="inline-flex w-fit items-center gap-1 rounded-full border border-[var(--border-strong)] bg-[var(--surface-muted)] px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text)]">
+          <Info aria-hidden className="h-3 w-3" />
           {t('cardIllustrative')}
         </span>
       </div>

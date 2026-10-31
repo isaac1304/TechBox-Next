@@ -13,6 +13,10 @@ export type Service = {
   shortTitle: LocalizedString;
   tagline: LocalizedString;
   description: LocalizedString;
+  /** Title SEO (sin "| Techbox"); si falta se usa `title`. */
+  metaTitle?: LocalizedString;
+  /** Meta description SEO (140–160 caracteres); si falta se usa `description`. */
+  metaDescription?: LocalizedString;
   longDescription: LocalizedString;
   icon:
     | 'code'
@@ -60,6 +64,14 @@ export const services: Service[] = [
     description: {
       es: 'Creamos aplicaciones web y móviles a la medida: sistemas internos, portales de clientes, dashboards y productos digitales.',
       en: 'We build custom web and mobile applications: internal systems, customer portals, dashboards, and digital products.',
+    },
+    metaTitle: {
+      es: 'Desarrollo de software a la medida para pymes',
+      en: 'Custom web and mobile software for SMBs',
+    },
+    metaDescription: {
+      es: 'Desarrollo de aplicaciones web y móviles a la medida para pymes en Costa Rica: sistemas internos, portales de clientes y MVPs. Agendá tu diagnóstico.',
+      en: 'Custom web and mobile app development for SMBs in Costa Rica and Latin America: internal systems, customer portals, and MVPs. Book a free assessment.',
     },
     longDescription: {
       es: 'Diseñamos y construimos software que se adapta a cómo trabaja tu empresa. Desde un MVP para validar una idea, hasta un sistema interno que reemplaza un montón de hojas de Excel sueltas y planillas a mano. Nuestro equipo combina diseño, ingeniería y pruebas para entregar productos mantenibles, seguros y listos para crecer con vos.',
@@ -163,6 +175,14 @@ export const services: Service[] = [
     description: {
       es: 'Migramos y configuramos infraestructura cloud para empresas que están dando sus primeros pasos en la nube. Estable, segura y con costos bajo control desde el día uno.',
       en: 'We migrate and configure cloud infrastructure for companies taking their first steps to the cloud. Stable, secure, and cost-controlled from day one.',
+    },
+    metaTitle: {
+      es: 'Migración a la nube para pymes en Costa Rica',
+      en: 'Cloud migration for SMBs in Costa Rica',
+    },
+    metaDescription: {
+      es: 'Migramos y configuramos la nube de tu pyme: infraestructura estable, segura y con costos bajo control desde el día uno. Agendá un diagnóstico sin costo.',
+      en: 'We migrate and set up cloud infrastructure for SMBs taking their first steps: stable, secure, and cost-controlled from day one. Book a free assessment.',
     },
     longDescription: {
       es: 'Pensado para empresas que recién están migrando de servidores en oficina o que necesitan ordenar una nube heredada. Diseñamos arquitecturas sobre Google Cloud y AWS pensadas para pymes, con despliegues automatizados, monitoreo y costos bajo control desde el arranque. Si tu producto ya está operando en producción a escala — con Kubernetes, microservicios o requisitos de compliance — conocé también nuestra línea de SRE y Cloud Engineering.',
@@ -284,6 +304,14 @@ export const services: Service[] = [
       es: 'Automatizamos tareas repetitivas con IA y agentes inteligentes para reducir errores, ahorrar tiempo y conectar tus herramientas entre sí.',
       en: 'We automate repetitive tasks with AI and intelligent agents to cut errors, save time, and connect your tools to each other.',
     },
+    metaTitle: {
+      es: 'Automatización de procesos con IA para pymes',
+      en: 'AI process automation for SMBs',
+    },
+    metaDescription: {
+      es: 'Automatizamos tareas repetitivas de tu pyme con IA y agentes: menos errores, más tiempo y herramientas conectadas. Con precio publicado. Agendá tu diagnóstico.',
+      en: 'We automate repetitive SMB tasks with AI and agents: fewer errors, time saved, and connected tools, with published pricing. Book a free assessment today.',
+    },
     longDescription: {
       es: 'Si alguien en tu equipo se la pasa copiando y pegando datos, mandando los mismos correos varias veces al día o armando reportes a mano cada semana, es candidato a automatizar. Conectamos tus sistemas, limpiamos los flujos y usamos IA y agentes de automatización para que la tecnología se encargue del trabajo repetitivo.',
       en: 'If someone on your team spends their day copy-pasting data, sending the same emails over and over, or building weekly reports by hand, that work is a prime candidate for automation. We connect your systems, clean up the flows, and use AI and automation agents to let technology handle the repetitive work.',
@@ -389,6 +417,14 @@ export const services: Service[] = [
       es: 'Servicios de ciberseguridad adaptados a pymes: diagnóstico, controles básicos, respaldos y acompañamiento continuo.',
       en: 'Cybersecurity services tailored to SMBs: assessment, basic controls, backups, and ongoing support.',
     },
+    metaTitle: {
+      es: 'Ciberseguridad para pymes en Costa Rica',
+      en: 'Cybersecurity for SMBs in Costa Rica',
+    },
+    metaDescription: {
+      es: 'Ciberseguridad para pymes en Costa Rica: diagnóstico de riesgos, controles básicos, respaldos y acompañamiento continuo. Agendá tu diagnóstico sin costo.',
+      en: 'Cybersecurity for SMBs in Costa Rica and Latin America: risk assessment, basic controls, backups, and ongoing support. Book a free assessment to get started.',
+    },
     longDescription: {
       es: 'Las pymes también son blanco de ataques, muchas veces por configuraciones inseguras o equipos sin protección. Hacemos una evaluación realista de tus riesgos y aplicamos medidas que sí funcionan: control de accesos, respaldos, configuración segura de la nube y acompañamiento al equipo.',
       en: 'SMBs are also targets, often because of insecure configurations or unprotected devices. We run a realistic risk assessment and apply measures that actually work: access control, backups, secure cloud configuration, and team coaching.',
@@ -492,6 +528,14 @@ export const services: Service[] = [
       es: 'Tableros, KPIs y reportes automatizados para que la gerencia y los equipos operativos tomen mejores decisiones.',
       en: 'Dashboards, KPIs, and automated reports so leadership and operations can make better decisions.',
     },
+    metaTitle: {
+      es: 'Análisis de datos y Power BI para pymes',
+      en: 'Data analytics and Power BI for SMBs',
+    },
+    metaDescription: {
+      es: 'Tableros en Power BI, KPIs y reportes automatizados para que la gerencia de tu pyme decida con datos al día. Agendá un diagnóstico sin costo con Techbox.',
+      en: 'Power BI dashboards, KPIs, and automated reports so your SMB’s leadership and operations decide with up-to-date data. Book a free assessment with Techbox.',
+    },
     longDescription: {
       es: 'Tus datos ya están en algún lado: ventas, inventario, asistencia, clientes. Los ordenamos, los limpiamos y los volvemos tableros y reportes que sí se usan. Power BI, Looker Studio o soluciones a la medida, según lo que mejor le calce a tu empresa.',
       en: 'Your data already exists somewhere: sales, inventory, attendance, customers. We organize it, clean it, and turn it into dashboards and reports that actually get used. Power BI, Looker Studio, or custom solutions — whichever fits your company best.',
@@ -594,6 +638,14 @@ export const services: Service[] = [
     description: {
       es: 'Te acompañamos a diagnosticar, priorizar y planear las inversiones tecnológicas de tu empresa.',
       en: 'We help you assess, prioritize, and plan your company’s technology investments.',
+    },
+    metaTitle: {
+      es: 'Consultoría tecnológica para pymes en Costa Rica',
+      en: 'Tech consulting for SMBs in Costa Rica',
+    },
+    metaDescription: {
+      es: 'Consultoría tecnológica para pymes: te ayudamos a diagnosticar, priorizar y planear tus inversiones en tecnología. Agendá hoy tu diagnóstico sin costo.',
+      en: 'Tech consulting for SMBs: we help you assess, prioritize, and plan your company’s technology investments with a clear roadmap. Book a free assessment today.',
     },
     longDescription: {
       es: 'Antes de comprar software o contratar desarrolladores, hace falta claridad. Miramos cómo opera hoy tu empresa, identificamos oportunidades reales de mejora y te entregamos un plan priorizado. Sin tecnicismos innecesarios y con la mira puesta en resultados de negocio.',

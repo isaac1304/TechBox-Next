@@ -9,8 +9,9 @@ import Footer from '@/components/Footer';
 import WhatsAppFloating from '@/components/WhatsAppFloating';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { routing } from '@/i18n/routing';
-
-const siteUrl = 'https://techbox.cr';
+import JsonLd from '@/components/JsonLd';
+import { siteJsonLd } from '@/lib/jsonLd';
+import { SITE_URL } from '@/lib/site';
 
 // Las páginas son estáticas: revalidar a diario para que el fin del programa
 // de fundadores (launchProgram.endsOn) se refleje sin un deploy nuevo.
@@ -29,48 +30,23 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t('siteTitleDefault'),
       template: t('siteTitleTemplate'),
     },
     description: t('siteDescription'),
-    keywords: [
-      'Techbox',
-      'Costa Rica',
-      'Latinoamérica',
-      'Latin America',
-      'software pymes',
-      'SMB software',
-      'automatización',
-      'automation',
-      'nube',
-      'cloud',
-      'ciberseguridad',
-      'cybersecurity',
-      'Power BI',
-      'consultoría tecnológica',
-      'tech consulting',
-    ],
-    alternates: {
-      languages: {
-        es: '/',
-        en: '/en',
-        'x-default': '/',
-      },
-    },
     openGraph: {
       type: 'website',
       locale: t('ogLocale'),
-      url: locale === 'en' ? `${siteUrl}/en` : siteUrl,
       siteName: 'Techbox',
-      title: t('ogTitle'),
-      description: t('ogDescription'),
+      title: t('siteTitleDefault'),
+      description: t('siteDescription'),
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('twitterTitle'),
-      description: t('twitterDescription'),
+      title: t('siteTitleDefault'),
+      description: t('siteDescription'),
     },
   };
 }
@@ -100,6 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body className="antialiased" suppressHydrationWarning>
+        <JsonLd data={siteJsonLd(locale)} />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TWKWSZHN"

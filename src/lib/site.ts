@@ -2,6 +2,21 @@ import type { Locale } from '@/i18n/routing';
 
 type LocalizedString = Record<Locale, string>;
 
+/**
+ * URL base canónica del sitio (con www, sin barra final). Es la única fuente
+ * para metadataBase, canonicals, hreflang, og:url, sitemap, robots y JSON-LD.
+ * Se puede sobreescribir con NEXT_PUBLIC_SITE_URL (por ejemplo en previews).
+ */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.techbox.cr').replace(
+  /\/+$/,
+  '',
+);
+
+/** Convierte un pathname interno ("/", "/en/pricing") en URL absoluta canónica. */
+export function absoluteUrl(path: string): string {
+  return path === '/' || path === '' ? SITE_URL : `${SITE_URL}${path}`;
+}
+
 export type NavItem = {
   /** Pathname canónico interno (next-intl lo traduce al renderizar). */
   href: '/' | '/services' | '/pricing' | '/about' | '/use-cases' | '/blog' | '/contact';
@@ -10,7 +25,7 @@ export type NavItem = {
 
 export const site = {
   name: 'Techbox',
-  domain: 'techbox.cr',
+  domain: new URL(SITE_URL).host,
   email: 'gerencia@techbox.cr',
   phone: '+506 7016-5606',
   whatsapp: 'https://wa.me/message/D56BK4UPJ5IDJ1',
@@ -19,6 +34,19 @@ export const site = {
     en: 'Message us on WhatsApp',
   } as LocalizedString,
   booking: 'https://cal.com/techbox',
+  legalName: 'TechBox S.R.L.',
+  address: { locality: 'Heredia', region: 'Heredia', country: 'CR' },
+  areaServed: ['Costa Rica', 'Latin America'],
+  /** Perfiles sociales oficiales para schema.org sameAs (vacío hasta tenerlos). */
+  socialProfiles: [] as string[],
+  founder: {
+    name: 'Isaac Andrey Granados Gómez',
+    shortName: 'Isaac Granados',
+    jobTitle: {
+      es: 'Fundador y SRE',
+      en: 'Founder and SRE',
+    } as LocalizedString,
+  },
   location: {
     es: 'Heredia, Costa Rica',
     en: 'Heredia, Costa Rica',

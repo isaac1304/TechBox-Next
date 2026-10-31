@@ -12,6 +12,9 @@ import PricingBlock from '@/components/PricingBlock';
 import { expressNotes, expressOffers, formatPrice, fromPrice, planOffers } from '@/data/pricing';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbJsonLd, navLabel } from '@/lib/jsonLd';
+import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -31,10 +34,12 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'ServiceDetail' });
   const service = getServiceBySlug(slug, locale);
   if (!service) return { title: t('notFound') };
-  return {
-    title: service.title[locale],
-    description: service.description[locale],
-  };
+  return buildMetadata({
+    locale,
+    href: (l) => ({ pathname: '/services/[slug]', params: { slug: service.slug[l] } }),
+    title: (service.metaTitle ?? service.title)[locale],
+    description: (service.metaDescription ?? service.description)[locale],
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -68,8 +73,18 @@ export default async function ServiceDetailPage({
         } as const)
     : null;
 
+  const breadcrumbs = breadcrumbJsonLd(locale, [
+    { name: navLabel('/', locale), href: '/' },
+    { name: navLabel('/services', locale), href: '/services' },
+    {
+      name: service.shortTitle[locale],
+      href: (l) => ({ pathname: '/services/[slug]', params: { slug: service.slug[l] } }),
+    },
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:px-6">

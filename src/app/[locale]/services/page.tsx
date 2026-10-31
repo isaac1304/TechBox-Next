@@ -5,6 +5,7 @@ import ServiceCard from '@/components/ServiceCard';
 import CTASection from '@/components/CTASection';
 import { services } from '@/data/services';
 import type { Locale } from '@/i18n/routing';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -13,7 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Services' });
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  return buildMetadata({
+    locale,
+    href: '/services',
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  });
 }
 
 export default async function ServicesPage({
@@ -29,6 +35,7 @@ export default async function ServicesPage({
     <>
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-20 lg:px-6">
         <SectionHeading
+          as="h1"
           eyebrow={t('eyebrow')}
           title={
             <>

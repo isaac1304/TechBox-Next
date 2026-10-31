@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, MessageCircle, Scale } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LinkButton } from '@/components/Button';
 import FoundersBanner from '@/components/FoundersBanner';
+import JsonLd from '@/components/JsonLd';
 import PricingBlock from '@/components/PricingBlock';
 import SectionHeading from '@/components/SectionHeading';
 import {
@@ -14,9 +15,9 @@ import {
   sreNotes,
   sreOffers,
 } from '@/data/pricing';
-import { getPathname } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { buildPricingJsonLd } from '@/lib/pricingJsonLd';
+import { buildMetadata, pageUrl } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export async function generateMetadata({
@@ -26,14 +27,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Pricing' });
-  return {
-    title: { absolute: t('metaTitle') },
+  return buildMetadata({
+    locale,
+    href: '/pricing',
+    title: t('metaTitle'),
     description: t('metaDescription', {
       express: formatPrice(expressOffers[0].priceRegular),
       plan: formatPrice(planOffers[0].priceRegular),
     }),
-    alternates: { canonical: getPathname({ locale, href: '/pricing' }) },
-  };
+  });
 }
 
 export default async function PricingPage({
@@ -50,12 +52,10 @@ export default async function PricingPage({
     answer: t(`faq${n}Answer`),
   }));
 
-  const pageUrl = `https://${site.domain}${getPathname({ locale, href: '/pricing' })}`;
-  const jsonLd = JSON.stringify(buildPricingJsonLd(locale, pageUrl)).replace(/</g, '\\u003c');
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <JsonLd data={buildPricingJsonLd(locale, pageUrl('/pricing', locale))} />
 
       {/* HEADER */}
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 pb-12 pt-16 md:pt-20 lg:px-6">
