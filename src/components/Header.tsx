@@ -62,22 +62,22 @@ export default function Header() {
       <div
         ref={barRef}
         className={[
-          'mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-2xl border px-4 py-3 transition-all md:px-5',
+          'mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-2xl lg:gap-2 xl:gap-4 border px-4 py-3 transition-all md:px-5',
           scrolled
             ? 'border-[var(--border-strong)] bg-[var(--surface)]/85 shadow-[0_14px_40px_-18px_rgba(17,24,61,0.35)] backdrop-blur-lg'
             : 'border-[var(--border)] bg-[var(--surface)]/70 backdrop-blur-md',
         ].join(' ')}
       >
-        <Link href="/" aria-label={t('logoAlt')} className="flex items-center gap-3">
+        <Link href="/" aria-label={t('logoAlt')} className="flex shrink-0 items-center gap-3">
           <Image
             src="/brand/techbox-mark.png"
             alt="Techbox"
             width={80}
             height={80}
             priority
-            className="h-14 w-14 rounded-xl object-contain md:h-16 md:w-16"
+            className="h-14 w-14 rounded-xl object-contain md:h-16 md:w-16 lg:h-12 lg:w-12 xl:h-16 xl:w-16"
           />
-          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem] lg:hidden xl:block">
+          <span className="hidden text-2xl font-semibold tracking-tight text-[var(--text)] sm:block md:text-[1.7rem] lg:hidden">
             Tech<span className="text-[var(--brand-teal)]">box</span>
           </span>
         </Link>
@@ -88,7 +88,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={[
-                'whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition xl:px-3.5',
+                'whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition xl:px-3.5',
                 isActive(item.href)
                   ? 'bg-[image:var(--gradient-brand-soft)] text-[var(--brand-navy)] dark:text-[var(--brand-teal)]'
                   : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
